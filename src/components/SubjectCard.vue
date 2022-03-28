@@ -9,9 +9,13 @@
               <h4 id="code">{{ subject.code }}</h4>
             </div>
             <div class="queue-info">
-              <div>
-                <p>{{ subject.queueAmount }}</p>
-                <p v-if="!studass">{{ subject.eta }}</p>
+              <div id="imageContainer">
+                <p>
+                  <img src="../assets/images/outline_groups_black_24dp.png" alt="Hourglass">
+                  {{ subject.queueAmount }}</p>
+                <p v-if="!studass">
+                  <img src="../assets/images/outline_hourglass_bottom_black_24dp.png" alt="Hourglass">
+                  {{ subject.eta }}</p>
               </div>
             </div>
           </section>
@@ -22,9 +26,9 @@
           </div>
         </div>
         <div v-if="!studass" class="queue-buttons">
-          <button id="exercise-button">Øvinger</button>
-          <button id="queue-button">Til kø</button>
-          <button id="chat-button">Chat</button>
+          <button @click.stop="dummyClick" id="exercise-button">Øvinger</button>
+          <button @click.stop="dummyClick" id="queue-button">Til kø</button>
+          <button @click.stop="dummyClick" id="chat-button">Chat</button>
         </div>
       </section>
     </div>
@@ -47,6 +51,11 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    dummyClick() {
+      console.log("Button clicked")
+    }
+  }
 };
 </script>
 
@@ -59,6 +68,8 @@ p {
   margin-inline-end: 0px;
   margin-top: 0;
   margin-bottom: 1rem;
+  justify-content: start;
+  text-align: left;
 }
 h3 {
   display: block;
@@ -81,6 +92,10 @@ button {
   cursor: pointer;
   padding: 5px 15px 5px 15px;
   font-size: 1rem;
+}
+img {
+  display: inline-block;
+  margin: 0 auto;
 }
 #exercise-button {
   border: solid #2e74f3;
@@ -121,12 +136,19 @@ button {
   font-size: 1.5rem;
 }
 
+#imageContainer {
+  justify-content: left;
+}
+#notice-message {
+  text-align: center;
+}
+
 .subjectCardContainer {
-  max-width: 40rem;
+  max-width: 50rem;
   margin: 0 auto;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   border-radius: 5px;
-  border: solid #42b983;
+  border: solid #1C658C;
   background: #eceff4;
   box-shadow: rgb(3 8 20 / 10%) 0px 0.15rem 0.5rem,
     rgb(2 8 20 / 10%) 0px 0.075rem 0.175rem;
@@ -134,9 +156,7 @@ button {
   transition: 0.3s ease;
 }
 .subjectCardContainer:hover {
-  transform: translateX(-2px) translateY(-1px);
-  box-shadow: rgb(3 8 20 / 10%) 0px 0.2rem 0.5rem,
-    rgb(2 8 20 / 10%) 0px 0.1rem 0.2rem;
+  box-shadow: 0 0.05rem 0.3rem 0.05rem;
 }
 .cardGrid {
   display: grid;
@@ -165,6 +185,7 @@ div.content {
   grid-column: 2;
   padding: 20px;
   margin-bottom: auto;
+  ;
 }
 .subject-message {
 }
