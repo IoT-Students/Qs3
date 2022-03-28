@@ -135,6 +135,8 @@ button {
 }
 .subjectCardContainer:hover {
   transform: translateX(-2px) translateY(-1px);
+  box-shadow: rgb(3 8 20 / 10%) 0px 0.2rem 0.5rem,
+    rgb(2 8 20 / 10%) 0px 0.1rem 0.2rem;
 }
 .cardGrid {
   display: grid;
