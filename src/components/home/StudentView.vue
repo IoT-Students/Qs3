@@ -1,5 +1,5 @@
 <template>
-  <SubjectCard v-for="subject in subjects" :key="subject.id" :subject="subject">
+  <SubjectCard v-for="subject in subjects" :key="subject.id" :subject="subject" :studass="false">
   </SubjectCard>
 </template>
 

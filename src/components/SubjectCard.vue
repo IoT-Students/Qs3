@@ -11,7 +11,7 @@
             <div class="queue-info">
               <div>
                 <p>{{ subject.queueAmount }}</p>
-                <p>{{ subject.eta }}</p>
+                <p v-if="!studass">{{ subject.eta }}</p>
               </div>
             </div>
           </section>
@@ -21,7 +21,7 @@
             </p>
           </div>
         </div>
-        <div class="queue-buttons">
+        <div v-if="!studass" class="queue-buttons">
           <button id="exercise-button">Øvinger</button>
           <button id="queue-button">Til kø</button>
           <button id="chat-button">Chat</button>
@@ -37,6 +37,10 @@ export default {
   props: {
     subject: {
       type: Object,
+      required: true,
+    },
+    studass: {
+      type: Boolean,
       required: true,
     },
   },
@@ -93,6 +97,19 @@ button {
   color: #2e74f3;
   background: floralwhite;
 }
+#exercise-button:hover {
+  color: floralwhite;
+  background: #2e74f3;
+}
+#queue-button:hover {
+  color: floralwhite;
+  background: green;
+}
+#chat-button:hover {
+  color: floralwhite;
+  background: #2e74f3;
+}
+
 #title {
   grid-row: 1;
   margin: auto 0 2px 0;
@@ -113,6 +130,11 @@ button {
   background: #eceff4;
   box-shadow: rgb(3 8 20 / 10%) 0px 0.15rem 0.5rem,
     rgb(2 8 20 / 10%) 0px 0.075rem 0.175rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.subjectCardContainer:hover {
+  transform: translateX(-2px) translateY(-1px);
 }
 .cardGrid {
   display: grid;
