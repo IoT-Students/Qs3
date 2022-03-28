@@ -4,37 +4,32 @@
     <form class="form" @submit.prevent="submit">
       <fieldset>
         <legend>Lokasjon</legend>
-        <BaseInput
-            class="baseInput"
-            v-model="campus"
-            label="Campus"
-            type="text"
+
+        <BaseSelect
+            :options="Campus"
+            v-model="subjectQueue.campus"
+            label="Select a campus"
             :error="errors.campus"
-            validateOnInput
         />
-
         <p></p>
-        <BaseInput
-            class="baseInput"
-            v-model="bygning"
-            label="Bygning"
-            type="text"
-            :error="errors.bygning"
+        <BaseSelect
+            :options="Buildings"
+            v-model="subjectQueue.bygning"
+            label="Select a building"
+            :error="errors.building"
         />
-
         <p></p>
-        <BaseInput
-            class="baseInput"
-            v-model="rom"
-            label="Rom"
-            type="text"
+        <BaseSelect
+            :options="Rooms"
+            v-model="subjectQueue.rom"
+            label="Select a room"
             :error="errors.rom"
         />
-        <BaseInput
-            class="baseInput"
-            v-model="bord"
-            label="Bord"
-            type="text"
+        <p></p>
+        <BaseSelect
+            :options="Tables"
+            v-model="subjectQueue.bord"
+            label="Select a table"
             :error="errors.bord"
         />
       </fieldset>
@@ -42,10 +37,36 @@
       <fieldset>
         <legend>Øvinger</legend>
 
+        <BaseCheckBox
+            v-model="subjectQueue.øvinger['1']"
+            label="1"
+        />
+        <BaseCheckBox
+            v-model="subjectQueue.øvinger['2']"
+            label="2"
+        />
+        <BaseCheckBox
+            v-model="subjectQueue.øvinger['3']"
+            label="3"
+        />
+        <BaseCheckBox
+            v-model="subjectQueue.øvinger['4']"
+            label="4"
+        />
+        <BaseCheckBox
+            v-model="subjectQueue.øvinger['5']"
+            label="5"
+        />
       </fieldset>
 
       <fieldset>
         <legend>Type</legend>
+
+        <BaseRadioGroup
+            v-model="subjectQueue.type"
+            name="type"
+            :options="typeOptions"
+        />
 
       </fieldset>
 
@@ -62,18 +83,12 @@
 </template>
 
 <script>
-import BaseInput from "../components/BaseInput";
-import BaseButton from "../components/BaseButton";
 import { useField, useForm } from "vee-validate";
 import { object, string } from 'yup'
 //import { useStore } from "vuex"
 //import { useRouter } from "vue-router"
 
 export default {
-  components: {
-    BaseInput,
-    BaseButton
-  },
   data() {
     return {
       subjectQueue: {
@@ -82,7 +97,43 @@ export default {
         bygning: "",
         rom: "",
         bord: "",
-      }
+        øvinger: {
+          1: false,
+          2: false,
+          3: false,
+          4: false,
+          5: false
+        },
+        type: 1,
+      },
+      typeOptions: [
+        { label: 'Hjelp', value: 1 },
+        { label: 'Godkjenning', value: 0 }
+      ],
+      Campus: [
+        'Gløshaugen',
+        'Dragvold',
+        'Tunga',
+        'Kalvskinnet',
+      ],
+      Buildings: [
+        'Realfagsbygget',
+        'elektrobygget',
+        'Hovedbygget',
+        'Sentralbygg IV',
+      ],
+      Rooms: [
+        'A4',
+        'A3',
+        'Kantine',
+      ],
+      Tables: [
+        '1',
+        '2',
+        '3',
+      ],
+
+
     }
   },
 
