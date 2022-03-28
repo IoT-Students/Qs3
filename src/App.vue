@@ -37,6 +37,11 @@ html {
   font-weight: bolder;
 }
 
+#footer {
+  position: relative;
+  bottom: 0;
+}
+
 .logOutButton {
   color: white;
   font-weight: bold;

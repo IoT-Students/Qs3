@@ -1,5 +1,11 @@
 <template>
-  <SubjectCard v-for="subject in subjects" :key="subject.id" :subject="subject" :studass="false">
+  <SubjectCard
+    v-for="subject in subjects"
+    :key="subject.id"
+    :subject="subject"
+    :studass="false"
+    @click="goToQueue"
+  >
   </SubjectCard>
 </template>
 
@@ -35,6 +41,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    goToQueue() {
+      this.$router.push({ name: "SubjectQueueForm" });
+    },
   },
 };
 </script>
