@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="home">
     <h1>Home page</h1>
     <SubjectCard
       v-for="subject in subjects"
@@ -14,7 +14,7 @@
 import SubjectCard from "@/components/SubjectCard";
 
 export default {
-  name: "Login",
+  name: "Home",
   components: {
     SubjectCard,
   },
