@@ -5,6 +5,7 @@ import Login from "../views/Login";
 import StudentView from "@/components/home/StudentView";
 import StudAssView from "@/components/home/StudAssView";
 import Archived from "@/components/home/Archived";
+import Queue from "@/views/Queue";
 
 const routes = [
   {
@@ -31,16 +32,21 @@ const routes = [
         component: StudentView,
       },
       {
-        path: "/stud-ass",
+        path: "",
         name: "StudAssView",
         component: StudAssView,
       },
       {
-        path: "/archived",
+        path: "",
         name: "Archived",
         component: Archived,
       },
     ],
+  },
+  {
+    path: "/queue",
+    name: "Queue",
+    component: Queue,
   },
 ];
 
