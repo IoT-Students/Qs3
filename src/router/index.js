@@ -32,12 +32,12 @@ const routes = [
         component: StudentView,
       },
       {
-        path: "/stud-ass",
+        path: "",
         name: "StudAssView",
         component: StudAssView,
       },
       {
-        path: "/archived",
+        path: "",
         name: "Archived",
         component: Archived,
       },

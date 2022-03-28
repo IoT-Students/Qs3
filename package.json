@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
     "serve": "vue-cli-service serve",
+=======
+    "serve": "vue-cli-service serve & json-server --watch db.json -p 4000 & json-server",
+>>>>>>> ec5820f48d4286b4d10651d4199bb66c3f4df0e4
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
