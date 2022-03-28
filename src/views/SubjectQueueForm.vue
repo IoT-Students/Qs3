@@ -1,34 +1,34 @@
 <template>
   <div class="form-container">
-    <h1>Fag kø</h1>
+    <h1>Still deg i kø!</h1>
     <form class="form" @submit.prevent="submit">
       <fieldset>
         <legend>Lokasjon</legend>
 
         <BaseSelect
             :options="Campus"
-            v-model="subjectQueue.campus"
+            v-model= "campus"
             label="Select a campus"
             :error="errors.campus"
         />
         <p></p>
         <BaseSelect
             :options="Buildings"
-            v-model="subjectQueue.bygning"
+            v-model="bygning"
             label="Select a building"
             :error="errors.building"
         />
         <p></p>
         <BaseSelect
             :options="Rooms"
-            v-model="subjectQueue.rom"
+            v-model="rom"
             label="Select a room"
             :error="errors.rom"
         />
         <p></p>
         <BaseSelect
             :options="Tables"
-            v-model="subjectQueue.bord"
+            v-model="bord"
             label="Select a table"
             :error="errors.bord"
         />
@@ -38,23 +38,23 @@
         <legend>Øvinger</legend>
 
         <BaseCheckBox
-            v-model="subjectQueue.øvinger['1']"
+            v-model="this.subjectQueue.øvinger['1']"
             label="1"
         />
         <BaseCheckBox
-            v-model="subjectQueue.øvinger['2']"
+            v-model="this.subjectQueue.øvinger['2']"
             label="2"
         />
         <BaseCheckBox
-            v-model="subjectQueue.øvinger['3']"
+            v-model="this.subjectQueue.øvinger['3']"
             label="3"
         />
         <BaseCheckBox
-            v-model="subjectQueue.øvinger['4']"
+            v-model="this.subjectQueue.øvinger['4']"
             label="4"
         />
         <BaseCheckBox
-            v-model="subjectQueue.øvinger['5']"
+            v-model="this.subjectQueue.øvinger['5']"
             label="5"
         />
       </fieldset>
@@ -63,7 +63,7 @@
         <legend>Type</legend>
 
         <BaseRadioGroup
-            v-model="subjectQueue.type"
+            v-model="this.subjectQueue.type"
             name="type"
             :options="typeOptions"
         />
@@ -79,20 +79,20 @@
         Still deg i kø
       </BaseButton>
     </form>
+    <pre>{{ subjectQueue }}</pre>
   </div>
 </template>
 
 <script>
 import { useField, useForm } from "vee-validate";
 import { object, string } from 'yup'
-//import { useStore } from "vuex"
-//import { useRouter } from "vue-router"
+import { useStore } from "vuex"
+import { useRouter } from "vue-router"
 
 export default {
   data() {
     return {
       subjectQueue: {
-        id: "",
         campus: "",
         bygning: "",
         rom: "",
@@ -132,33 +132,31 @@ export default {
         '2',
         '3',
       ],
-
-
     }
   },
 
   setup() {
-    //const store = useStore()
-    //const router = useRouter()
+    const store = useStore()
+    const router = useRouter()
 
     function submit() {
-      const subjectQueue ={
+      const subject ={
         ...this.subjectQueue,
-        id: this.id,
         campus: this.campus,
         bygning: this.bygning,
         rom: this.rom,
-        bord: this.rom
+        bord: this.bord,
+        øvinger: this.øvinger,
+        type: this.type
       }
-      console.log(subjectQueue)
-      /*
-      store.dispatch('createFeedback', subjectQueue).then(()  => {
+      console.log(subject)
+
+      store.dispatch('createSubjectQueue', subject).then(()  => {
         router.push({
-          name: 'FeedbackList'
+          name: 'Queue'
         })
       })
 
-       */
 
     }
     const validationSchema = object({
@@ -166,6 +164,8 @@ export default {
       bygning: string().required('A building is required'),
       rom: string().required('A room is required'),
       bord: string().required('A table is required')
+
+
     });
 
     const { errors } = useForm({
@@ -176,6 +176,7 @@ export default {
     const { value: bygning } = useField('bygning')
     const { value: rom } = useField('rom')
     const { value: bord } = useField('bord')
+
 
     return {
       campus,
