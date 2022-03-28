@@ -1,12 +1,16 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Login</router-link> |
-    <router-link to="/about">Home</router-link>
+  <div id="nav" v-if="!$route.meta.hideNavbar">
+    <router-link to="/">Login</router-link>
+    <router-link to="/SubjectQueueForm">subjectQueueForm</router-link>
+    <router-link to="/home">Home</router-link>
   </div>
   <router-view />
 </template>
 
 <style>
+html {
+  background: #eceff4;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,9 +26,24 @@
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: white;
+  background: #42b983;
+  font-weight: bolder;
+}
+
+.logOutButton {
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  background: crimson;
+  border-radius: 5px;
 }
 </style>

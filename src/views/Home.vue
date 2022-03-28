@@ -1,18 +1,20 @@
 <template>
-  <div class="about">
+  <div class="home">
     <h1>Home page</h1>
-    <HomeComponent> </HomeComponent>
+    <HomeLayout></HomeLayout>
   </div>
 </template>
 
 <script>
-import HomeComponent from "../components/HomeComponent";
+import HomeLayout from "@/views/HomeLayout";
 
 export default {
-  name: "Login",
+  name: "Home",
   components: {
-    HomeComponent,
+    HomeLayout,
+  },
+  data() {
+    return {};
   },
 };
 </script>
-

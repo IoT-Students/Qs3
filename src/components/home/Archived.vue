@@ -1,10 +1,10 @@
 <template>
-  Her skal en oversikt over ulike køer komme opp
+  Hei fra arkivert
 </template>
 
 <script>
 export default {
-  name: "HomeComponent"
+  name: "Archived"
 }
 </script>
 
