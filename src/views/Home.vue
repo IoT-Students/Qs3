@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="home">
     <h1>Home page</h1>
     <HomeComponent> </HomeComponent>
   </div>
@@ -9,7 +9,7 @@
 import HomeComponent from "../components/HomeComponent";
 
 export default {
-  name: "Login",
+  name: "Home",
   components: {
     HomeComponent,
   },

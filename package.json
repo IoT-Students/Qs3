@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve & json-server --watch db.json -p 4000 & json-server --watch db2.json -p 3000",
+    "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "vee-validate": "^4.5.10",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vuex": "^4.0.0-0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
