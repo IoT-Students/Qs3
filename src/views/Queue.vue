@@ -8,7 +8,7 @@
 
   <div class="position">
     <h3> Your position</h3>
-    <h1>{{queueInfo.assignment}}</h1>
+    <h1>{{}}</h1>
   </div>
 
   <div class="assignments">
@@ -25,10 +25,10 @@ export default {
   data() {
     return {
       queueInfo: {
-        room: "2",
-        table: "2",
-        type: "Godkjenning",
-        assignment: "5",
+        room: this.$store.state.subjectQueue.rom,
+        table: this.$store.state.subjectQueue.bord,
+        type: this.$store.state.subjectQueue.type,
+        assignment: this.$store.state.subjectQueue,
       },
     };
   },
@@ -37,7 +37,6 @@ export default {
       alert("You are now removed from the queue")
     }
   }
-
 }
 </script>
 

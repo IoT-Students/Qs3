@@ -16,6 +16,9 @@ export default createStore({
       console.log(this.state.subjectQueue)
     }
   },
+  getters:{
+    getRoom: state => state.subjectQueue.rom
+  },
   modules: {
     },
 })
