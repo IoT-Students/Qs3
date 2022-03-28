@@ -1,10 +1,5 @@
 <template>
   <div id="nav" v-if="!$route.meta.hideNavbar">
-<<<<<<< HEAD
-=======
-    <!--    <router-link to="/">Login</router-link>-->
-    <router-link to="/SubjectQueueForm">subjectQueueForm</router-link>
->>>>>>> ec5820f48d4286b4d10651d4199bb66c3f4df0e4
     <router-link to="/home">Home</router-link>
     <router-link to="/SubjectQueueForm">subjectQueueForm</router-link>
     <router-link to="/queue">Queue</router-link>
