@@ -1,4 +1,6 @@
 import { createStore } from "vuex";
+import { doLogin } from "@/service/apiservice";
+import { addSubjectQueue } from "../service/apiservice";
 
 export default createStore({
   state: {
@@ -14,14 +16,34 @@ export default createStore({
     },
   },
   actions: {
-    createSubjectQueue({ commit }, subjectQueue) {
-      commit("ADD_SUBJECT_QUEUE", subjectQueue);
-      console.log("SubjectQueue er nå lagt inn i state");
-      console.log(this.state.subjectQueue);
-    },
-    storeUser({ commit }, userInfo) {
-      commit("ADD_USER", userInfo);
-    },
+    createSubjectQueue({commit}, subjectQueue) {
+      addSubjectQueue(subjectQueue)
+        .then(() => {
+          commit("ADD_SUBJECT_QUEUE", subjectQueue);
+        })
+      console.log("SubjectQueue er nå lagt inn i state")
+      console.log(this.state.subjectQueue)
+    }
+
   },
-  modules: {},
-});
+    storeUser({ commit }, userInfo) {
+        doLogin(userInfo)
+          .then(() => {
+            if (userInfo.loginStatus === "Success") {
+              commit("ADD_USER", userInfo);
+            }
+            console.log("Nå er jeg i state")
+            console.log(this.state.userInfo.userID)
+            console.log(this.state.userInfo.loginStatus)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    },
+  modules: {
+  },
+})
+
+
+
+
