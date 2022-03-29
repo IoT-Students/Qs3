@@ -51,17 +51,14 @@ export default {
   },
   methods: {
     async SignIn() {
-      const user = {
-        username: this.userInfo.username,
-        password: this.userInfo.password,
-      };
-
-      let loginResponse = await doLogin(user);
-      console.log(loginResponse.loginStatus);
-
-      if (loginResponse.loginStatus === "Success") {
-        this.$router.push({ name: "Home" });
-      }
+      this.$store.dispatch("storeUser", this.userInfo).then(async () => {
+        if (this.userInfo.loginStatus === "Success") {
+          await this.$router.push({
+            name: "Home",
+          });
+          alert("Welcome");
+        }
+      });
     },
   },
 };
