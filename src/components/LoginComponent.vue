@@ -31,6 +31,7 @@
 <script>
 import BaseInput from "@/components/BaseInput";
 import BaseButton from "./BaseButton";
+import { doLogin } from "@/service/apiservice";
 
 export default {
   name: "LoginComponent",
@@ -45,19 +46,25 @@ export default {
         username: "",
         password: "",
         loginStatus: "",
+        role: "",
+        name: "",
+        email: "",
       },
     };
   },
   methods: {
     async SignIn() {
-      this.$store.dispatch("storeUser", this.userInfo).then(async () => {
-        if (this.userInfo.loginStatus === "Success") {
-          await this.$router.push({
-            name: "Home",
-          });
-          alert("Welcome");
+      let loginResponse = await doLogin(this.userInfo);
+
+      if (loginResponse.loginStatus === "Success") {
+        this.$store.dispatch("storeUser", loginResponse);
+
+        if (loginResponse.role === "Admin") {
+          this.$router.push({ name: "HomeAdmin" });
+        } else {
+          this.$router.push({ name: "Home" });
         }
-      });
+      }
     },
   },
 };

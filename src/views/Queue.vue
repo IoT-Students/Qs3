@@ -1,33 +1,44 @@
 <template>
   <div class="queuePosition">
-    <BaseRadioGroup
-        v-model="comp"
-        name="type"
-        :options="compOptions"
-    />
-    <component :is="comp"> </component>
+    <router-link :to="{ name: 'QueuePosition' }">Posisjon</router-link>
+    <router-link :to="{ name: 'QueueList' }">Liste</router-link>
   </div>
+  <router-view></router-view>
 </template>
 
 <script>
-import QueuePosition from "@/components/QueuePosition";
-import QueueList from "@/components/QueueList";
-
 export default {
   name: "Queue",
-  components: {
-    QueuePosition,
-    QueueList
-  },
+  components: {},
   data() {
-    return {
-      comp: "QueuePosition",
-
-      compOptions: [
-        { label: "Position", value: "QueuePosition" },
-        { label: "Queue", value: "QueueList" },
-      ],
-    }
+    return {};
   },
 };
 </script>
+<style scoped>
+.queuePosition {
+  display: block;
+  margin: 2rem auto 2rem auto;
+  padding: 0 1rem 0 1rem;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  width: 90%;
+  max-width: 800px;
+}
+.queuePosition a {
+  text-decoration: none;
+  padding: 10px 20px;
+  background: white;
+  margin: auto 2rem auto 2rem;
+  color: #1c658c;
+  border-radius: 5px;
+}
+.queuePosition a.router-link-exact-active {
+  color: white;
+  background: #1c658c;
+}
+.queuePosition a:hover {
+  color: white;
+  background: #1c658c;
+}
+</style>

@@ -1,10 +1,10 @@
 <template>
   <input
-      type="radio"
-      :checked="modelValue === value"
-      :value="value"
-      v-bind="$attrs"
-      @change="$emit('update:modelValue', value)"
+    type="radio"
+    :checked="modelValue === value"
+    :value="value"
+    v-bind="$attrs"
+    @change="$emit('update:modelValue', value)"
   />
   <label v-if="label">{{ label }}</label>
 </template>
@@ -14,16 +14,16 @@ export default {
   props: {
     label: {
       type: String,
-      default: ''
+      default: "",
     },
     modelValue: {
       type: [String, Number],
-      default: ''
+      default: "",
     },
     value: {
       type: [String, Number],
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>

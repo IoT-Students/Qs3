@@ -1,9 +1,9 @@
 <template>
   <input
-      type="checkbox"
-      :checked="modelValue"
-      @change="$emit('update:modelValue', $event.target.checked)"
-      class="field"
+    type="checkbox"
+    :checked="modelValue"
+    @change="$emit('update:modelValue', $event.target.checked)"
+    class="field"
   />
   <label v-if="label">{{ label }}</label>
 </template>
@@ -13,12 +13,12 @@ export default {
   props: {
     label: {
       type: String,
-      default: ''
+      default: "",
     },
     modelValue: {
       type: Boolean,
-      default: false
-    }
-  }
-}
+      default: false,
+    },
+  },
+};
 </script>
