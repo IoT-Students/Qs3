@@ -1,52 +1,33 @@
 <template>
-  <h1> {{queueInfo.type}} kø</h1>
-  <div class="queueInfoContainer">
-    <div>Rom: {{queueInfo.room}}</div>
-    <div>Bord: {{ queueInfo.table }}</div>
+  <div class="queuePosition">
+    <BaseRadioGroup
+        v-model="comp"
+        name="type"
+        :options="compOptions"
+    />
+    <component :is="comp"> </component>
   </div>
-  <div ><router-link to="/SubjectQueueForm">Edit info</router-link></div>
-
-  <div class="position">
-    <h3> Your position</h3>
-    <h1>{{}}</h1>
-  </div>
-
-  <div class="assignments">
-    <h3>Assignments</h3>
-    <div> 5</div>
-  </div>
-  <button @click="removeFromQueue()">Delete</button>
-
-
 </template>
 
 <script>
+import QueuePosition from "@/components/QueuePosition";
+import QueueList from "@/components/QueueList";
+
 export default {
+  name: "Queue",
+  components: {
+    QueuePosition,
+    QueueList
+  },
   data() {
     return {
-      queueInfo: {
-        room: this.$store.state.subjectQueue.rom,
-        table: this.$store.state.subjectQueue.bord,
-        type: this.$store.state.subjectQueue.type,
-        assignment: this.$store.state.subjectQueue,
-      },
-    };
-  },
-  methods: {
-    removeFromQueue(){
-      alert("You are now removed from the queue")
+      comp: "QueuePosition",
+
+      compOptions: [
+        { label: "Position", value: "QueuePosition" },
+        { label: "Queue", value: "QueueList" },
+      ],
     }
-  }
-}
+  },
+};
 </script>
-
-<style scoped>
-.queueInfoContainer{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px 20px;
-
-}
-
-</style>

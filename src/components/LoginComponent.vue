@@ -1,37 +1,43 @@
 <template>
   <div id="loginContainer">
     <h1 id="loginTitle">Please login!</h1>
-    <form class="login" @submit.prevent=SignIn>
+    <form class="login" @submit.prevent="SignIn">
       <fieldset>
-        <BaseInput id="username" class="baseInput" v-model="userInfo.username" label="Username" type="text" />
+        <BaseInput
+          id="username"
+          class="baseInput"
+          v-model="userInfo.username"
+          label="Username"
+          type="text"
+        />
       </fieldset>
       <fieldset>
-        <BaseInput id="password" class="baseInput" v-model="userInfo.password" label="Password" type="text" />
+        <BaseInput
+          id="password"
+          class="baseInput"
+          v-model="userInfo.password"
+          label="Password"
+          type="text"
+        />
       </fieldset>
-      <BaseButton
-          type="submit"
-          class="mybtn"
-          something="else"
-      >
+      <BaseButton type="submit" class="mybtn" something="else">
         Sign in
       </BaseButton>
     </form>
     <label id="loginstatusLabel"></label>
   </div>
-
-
 </template>
 
 <script>
-
 import BaseInput from "@/components/BaseInput";
-import BaseButton from "../components/BaseButton";
+import BaseButton from "./BaseButton";
+import { doLogin } from "@/service/apiservice";
 
 export default {
   name: "LoginComponent",
   components: {
     BaseInput,
-    BaseButton
+    BaseButton,
   },
   data() {
     return {
@@ -40,16 +46,21 @@ export default {
         username: "",
         password: "",
         loginStatus: "",
-
-      }
+      },
     };
   },
   methods: {
     async SignIn() {
-    }
-  }
-}
+      const user = {
+        username: this.userInfo.username,
+        password: this.userInfo.password,
+      };
 
+      let loginResponse = await doLogin(user);
+      console.log(loginResponse.loginStatus);
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -95,7 +106,7 @@ mybtn:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 2px solid #39b982;
 }
-label{
+label {
   color: rgba(0, 0, 0, 0.5);
   font-weight: 700;
 }
@@ -164,8 +175,8 @@ select {
   padding: 0 24px 0 10px;
   vertical-align: middle;
   background: #fff
-  url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E")
-  no-repeat right 12px center;
+    url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E")
+    no-repeat right 12px center;
   background-size: 8px 10px;
   border: solid 1px rgba(0, 0, 0, 0.4);
   border-radius: 0;
@@ -229,5 +240,4 @@ select::ms-expand {
 #header {
   color: #39b982;
 }
-
 </style>
