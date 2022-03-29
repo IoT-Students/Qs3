@@ -1,5 +1,10 @@
 <template>
-  <SubjectCard v-for="subject in subjects" :key="subject.id" :subject="subject" :studass="true"></SubjectCard>
+  <SubjectCard
+    v-for="subject in subjects"
+    :key="subject.id"
+    :subject="subject"
+    :studass="true"
+  ></SubjectCard>
 </template>
 
 <script>

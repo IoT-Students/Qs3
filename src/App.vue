@@ -1,7 +1,7 @@
 <template>
   <div id="nav" v-if="!$route.meta.hideNavbar">
     <router-link to="/home">Home</router-link>
-    <router-link to="/SubjectQueueForm">subjectQueueForm</router-link>
+    <router-link to="/SubjectQueueForm">Subject Queue Form</router-link>
     <router-link to="/queue">Queue</router-link>
   </div>
   <router-view />
@@ -33,8 +33,13 @@ html {
 
 #nav a.router-link-exact-active {
   color: white;
-  background: #42b983;
+  background: #1C658C;
   font-weight: bolder;
+}
+
+#footer {
+  position: relative;
+  bottom: 0;
 }
 
 .logOutButton {

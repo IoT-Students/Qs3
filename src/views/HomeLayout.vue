@@ -38,16 +38,16 @@ export default {
   padding: 10px 20px;
   background: white;
   margin: auto 2rem auto 2rem;
-  color: #42b983;
+  color: #1C658C;
   border-radius: 5px;
 }
 .headerButtons a.router-link-exact-active {
   color: white;
-  background: #42b983;
+  background: #1C658C;
 }
 
 .headerButtons a:hover {
   color: white;
-  background: #42b983;
+  background: #1C658C;
 }
 </style>
