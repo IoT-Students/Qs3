@@ -6,6 +6,7 @@ import StudentView from "@/components/home/StudentView";
 import StudAssView from "@/components/home/StudAssView";
 import Archived from "@/components/home/Archived";
 import Queue from "@/views/Queue";
+import HomeAdmin from "@/views/HomeAdmin";
 
 const routes = [
   {
@@ -47,6 +48,11 @@ const routes = [
     path: "/queue",
     name: "Queue",
     component: Queue,
+  },
+  {
+    path: "/homeadmin",
+    name: "home ",
+    component: HomeAdmin,
   },
 ];
 
