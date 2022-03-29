@@ -11,11 +11,19 @@
             <div class="queue-info">
               <div id="imageContainer">
                 <p>
-                  <img src="../assets/images/outline_groups_black_24dp.png" alt="Hourglass">
-                  {{ subject.queueAmount }}</p>
+                  <img
+                    src="../assets/images/outline_people_black_24dp.png"
+                    alt="Hourglass"
+                  />
+                  {{ subject.queueAmount }}
+                </p>
                 <p v-if="!studass">
-                  <img src="../assets/images/outline_hourglass_bottom_black_24dp.png" alt="Hourglass">
-                  {{ subject.eta }}</p>
+                  <img
+                    src="../assets/images/outline_hourglass_bottom_black_24dp.png"
+                    alt="Hourglass"
+                  />
+                  {{ subject.eta }}
+                </p>
               </div>
             </div>
           </section>
@@ -53,9 +61,9 @@ export default {
   },
   methods: {
     dummyClick() {
-      console.log("Button clicked")
-    }
-  }
+      console.log("Button is clicked");
+    },
+  },
 };
 </script>
 
@@ -148,7 +156,7 @@ img {
   margin: 0 auto;
   margin-bottom: 2rem;
   border-radius: 5px;
-  border: solid #1C658C;
+  border: solid #1c658c;
   background: #eceff4;
   box-shadow: rgb(3 8 20 / 10%) 0px 0.15rem 0.5rem,
     rgb(2 8 20 / 10%) 0px 0.075rem 0.175rem;
@@ -185,7 +193,6 @@ div.content {
   grid-column: 2;
   padding: 20px;
   margin-bottom: auto;
-  ;
 }
 .subject-message {
 }

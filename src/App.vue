@@ -1,7 +1,7 @@
 <template>
   <div id="nav" v-if="!$route.meta.hideNavbar">
     <router-link to="/home">Home</router-link>
-    <router-link to="/SubjectQueueForm">subjectQueueForm</router-link>
+    <router-link to="/SubjectQueueForm">Subject Queue Form</router-link>
     <router-link to="/queue">Queue</router-link>
   </div>
   <router-view />
