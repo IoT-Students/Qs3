@@ -1,18 +1,18 @@
 <template>
   <component
-      v-for="option in options"
-      :key="option.value"
-      :is="vertical ? 'div' : 'span'"
-      :class="{
-      'horizontal': !vertical
+    v-for="option in options"
+    :key="option.value"
+    :is="vertical ? 'div' : 'span'"
+    :class="{
+      horizontal: !vertical,
     }"
   >
     <BaseRadio
-        :label="option.label"
-        :value="option.value"
-        :modelValue="modelValue"
-        :name="name"
-        @update:modelValue="$emit('update:modelValue', $event)"
+      :label="option.label"
+      :value="option.value"
+      :modelValue="modelValue"
+      :name="name"
+      @update:modelValue="$emit('update:modelValue', $event)"
     />
   </component>
 </template>
@@ -22,22 +22,22 @@ export default {
   props: {
     options: {
       type: Array,
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     modelValue: {
       type: [String, Number],
-      required: true
+      required: true,
     },
     vertical: {
       type: Boolean,
-      default: false
-    }
-  }
-}
+      default: false,
+    },
+  },
+};
 </script>
 
 <style scoped>

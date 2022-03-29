@@ -13,15 +13,15 @@
 
 <script>
 export default {
-  name: "HeaderLayout"
-}
+  name: "HeaderLayout",
+};
 </script>
 
 <style scoped>
 .headerButtonsContainer {
   display: block;
   margin: 2rem auto 2rem auto;
-  paddin: 0 1rem 0 1 rem;
+  padding: 0 1rem 0 1rem;
   grid-column-start: 1;
   grid-column-end: 4;
   width: 90%;
@@ -38,16 +38,16 @@ export default {
   padding: 10px 20px;
   background: white;
   margin: auto 2rem auto 2rem;
-  color: #1C658C;
+  color: #1c658c;
   border-radius: 5px;
 }
 .headerButtons a.router-link-exact-active {
   color: white;
-  background: #1C658C;
+  background: #1c658c;
 }
 
 .headerButtons a:hover {
   color: white;
-  background: #1C658C;
+  background: #1c658c;
 }
 </style>

@@ -6,6 +6,10 @@ import StudentView from "@/components/home/StudentView";
 import StudAssView from "@/components/home/StudAssView";
 import Archived from "@/components/home/Archived";
 import Queue from "@/views/Queue";
+import QueueCardDetails from "@/components/queue/QueueCardDetails";
+import QueueList from "@/components/queue/QueueList";
+import QueuePosition from "@/components/queue/QueuePosition";
+import QueueListLayout from "@/components/queue/QueueListLayout";
 
 const routes = [
   {
@@ -47,6 +51,31 @@ const routes = [
     path: "/queue",
     name: "Queue",
     component: Queue,
+    children: [
+      {
+        path: "",
+        name: "QueuePosition",
+        component: QueuePosition,
+      },
+      {
+        path: "",
+        name: "QueueListLayout",
+        component: QueueListLayout,
+        children: [
+          {
+            path: "/queue/list",
+            name: "QueueList",
+            component: QueueList,
+          },
+          {
+            path: "/queue/list/details/",
+            name: "QueueCardDetails",
+            props: true,
+            component: QueueCardDetails,
+          },
+        ],
+      },
+    ],
   },
 ];
 

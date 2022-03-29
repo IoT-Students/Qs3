@@ -1,13 +1,9 @@
-<template>
-  Hei fra arkivert
-</template>
+<template>Hei fra arkivert</template>
 
 <script>
 export default {
-  name: "Archived"
-}
+  name: "Archived",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

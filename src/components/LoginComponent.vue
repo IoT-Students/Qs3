@@ -58,6 +58,10 @@ export default {
 
       let loginResponse = await doLogin(user);
       console.log(loginResponse.loginStatus);
+
+      if (loginResponse.loginStatus === "Success") {
+        this.$router.push({ name: "Home" });
+      }
     },
   },
 };

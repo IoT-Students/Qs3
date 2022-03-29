@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    subjectQueue: {}
+    subjectQueue: {},
   },
   mutations: {
     ADD_SUBJECT_QUEUE(state, subjectQueue) {
@@ -10,14 +10,11 @@ export default createStore({
     },
   },
   actions: {
-    createSubjectQueue({commit}, subjectQueue) {
+    createSubjectQueue({ commit }, subjectQueue) {
       commit("ADD_SUBJECT_QUEUE", subjectQueue);
-      console.log("SubjectQueue er nå lagt inn i state")
-      console.log(this.state.subjectQueue)
-    }
-  },
-  modules: {
+      console.log("SubjectQueue er nå lagt inn i state");
+      console.log(this.state.subjectQueue);
     },
-})
-
-
+  },
+  modules: {},
+});

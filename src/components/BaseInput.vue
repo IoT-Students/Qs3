@@ -1,18 +1,14 @@
 <template>
   <label :for="uuid" v-if="label">{{ label }}</label>
   <input
-      v-bind="$attrs"
-      :placeholder="label"
-      class="field"
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-      :id="uuid"
-
-  >
-  <BaseErrorMessage
-      v-if="error"
-      :id="`${uuid}-error`"
-  >
+    v-bind="$attrs"
+    :placeholder="label"
+    class="field"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+    :id="uuid"
+  />
+  <BaseErrorMessage v-if="error" :id="`${uuid}-error`">
     {{ error }}
   </BaseErrorMessage>
 </template>
@@ -22,7 +18,7 @@ import BaseErrorMessage from "@/components/BaseErrorMessage";
 export default {
   name: "BaseInput.vue",
   components: {
-    BaseErrorMessage
+    BaseErrorMessage,
   },
   props: {
     label: {
@@ -35,10 +31,10 @@ export default {
     },
     error: {
       type: String,
-      default: ''
+      default: "",
     },
   },
-}
+};
 </script>
 
 <style scoped>

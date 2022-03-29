@@ -6,75 +6,59 @@
         <legend>Lokasjon</legend>
 
         <BaseSelect
-            :options="Campus"
-            v-model= "campus"
-            label="Select a campus"
-            :error="errors.campus"
+          :options="Campus"
+          v-model="campus"
+          label="Select a campus"
+          :error="errors.campus"
         />
         <p></p>
         <BaseSelect
-            :options="Buildings"
-            v-model="bygning"
-            label="Select a building"
-            :error="errors.building"
+          :options="Buildings"
+          v-model="bygning"
+          label="Select a building"
+          :error="errors.building"
         />
         <p></p>
         <BaseSelect
-            :options="Rooms"
-            v-model="rom"
-            label="Select a room"
-            :error="errors.rom"
+          :options="Rooms"
+          v-model="rom"
+          label="Select a room"
+          :error="errors.rom"
         />
         <p></p>
         <BaseSelect
-            :options="Tables"
-            v-model="bord"
-            label="Select a table"
-            :error="errors.bord"
+          :options="Tables"
+          v-model="bord"
+          label="Select a table"
+          :error="errors.bord"
         />
       </fieldset>
 
       <fieldset>
         <legend>Øvinger</legend>
 
-        <BaseCheckBox
-            v-model="this.subjectQueue.øvinger['1']"
-            label="1"
-        />
-        <BaseCheckBox
-            v-model="this.subjectQueue.øvinger['2']"
-            label="2"
-        />
-        <BaseCheckBox
-            v-model="this.subjectQueue.øvinger['3']"
-            label="3"
-        />
-        <BaseCheckBox
-            v-model="this.subjectQueue.øvinger['4']"
-            label="4"
-        />
-        <BaseCheckBox
-            v-model="this.subjectQueue.øvinger['5']"
-            label="5"
-        />
+        <BaseCheckBox v-model="this.subjectQueue.øvinger['1']" label="1" />
+        <BaseCheckBox v-model="this.subjectQueue.øvinger['2']" label="2" />
+        <BaseCheckBox v-model="this.subjectQueue.øvinger['3']" label="3" />
+        <BaseCheckBox v-model="this.subjectQueue.øvinger['4']" label="4" />
+        <BaseCheckBox v-model="this.subjectQueue.øvinger['5']" label="5" />
       </fieldset>
 
       <fieldset>
         <legend>Type</legend>
 
         <BaseRadioGroup
-            v-model="this.subjectQueue.type"
-            name="type"
-            :options="typeOptions"
+          v-model="this.subjectQueue.type"
+          name="type"
+          :options="typeOptions"
         />
-
       </fieldset>
 
       <BaseButton
-          type="submit"
-          class="mybtn"
-          :disabled ="isError"
-          something="else"
+        type="submit"
+        class="mybtn"
+        :disabled="isError"
+        something="else"
       >
         Still deg i kø
       </BaseButton>
@@ -85,9 +69,9 @@
 
 <script>
 import { useField, useForm } from "vee-validate";
-import { object, string } from 'yup'
-import { useStore } from "vuex"
-import { useRouter } from "vue-router"
+import { object, string } from "yup";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 export default {
   data() {
@@ -102,81 +86,63 @@ export default {
           2: false,
           3: false,
           4: false,
-          5: false
+          5: false,
         },
         type: 1,
       },
       typeOptions: [
-        { label: 'Hjelp', value: 1 },
-        { label: 'Godkjenning', value: 0 }
+        { label: "Hjelp", value: 1 },
+        { label: "Godkjenning", value: 0 },
       ],
-      Campus: [
-        'Gløshaugen',
-        'Dragvold',
-        'Tunga',
-        'Kalvskinnet',
-      ],
+      Campus: ["Gløshaugen", "Dragvold", "Tunga", "Kalvskinnet"],
       Buildings: [
-        'Realfagsbygget',
-        'elektrobygget',
-        'Hovedbygget',
-        'Sentralbygg IV',
+        "Realfagsbygget",
+        "elektrobygget",
+        "Hovedbygget",
+        "Sentralbygg IV",
       ],
-      Rooms: [
-        'A4',
-        'A3',
-        'Kantine',
-      ],
-      Tables: [
-        '1',
-        '2',
-        '3',
-      ],
-    }
+      Rooms: ["A4", "A3", "Kantine"],
+      Tables: ["1", "2", "3"],
+    };
   },
 
   setup() {
-    const store = useStore()
-    const router = useRouter()
+    const store = useStore();
+    const router = useRouter();
 
     function submit() {
-      const subject ={
+      const subject = {
         ...this.subjectQueue,
         campus: this.campus,
         bygning: this.bygning,
         rom: this.rom,
         bord: this.bord,
         øvinger: this.øvinger,
-        type: this.type
-      }
-      console.log(subject)
+        type: this.type,
+      };
+      console.log(subject);
 
-      store.dispatch('createSubjectQueue', subject).then(()  => {
+      store.dispatch("createSubjectQueue", subject).then(() => {
         router.push({
-          name: 'Queue'
-        })
-      })
-
-
+          name: "Queue",
+        });
+      });
     }
     const validationSchema = object({
-      campus: string().required('A campus is required'),
-      bygning: string().required('A building is required'),
-      rom: string().required('A room is required'),
-      bord: string().required('A table is required')
-
-
+      campus: string().required("A campus is required"),
+      bygning: string().required("A building is required"),
+      rom: string().required("A room is required"),
+      bord: string().required("A table is required"),
     });
 
     const { errors } = useForm({
       validationSchema,
-    })
+    });
 
-    const { value: campus } = useField('campus')
-    const { value: bygning } = useField('bygning')
-    const { value: rom } = useField('rom')
-    const { value: bord } = useField('bord')
-
+    const { value: campus } = useField("campus");
+    const { value: bygning } = useField("bygning");
+    const { value: rom } = useField("rom");
+    const { value: bord } = useField("bord");
 
     return {
       campus,
@@ -185,19 +151,23 @@ export default {
       bord,
       submit,
       errors,
-    }
+    };
   },
   computed: {
-    isError(){
-      if(this.errors.campus || this.errors.bygning || this.errors.rom || this.errors.bord) {
-        return true
+    isError() {
+      if (
+        this.errors.campus ||
+        this.errors.bygning ||
+        this.errors.rom ||
+        this.errors.bord
+      ) {
+        return true;
+      } else {
+        return false;
       }
-      else{
-        return false
-      }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style scoped>
 fieldset {
@@ -248,7 +218,7 @@ mybtn:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 2px solid #39b982;
 }
-label{
+label {
   color: rgba(0, 0, 0, 0.5);
   font-weight: 700;
 }
@@ -332,5 +302,4 @@ textarea {
 #header {
   color: #39b982;
 }
-
 </style>

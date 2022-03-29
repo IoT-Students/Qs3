@@ -33,7 +33,7 @@ html {
 
 #nav a.router-link-exact-active {
   color: white;
-  background: #1C658C;
+  background: #1c658c;
   font-weight: bolder;
 }
 
