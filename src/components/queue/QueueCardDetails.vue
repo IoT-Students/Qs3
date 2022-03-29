@@ -1,9 +1,13 @@
 <template>
-  <section class="queueCardContainer">
+  <section
+    class="queueCardContainer"
+    :class="{ queueCardContainerAlt: !isType }"
+  >
     <div class="queueCard">
       <section class="cardGrid">
         <div class="content">
-          <h2>Godkjenning</h2>
+          <h2 :class="{ altTitle: !isType }">{{ helpType }}</h2>
+          <h3>{{ $store.state.userInfo.name }}</h3>
           <section class="campus-building">
             <div class="location" id="campus">
               <p>Campus:</p>
@@ -31,10 +35,18 @@
             </div>
           </secton>
         </div>
-        <div class="approveButtons">
+        <div
+          v-if="isType"
+          class="approveButtons"
+          @click="$router.push({ name: 'QueueList' })"
+        >
           <div class="approve">Godkjenn</div>
           <div class="wait">Vent</div>
           <div class="disapprove">Underkjenn</div>
+        </div>
+        <div v-else class="helpButtons">
+          <div class="approve">Ferdig</div>
+          <div class="wait">Vent</div>
         </div>
       </section>
     </div>
@@ -61,13 +73,18 @@ export default {
         4: false,
         5: false,
       },
-      type: 1,
+      helpType: "Godkjenning",
     };
   },
   props: {
     personId: {
       type: Number,
       required: true,
+    },
+  },
+  computed: {
+    isType() {
+      return this.helpType === "Godkjenning";
     },
   },
 };
@@ -79,12 +96,25 @@ export default {
   margin: 0 auto;
   margin-bottom: 2rem;
   border-radius: 5px;
-  border: solid #1c658c;
+  border: solid green;
   background: #eceff4;
   box-shadow: rgb(3 8 20 / 10%) 0px 0.15rem 0.5rem,
     rgb(2 8 20 / 10%) 0px 0.075rem 0.175rem;
-  cursor: pointer;
   transition: 0.3s ease;
+}
+.queueCardContainerAlt {
+  max-width: 50rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  border: solid darkgrey;
+  background: #eceff4;
+  box-shadow: rgb(3 8 20 / 10%) 0px 0.15rem 0.5rem,
+    rgb(2 8 20 / 10%) 0px 0.075rem 0.175rem;
+  transition: 0.3s ease;
+}
+.altTitle {
+  color: dimgrey;
 }
 
 .cardGrid {
@@ -126,8 +156,9 @@ div.content {
   padding: 10px 20px;
   background: white;
   margin: auto 2rem auto 2rem;
-  color: #1c658c;
+  color: green;
   border-radius: 5px;
+  cursor: pointer;
 }
 .approve:hover {
   background: green;
@@ -140,6 +171,7 @@ div.content {
   margin: auto 2rem auto 2rem;
   color: crimson;
   border-radius: 5px;
+  cursor: pointer;
 }
 .disapprove:hover {
   background: crimson;
@@ -152,9 +184,18 @@ div.content {
   margin: auto 2rem auto 2rem;
   color: #e8ac16;
   border-radius: 5px;
+  cursor: pointer;
 }
 .wait:hover {
   color: white;
   background: #e8ac16;
+}
+.helpButtons {
+  display: grid;
+  margin: auto;
+  margin-bottom: 1rem;
+  grid-template-columns: 1fr 1fr;
+  place-content: center;
+  gap: 1rem;
 }
 </style>

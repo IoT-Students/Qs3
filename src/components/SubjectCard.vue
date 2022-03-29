@@ -5,8 +5,8 @@
         <div class="content">
           <section class="meta-grid">
             <div class="subject-info">
-              <h3 id="title">{{ subject.title }}</h3>
-              <h4 id="code">{{ subject.code }}</h4>
+              <h3 id="title">{{ subject.subjectName }}</h3>
+              <h4 id="code">{{ subject.subjectCode }}</h4>
             </div>
             <div class="queue-info">
               <div id="imageContainer">
