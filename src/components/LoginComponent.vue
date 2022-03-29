@@ -54,19 +54,17 @@ export default {
   },
   methods: {
     async SignIn() {
-      this.$store.dispatch("storeUser", this.userInfo).then(async () => {
-        console.log(this.userInfo);
-        if (this.userInfo.loginStatus === "Success") {
-          if (this.userInfo.role === "Student") {
-            await this.$router.push("Home");
-          } else if (this.userInfo.role === "Admin") {
-            await this.$router.push("HomeAdmin");
-          } else {
-            await this.$router.push("Home");
-          }
-          alert("Welcome");
+      let loginResponse = await doLogin(this.userInfo);
+
+      if (loginResponse.loginStatus === "Success") {
+        this.$store.dispatch("storeUser", loginResponse);
+
+        if (loginResponse.role === "Admin") {
+          this.$router.push({ name: "HomeAdmin" });
+        } else {
+          this.$router.push({ name: "Home" });
         }
-      });
+      }
     },
   },
 };

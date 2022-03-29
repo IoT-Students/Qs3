@@ -79,8 +79,8 @@ const routes = [
     ],
   },
   {
-    path: "/homeadmin",
-    name: "home ",
+    path: "/home/admin",
+    name: "HomeAdmin",
     component: HomeAdmin,
   },
 ];

@@ -11,8 +11,7 @@ export default {
   name: "Queue",
   components: {},
   data() {
-    return {
-    };
+    return {};
   },
 };
 </script>

@@ -1,13 +1,11 @@
 <template>
-<p>Du er nå på lærersiden!!!</p>
+  <p>Du er nå på lærersiden!!!</p>
 </template>
 
 <script>
 export default {
-  name: "HomeAdmin"
-}
+  name: "HomeAdmin",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

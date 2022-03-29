@@ -6,27 +6,27 @@
           <h2>Godkjenning</h2>
           <section class="campus-building">
             <div class="location" id="campus">
-              <p>Campus: </p>
+              <p>Campus:</p>
               <h3>{{ $store.state.subjectQueue.campus }}</h3>
             </div>
             <div class="location" id="building">
-              <p>Bygning: </p>
+              <p>Bygning:</p>
               <h3>{{ $store.state.subjectQueue.bygning }}</h3>
             </div>
           </section>
           <section class="room-table">
             <div class="location" id="room">
-              <p>Rom: </p>
+              <p>Rom:</p>
               <h4>{{ $store.state.subjectQueue.rom }}</h4>
             </div>
             <div class="location" id="table">
-              <p>Bord nr: </p>
+              <p>Bord nr:</p>
               <h4>{{ $store.state.subjectQueue.bord }}</h4>
             </div>
           </section>
           <secton class="assignments-section">
             <div class="assignments">
-              <p>Øvinger: </p>
+              <p>Øvinger:</p>
               <h4>3, 4</h4>
             </div>
           </secton>
