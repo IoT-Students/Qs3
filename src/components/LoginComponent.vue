@@ -25,7 +25,7 @@
 <script>
 
 import BaseInput from "@/components/BaseInput";
-import BaseButton from "../components/BaseButton";
+import BaseButton from "./BaseButton";
 
 export default {
   name: "LoginComponent",
