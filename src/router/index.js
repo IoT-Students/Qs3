@@ -10,6 +10,7 @@ import QueueCardDetails from "@/components/queue/QueueCardDetails";
 import QueueList from "@/components/queue/QueueList";
 import QueuePosition from "@/components/queue/QueuePosition";
 import QueueListLayout from "@/components/queue/QueueListLayout";
+import HomeAdmin from "@/views/HomeAdmin";
 
 const routes = [
   {
@@ -76,6 +77,11 @@ const routes = [
         ],
       },
     ],
+  },
+  {
+    path: "/homeadmin",
+    name: "home ",
+    component: HomeAdmin,
   },
 ];
 

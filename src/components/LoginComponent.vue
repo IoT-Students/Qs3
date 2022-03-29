@@ -46,16 +46,24 @@ export default {
         username: "",
         password: "",
         loginStatus: "",
+        role: "",
+        name: "",
+        email: "",
       },
     };
   },
   methods: {
     async SignIn() {
       this.$store.dispatch("storeUser", this.userInfo).then(async () => {
+        console.log(this.userInfo);
         if (this.userInfo.loginStatus === "Success") {
-          await this.$router.push({
-            name: "Home",
-          });
+          if (this.userInfo.role === "Student") {
+            await this.$router.push("Home");
+          } else if (this.userInfo.role === "Admin") {
+            await this.$router.push("HomeAdmin");
+          } else {
+            await this.$router.push("Home");
+          }
           alert("Welcome");
         }
       });

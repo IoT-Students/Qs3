@@ -13,6 +13,7 @@ export function doLogin(userInfo) {
         userInfo.userID = response.data.userID;
         userInfo.name = response.data.name;
         userInfo.email = response.data.email;
+        userInfo.role = response.data.role;
       return response.data;
     });
 }
