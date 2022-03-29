@@ -14,21 +14,21 @@
         <p></p>
         <BaseSelect
             :options="Buildings"
-            v-model="bygning"
+            v-model="building"
             label="Select a building"
             :error="errors.building"
         />
         <p></p>
         <BaseSelect
             :options="Rooms"
-            v-model="rom"
+            v-model="room"
             label="Select a room"
             :error="errors.rom"
         />
         <p></p>
         <BaseSelect
             :options="Tables"
-            v-model="bord"
+            v-model="table"
             label="Select a table"
             :error="errors.bord"
         />
@@ -38,23 +38,23 @@
         <legend>Øvinger</legend>
 
         <BaseCheckBox
-            v-model="this.subjectQueue.øvinger['1']"
+            v-model="this.subjectQueue.assignments['1']"
             label="1"
         />
         <BaseCheckBox
-            v-model="this.subjectQueue.øvinger['2']"
+            v-model="this.subjectQueue.assignments['2']"
             label="2"
         />
         <BaseCheckBox
-            v-model="this.subjectQueue.øvinger['3']"
+            v-model="this.subjectQueue.assignments['3']"
             label="3"
         />
         <BaseCheckBox
-            v-model="this.subjectQueue.øvinger['4']"
+            v-model="this.subjectQueue.assignments['4']"
             label="4"
         />
         <BaseCheckBox
-            v-model="this.subjectQueue.øvinger['5']"
+            v-model="this.subjectQueue.assignments['5']"
             label="5"
         />
       </fieldset>
@@ -142,7 +142,7 @@ export default {
     function submit() {
       const subject ={
         ...this.subjectQueue,
-        userId: this.$store.userInfo.userID,
+        //userId: this.$store.userInfo.userID,
         campus: this.campus,
         building: this.building,
         room: this.room,

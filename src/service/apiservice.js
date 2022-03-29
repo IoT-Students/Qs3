@@ -29,7 +29,13 @@ export function addSubjectQueue(subjectQueue){
         .then((response) => {
             return response.data;
         });
-
-
-
 }
+export function getSubjects(userId){
+    return axios
+        .get("http://localhost:8085/subject/" + userId)
+        .then((response) => {
+            return response.data;
+        });
+}
+
+
