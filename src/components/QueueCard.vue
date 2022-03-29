@@ -1,14 +1,14 @@
 <template>
-  <div class="complaint-card">
-    <span>@{{ complaint.name }} on {{ complaint.email }}</span>
-    <h4>{{ complaint.message }}</h4>
+  <div class="queue-card">
+    <span>@{{ person.name }} on {{ person.position }}</span>
+    <h4>{{ person.message }}</h4>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    complaint: {
+    person: {
       type: Object,
       required: true,
     },
@@ -17,14 +17,14 @@ export default {
 </script>
 
 <style scoped>
-.complaint-card {
+.queue-card {
   padding: 20px;
   width: 250px;
   cursor: pointer;
   border: 1px solid lightgreen;
   margin-bottom: 18px;
 }
-.complaint-card:hover {
+.queue-card:hover {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
 }

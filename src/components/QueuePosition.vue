@@ -8,12 +8,12 @@
 
   <div class="position">
     <h3> Your position</h3>
-    <h1>{{queueInfo.assignment}}</h1>
+    <h1>{{queueInfo.position}}</h1>
   </div>
 
   <div class="assignments">
     <h3>Assignments</h3>
-    <div> 5</div>
+    <div> {{queueInfo.assignment}}</div>
   </div>
   <button @click="removeFromQueue()">Delete</button>
 
@@ -25,10 +25,11 @@ export default {
   data() {
     return {
       queueInfo: {
-        room: "2",
-        table: "2",
-        type: "Godkjenning",
-        assignment: "5",
+        room: this.$store.state.subjectQueue.rom,
+        table: this.$store.state.subjectQueue.bord,
+        type: this.$store.state.subjectQueue.type,
+        assignment: this.$store.state.subjectQueue.øvinger,
+        position: "5",
       },
     };
   },
