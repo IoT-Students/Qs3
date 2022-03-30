@@ -4,7 +4,8 @@
       :key="subject.subjectId"
       :subject="subject"
       :studass="false"
-      @click="goToAddStudent(subject.subjectId)"
+      @click="showStudents"
+      @add-students="goToAddStudent"
   >
   </AdminSubjectCard>
 </template>
@@ -29,6 +30,9 @@ export default {
       console.log(subjectId)
       this.$router.push({ name: "AddStudent", params: { subjectId } });
     },
+    showStudents() {
+      this.$router.push({ name: "StudentsView" });
+    }
   },
 }
 </script>

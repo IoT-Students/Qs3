@@ -2,7 +2,7 @@
   <div class="queues">
     <QueueCard
       v-for="user in subjectQueues"
-      :key="user.id"
+      :key="user.subjectQueueId"
       :user="user"
       @click="goToDetails(user.id)"
     />

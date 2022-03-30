@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="queue-buttons">
-      <button @click.prevent="addStudents()" id="exercise-button">Add students</button>
+      <button @click.stop="addStudents()" id="exercise-button">Add students</button>
     </div>
   </section>
 </div>
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     addStudents() {
-
+      this.$emit("add-students", this.subject.subjectId);
     },
   },
 };
