@@ -7,6 +7,7 @@
         <router-link :to="{ name: 'Archived' }">Arkivert</router-link>
       </div>
     </div>
+
     <router-view></router-view>
   </div>
 </template>
