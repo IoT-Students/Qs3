@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export function doLogin(userInfo) {
-
     const loginRequest = {
         username: userInfo.username,
         password: userInfo.password,
@@ -32,6 +31,7 @@ export function getSubjectQueues(subjectId){
         .get("http://localhost:8085/subjectQueue/" + subjectId) //Må legge inn subjectId i getSubjectQueues metoden i state
                                                                     //Hvordan skal man få fagId bare fra det faget?
         .then((response) => {
+            console.log(response.data)
             return response.data;
         });
 }

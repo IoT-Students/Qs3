@@ -2,7 +2,8 @@
   <div class="homeViewContainer">
     <div class="headerButtonsContainer">
       <div class="headerButtons">
-        <router-link :to="{ name: 'AddSubject' }">AddSubject</router-link>
+        <router-link :to="{ name: 'AddSubject' }">Add subject</router-link>
+        <router-link :to="{ name: 'AdminSubjectView' }">View my subjects</router-link>
       </div>
     </div>
     <router-view></router-view>
@@ -13,19 +14,6 @@
 
 export default {
   name: "HeaderLayout",
-  created() {
-    this.$store.dispatch("getSubjects");
-  },
-  computed: {
-    subjects() {
-      return this.$store.state.subjects;
-    },
-  },
-  methods: {
-    goToQueue() {
-      this.$router.push({ name: "SubjectQueueForm" });
-    },
-  },
 };
 </script>
 

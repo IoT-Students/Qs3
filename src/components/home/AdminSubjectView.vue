@@ -1,23 +1,35 @@
 <template>
-  <SubjectCard
+  <AdminSubjectCard
       v-for="subject in subjects"
-      :key="subject.id"
+      :key="subject.subjectId"
       :subject="subject"
       :studass="false"
-      @click="goToQueue"
+      @click="goToAddStudent(subject.subjectId)"
   >
-  </SubjectCard>
+  </AdminSubjectCard>
 </template>
 
 <script>
+import AdminSubjectCard from "../AdminSubjectCard";
 export default {
   name: "AdminSubjectView",
-  props: {
-    subjects: {
-      type: Object,
-      required: true,
-    }
-  }
+  components: {
+    AdminSubjectCard,
+  },
+  created() {
+    this.$store.dispatch("getSubjects");
+  },
+  computed: {
+    subjects() {
+      return this.$store.state.subjects;
+    },
+  },
+  methods: {
+    goToAddStudent(subjectId) {
+      console.log(subjectId)
+      this.$router.push({ name: "AddStudent", params: { subjectId } });
+    },
+  },
 }
 </script>
 
