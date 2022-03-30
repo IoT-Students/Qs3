@@ -7,7 +7,7 @@ import StudAssView from "@/components/home/StudAssView";
 import Queue from "@/views/Queue";
 import QueueCardDetails from "@/components/queue/QueueCardDetails";
 import QueueList from "@/components/queue/QueueList";
-import QueuePosition from "@/components/queue/QueuePosition";
+import QueuePositionList from "../components/queue/QueuePositionList";
 import QueueListLayout from "@/components/queue/QueueListLayout";
 import HomeAdmin from "@/views/HomeAdmin";
 import AddSubject from "@/components/AddSubject";
@@ -55,8 +55,8 @@ const routes = [
     children: [
       {
         path: "",
-        name: "QueuePosition",
-        component: QueuePosition,
+        name: "QueuePositionList",
+        component: QueuePositionList,
       },
       {
         path: "",

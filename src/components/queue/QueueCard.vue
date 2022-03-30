@@ -1,8 +1,8 @@
 <template>
   <div class="queue-card">
     <section class="card-grid">
-      <div class="queue-number">Nr. {{ user.campus }}</div>
-      <div class="name">{{ user.building }}</div>
+      <div class="queue-number">Nr. {{ user.name }}</div>
+      <div class="name">{{ user.type }}</div>
       <div class="info">{{ user.assignments }}</div>
     </section>
   </div>

@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import {getSubjectQueues, getSubjects} from "../service/apiservice";
+import {getSubjectQueues, getSubjectQueueUser, getSubjects} from "../service/apiservice";
 import { addSubjectQueue } from "../service/apiservice";
 
 export default createStore({
@@ -19,6 +19,9 @@ export default createStore({
     },
     SET_SUBJECT_QUEUES(state, subjectQueues) {
       state.subjectQueues = subjectQueues
+    },
+    SET_SUBJECT_QUEUE_USER(state, subjectQueue) {
+      state.subjectQueue = subjectQueue
     },
     ADD_USER(state, userInfo) {
       state.userInfo = userInfo;
@@ -41,7 +44,7 @@ export default createStore({
       });
     },
     getAllSubjectQueues({ commit }, subjectId){
-      getSubjectQueues(subjectId) ////Legg til subjectId som man er i som parameter
+      getSubjectQueues(subjectId)
           .then((response) => {
             commit("SET_SUBJECT_QUEUES", response);
             console.log(response);
@@ -50,6 +53,17 @@ export default createStore({
             console.log(error);
           });
       },
+    getSubjectQueueUser({commit}, subjectId, userId){
+      getSubjectQueueUser(subjectId, userId)
+          .then((response) => {
+            commit("SET_SUBJECT_QUEUE_USER", response);
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+    },
     storeUser({ commit }, userInfo) {
       commit('ADD_USER', userInfo)
       console.log(this.state.userInfo.userID)
