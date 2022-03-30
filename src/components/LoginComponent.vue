@@ -59,10 +59,23 @@ export default {
       if (loginResponse.loginStatus === "Success") {
         this.$store.dispatch("storeUser", loginResponse);
 
-        if (loginResponse.role === "Admin") {
-          this.$router.push({ name: "HomeAdmin" });
-        } else {
-          this.$router.push({ name: "Home" });
+        switch (loginResponse.role) {
+          case "Admin":
+            this.$router.push({ name: "HomeAdmin" });
+            break;
+
+          case "Student":
+            this.$store.dispatch("getSubjects");
+            this.$router.push({ name: "StudentView" });
+            break;
+
+          case "Studass":
+            // Her må fagene til studass hentes til state fra database
+            this.$router.push({ name: "StudAssView" });
+            break;
+
+          default:
+            alert("Something went wrong with the authentication!");
         }
       }
     },

@@ -1,17 +1,41 @@
 <template>
-  <div v-if="!($store.state.subjects.length === 0)" class="homeViewContainer">
-    <h4>Dine emner:</h4>
+  <div class="homeViewContainer">
+    <div class="headerButtonsContainer">
+      <div class="headerButtons">
+        <router-link :to="{ name: 'AddSubject' }">AddSubject</router-link>
+      </div>
+    </div>
+    <SubjectCard
+      v-for="subject in subjects"
+      :key="subject.id"
+      :subject="subject"
+      :studass="false"
+      @click="goToQueue"
+    >
+    </SubjectCard>
     <router-view></router-view>
   </div>
-  <div v-else>Tomt</div>
 </template>
 
 <script>
+import SubjectCard from "@/components/SubjectCard";
+
 export default {
   name: "HeaderLayout",
+  components: {
+    SubjectCard,
+  },
+  created() {
+    this.$store.dispatch("getSubjects");
+  },
   computed: {
-    isEmpty() {
-      return this.$store.state.subjects.length === 0;
+    subjects() {
+      return this.$store.state.subjects;
+    },
+  },
+  methods: {
+    goToQueue() {
+      this.$router.push({ name: "SubjectQueueForm" });
     },
   },
 };
@@ -31,12 +55,6 @@ export default {
 .headerButtons {
   display: flex;
   justify-content: center;
-}
-.homeViewContainer {
-  border-radius: 10px;
-  padding: 1rem;
-  margin: 0 auto;
-  width: 65%;
 }
 
 .headerButtons a {
