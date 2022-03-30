@@ -22,8 +22,8 @@ export default {
   methods: {
     getQueue() {
       console.log("Fra ")
-      this.$store.dispatch("getAllSubjectQueues", this.subjectId);
-    }
+      //this.$store.dispatch("getAllSubjectQueues", this.subjectId);
+    },
   }
 };
 </script>

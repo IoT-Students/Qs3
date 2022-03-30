@@ -2,7 +2,7 @@
   <div class="queues">
     <QueueCard
       v-for="user in subjectQueues"
-      :key="user.id"
+      :key="user.subjectQueueId"
       :user="user"
       @click="goToDetails(user.id)"
     />
@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     subjectQueues() {
-      return this.$store.state.subjectQueue;
+      return this.$store.state.subjectQueues;
     },
   },
 };
