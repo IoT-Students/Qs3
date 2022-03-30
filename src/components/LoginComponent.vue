@@ -61,6 +61,7 @@ export default {
 
         switch (loginResponse.role) {
           case "Admin":
+            this.$store.dispatch("getSubjects");
             this.$router.push({ name: "HomeAdmin" });
             break;
 

@@ -11,18 +11,7 @@
   </div>
   <router-view />
 </template>
-<script>
-export default {
-  computed: {
-    hasUser() {
-      return (
-        this.$store.state.userInfo.username !== null ||
-        this.$store.state.userInfo.username !== undefined
-      );
-    },
-  },
-};
-</script>
+
 <style>
 html {
   background: #eceff4;

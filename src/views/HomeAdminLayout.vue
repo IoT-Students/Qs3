@@ -5,26 +5,14 @@
         <router-link :to="{ name: 'AddSubject' }">AddSubject</router-link>
       </div>
     </div>
-    <SubjectCard
-      v-for="subject in subjects"
-      :key="subject.id"
-      :subject="subject"
-      :studass="false"
-      @click="goToQueue"
-    >
-    </SubjectCard>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import SubjectCard from "@/components/SubjectCard";
 
 export default {
   name: "HeaderLayout",
-  components: {
-    SubjectCard,
-  },
   created() {
     this.$store.dispatch("getSubjects");
   },
