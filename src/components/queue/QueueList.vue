@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     subjectQueues() {
-      return this.$store.state.subjectQueue;
+      return this.$store.state.subjectQueues;
     },
   },
 };

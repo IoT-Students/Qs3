@@ -36,5 +36,13 @@ export function getSubjectQueues(subjectId){
         });
 }
 
+export function getSubjectQueueUser(subjectId, userId){
+    return axios
+        .get("http://localhost:8085/subjectQueue/" + subjectId + "/" + userId) //Må legge inn subjectId i getSubjectQueues metoden i state
+        .then((response) => {
+            console.log(response.data)
+            return response.data;
+        });
+}
 
 
