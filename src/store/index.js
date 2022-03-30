@@ -48,6 +48,7 @@ export default createStore({
       commit("ADD_USER", userInfo);
     },
     getSubjects({ commit }) {
+      console.log(this.state.userInfo.userID);
       getSubjects(this.state.userInfo.userID)
         .then((response) => {
           commit("SET_SUBJECTS", response);

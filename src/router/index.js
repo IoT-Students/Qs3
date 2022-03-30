@@ -11,6 +11,8 @@ import QueuePosition from "@/components/queue/QueuePosition";
 import QueueListLayout from "@/components/queue/QueueListLayout";
 import HomeAdmin from "@/views/HomeAdmin";
 import AddSubject from "@/components/AddSubject";
+import AdminSubjectView from "@/components/home/AdminSubjectView";
+import AddStudent from "@/components/AddStudent";
 
 const routes = [
   {
@@ -83,6 +85,18 @@ const routes = [
         name: "AddSubject",
         component: AddSubject,
       },
+      {
+        path: "/home/admin/subject",
+        name: "AdminSubjectView",
+        component: AdminSubjectView,
+      },
+      {
+        path: "/home/admin/addStudent",
+        name: "AddStudent",
+        props: true,
+        component: AddStudent,
+      },
+
     ],
   },
 ];
