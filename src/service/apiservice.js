@@ -28,8 +28,7 @@ export function getSubjects(userId){
 }
 export function getSubjectQueues(subjectId){
     return axios
-        .get("http://localhost:8085/subjectQueue/" + subjectId) //Må legge inn subjectId i getSubjectQueues metoden i state
-                                                                    //Hvordan skal man få fagId bare fra det faget?
+        .get("http://localhost:8085/subjectQueue/" + subjectId)
         .then((response) => {
             console.log(response.data)
             return response.data;

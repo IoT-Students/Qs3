@@ -1,9 +1,10 @@
 <template>
   <div class="queue-card">
     <section class="card-grid">
-      <div class="queue-number">Nr. {{ user.name }}</div>
-      <div class="name">{{ user.type }}</div>
-      <div class="info">{{ user.assignments }}</div>
+      <div class="queue-number">Bruker: {{ user.userId }}</div>
+      <div class="name"  v-if="user.type === 1">Type: Hjelp</div>
+      <div v-else> Type: Godkjenning </div>
+      <div class="info"> Øving: {{ user.assignments }}</div>
     </section>
   </div>
 </template>

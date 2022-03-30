@@ -31,7 +31,7 @@ export default {
       this.$router.push({ name: "Queue", params: { subjectId } });
     },
     goToForm(subjectId) {
-      console.log(subjectId);
+      console.log("Er nå i form med subjectId: " + subjectId);
       this.$router.push({ name: "SubjectQueueForm", params: { subjectId } });
     },
   },

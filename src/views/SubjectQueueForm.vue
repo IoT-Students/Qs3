@@ -81,6 +81,7 @@
       </BaseButton>
     </form>
     <pre>{{ subjectQueue }}</pre>
+    <pre> {{subjectId}} </pre>
   </div>
 </template>
 
@@ -141,15 +142,17 @@ export default {
     }
   },
 
-  setup() {
+  setup(props) {
     const store = useStore()
     const router = useRouter()
+
+    console.log(props.subjectId)
 
     function submit() {
       const subjectQueueRequest ={
         ...this.subjectQueue,
         userId: store.state.userInfo.userID,
-        subjectId: this.subjectId,
+        subjectId: props.subjectId,
         campus: this.campus,
         building: this.building,
         room: this.room,
