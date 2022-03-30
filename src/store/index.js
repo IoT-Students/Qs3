@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import { doLogin, getSubjects } from "../service/apiservice";
+import { getSubjects } from "../service/apiservice";
 import { addSubjectQueue } from "../service/apiservice";
 
 export default createStore({
@@ -31,18 +31,7 @@ export default createStore({
       console.log(this.state.subjectQueue);
     },
     storeUser({ commit }, userInfo) {
-      doLogin(userInfo)
-        .then(() => {
-          if (userInfo.loginStatus === "Success") {
-            commit("ADD_USER", userInfo);
-          }
-          console.log("Nå er jeg i state");
-          console.log(this.state.userInfo.userID);
-          console.log(this.state.userInfo.loginStatus);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      commit("ADD_USER", userInfo);
     },
     getSubjects({ commit }) {
       getSubjects(this.state.userInfo.userID)
