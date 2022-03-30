@@ -162,10 +162,15 @@ export default {
       }
       console.log(subjectQueueRequest)
 
-      store.dispatch('createSubjectQueue', subjectQueueRequest).then(()  => {
-        router.push({
-          name: 'Queue'
-        })
+     store.dispatch('createSubjectQueue', subjectQueueRequest)
+          .then(()  => {
+            store.dispatch("getSubjectQueueUser", props.subjectId)
+            store.dispatch("getAllSubjectQueues", props.subjectId)
+          })
+            .then(()  => {
+              router.push({
+                name: 'Queue'
+              })
       })
     }
     const validationSchema = object({
