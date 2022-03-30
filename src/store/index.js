@@ -53,8 +53,8 @@ export default createStore({
             console.log(error);
           });
       },
-    getSubjectQueueUser({commit}, subjectId, userId){
-      getSubjectQueueUser(subjectId, userId)
+    getSubjectQueueUser({commit}, subjectId){
+      getSubjectQueueUser(subjectId, this.state.userInfo.userID)
           .then((response) => {
             commit("SET_SUBJECT_QUEUE_USER", response);
             console.log(response);
