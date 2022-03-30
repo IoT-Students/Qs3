@@ -25,6 +25,7 @@ const routes = [
     path: "/subjectQueueForm",
     name: "SubjectQueueForm",
     component: SubjectQueueForm,
+    props: true
   },
   {
     path: "/home",

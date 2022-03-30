@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export function doLogin(userInfo) {
-
     const loginRequest = {
         username: userInfo.username,
         password: userInfo.password,

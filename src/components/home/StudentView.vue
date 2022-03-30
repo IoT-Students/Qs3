@@ -1,10 +1,10 @@
 <template>
   <SubjectCard
     v-for="subject in subjects"
-    :key="subject.id"
+    :key="subject.subjectId"
     :subject="subject"
     :studass="false"
-    @click="goToQueue(subject.id)"
+    @click="goToQueue(subject.subjectId)"
   >
   </SubjectCard>
 </template>

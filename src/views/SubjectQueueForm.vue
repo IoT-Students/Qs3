@@ -23,14 +23,14 @@
             :options="Rooms"
             v-model="room"
             label="Select a room"
-            :error="errors.rom"
+            :error="errors.room"
         />
         <p></p>
         <BaseSelect
             :options="Tables"
             v-model="table"
             label="Select a table"
-            :error="errors.bord"
+            :error="errors.table"
         />
       </fieldset>
 
@@ -38,24 +38,24 @@
         <legend>Øvinger</legend>
 
         <BaseCheckBox
-            v-model="this.subjectQueue.assignments['1']"
+            v-model="assignmentOne"
             label="1"
+            :error="errors.assignmentOne"
         />
         <BaseCheckBox
-            v-model="this.subjectQueue.assignments['2']"
+            v-model="assignmentTwo"
             label="2"
+            :error="errors.assignmentTwo"
         />
         <BaseCheckBox
-            v-model="this.subjectQueue.assignments['3']"
+            v-model="assignmentThree"
             label="3"
+            :error="errors.assignmentThree"
         />
         <BaseCheckBox
-            v-model="this.subjectQueue.assignments['4']"
+            v-model="assignmentFour"
             label="4"
-        />
-        <BaseCheckBox
-            v-model="this.subjectQueue.assignments['5']"
-            label="5"
+            :error="errors.assignmentFour"
         />
       </fieldset>
 
@@ -63,9 +63,10 @@
         <legend>Type</legend>
 
         <BaseRadioGroup
-            v-model="this.subjectQueue.type"
+            v-model="type"
             name="type"
             :options="typeOptions"
+            :error="errors.type"
         />
 
       </fieldset>
@@ -85,7 +86,7 @@
 
 <script>
 import { useField, useForm } from "vee-validate";
-import { object, string } from 'yup'
+import {boolean, number, object, string} from 'yup'
 import { useStore } from "vuex"
 import { useRouter } from "vue-router"
 
@@ -104,11 +105,10 @@ export default {
         room: "",
         table: "",
         assignments: {
-          1: false,
-          2: false,
-          3: false,
-          4: false,
-          5: false
+          assignmentOne: false,
+          assignmentTwo: false,
+          assignmentThree: false,
+          assignmentFour: false,
         },
         type: 1,
       },
@@ -148,7 +148,7 @@ export default {
     function submit() {
       const subjectQueueRequest ={
         ...this.subjectQueue,
-        userId: this.$store.userInfo.userID,
+        userId: store.state.userInfo.userID,
         subjectId: this.subjectId,
         campus: this.campus,
         building: this.building,
@@ -169,17 +169,35 @@ export default {
       campus: string().required('A campus is required'),
       building: string().required('A building is required'),
       room: string().required('A room is required'),
-      table: string().required('A table is required')
+      table: string().required('A table is required'),
+      type: number(),
+      assignmentOne: boolean().required('This is required'),
+      assignmentTwo: boolean(),
+      assignmentThree: boolean(),
+      assignmentFour: boolean()
+
     });
 
     const { errors } = useForm({
       validationSchema,
+      initialValues: {
+        type: 1,
+        assignmentOne: false,
+        assignmentTwo: false,
+        assignmentThree: false,
+        assignmentFour: false,
+      }
     })
 
     const { value: campus } = useField('campus')
     const { value: building } = useField('building')
     const { value: room } = useField('room')
     const { value: table } = useField('table')
+    const { value: type } = useField('type')
+    const { value: assignmentOne } = useField('assignmentOne')
+    const { value: assignmentTwo } = useField('assignmentTwo')
+    const { value: assignmentThree } = useField('assignmentThree')
+    const { value: assignmentFour } = useField('assignmentFour')
 
 
     return {
@@ -187,13 +205,18 @@ export default {
       building,
       room,
       table,
+      type,
+      assignmentOne,
+      assignmentTwo,
+      assignmentThree,
+      assignmentFour,
       submit,
       errors,
     }
   },
   computed: {
     isError(){
-      if(this.errors.campus || this.errors.bygning || this.errors.rom || this.errors.bord) {
+      if(this.errors.campus || this.errors.building || this.errors.room || this.errors.table) {
         return true
       }
       else{
