@@ -27,9 +27,10 @@ export function getSubjects(userId){
             return response.data;
         });
 }
-export function getSubjectQueues(userId){
+export function getSubjectQueues(subjectId){
     return axios
-        .get("http://localhost:8085/subjectQueue/" + userId)
+        .get("http://localhost:8085/subjectQueue/" + subjectId) //Må legge inn subjectId i getSubjectQueues metoden i state
+                                                                    //Hvordan skal man få fagId bare fra det faget?
         .then((response) => {
             return response.data;
         });

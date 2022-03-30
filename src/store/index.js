@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import {doLogin, getSubjectQueues, getSubjects} from "../service/apiservice";
+import {getSubjectQueues, getSubjects} from "../service/apiservice";
 import { addSubjectQueue } from "../service/apiservice";
 
 export default createStore({
@@ -33,7 +33,7 @@ export default createStore({
       })
     },
     getAllSubjectQueues({ commit }){
-      getSubjectQueues(this.state.userInfo.userID)
+      getSubjectQueues() ////Legg til subjectId som man er i som parameter
           .then((response) => {
             commit("SET_SUBJECT_QUEUES", response);
             console.log(response);
@@ -43,18 +43,7 @@ export default createStore({
           });
       },
     storeUser({ commit }, userInfo) {
-      doLogin(userInfo)
-        .then(() => {
-          if (userInfo.loginStatus === "Success") {
-            commit("ADD_USER", userInfo);
-          }
-          console.log("Nå er jeg i state");
-          console.log(this.state.userInfo.userID);
-          console.log(this.state.userInfo.loginStatus);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      commit('ADD_USER', userInfo)
     },
     getSubjects({ commit }) {
       getSubjects(this.state.userInfo.userID)
