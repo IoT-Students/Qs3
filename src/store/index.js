@@ -27,7 +27,8 @@ export default createStore({
     },
   },
   actions: {
-    createSubjectQueue(subjectQueue) {
+    createSubjectQueue({ commit }, subjectQueue) {
+      commit("ADD_SUBJECT_QUEUE", subjectQueue);
       addSubjectQueue(subjectQueue).then((response) => {
         return response
       })
@@ -47,6 +48,7 @@ export default createStore({
       console.log(this.state.userInfo.userID)
     },
     getSubjects({ commit }) {
+      console.log(this.state.userInfo.userID);
       getSubjects(this.state.userInfo.userID)
         .then((response) => {
           commit("SET_SUBJECTS", response);
