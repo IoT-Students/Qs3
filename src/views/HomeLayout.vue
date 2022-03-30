@@ -1,19 +1,19 @@
 <template>
-  <div class="homeViewContainer">
-    <div class="headerButtonsContainer">
-      <div class="headerButtons">
-        <router-link :to="{ name: 'StudentView' }">Student</router-link>
-        <router-link :to="{ name: 'StudAssView' }">Stud. Ass</router-link>
-        <router-link :to="{ name: 'Archived' }">Arkivert</router-link>
-      </div>
-    </div>
+  <div v-if="!($store.state.subjects.length === 0)" class="homeViewContainer">
+    <h4>Dine emner:</h4>
     <router-view></router-view>
   </div>
+  <div v-else>Tomt</div>
 </template>
 
 <script>
 export default {
   name: "HeaderLayout",
+  computed: {
+    isEmpty() {
+      return this.$store.state.subjects.length === 0;
+    },
+  },
 };
 </script>
 
@@ -31,6 +31,12 @@ export default {
 .headerButtons {
   display: flex;
   justify-content: center;
+}
+.homeViewContainer {
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0 auto;
+  width: 65%;
 }
 
 .headerButtons a {

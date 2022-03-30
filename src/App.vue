@@ -1,12 +1,28 @@
 <template>
   <div id="nav" v-if="!$route.meta.hideNavbar">
-    <router-link to="/home">Home</router-link>
-    <router-link to="/SubjectQueueForm">Subject Queue Form</router-link>
-    <router-link to="/queue">Queue</router-link>
+    <div id="navContent">
+      <p id="nameTitle">{{ $store.state.userInfo.name }}</p>
+      <div id="routerButtons">
+        <router-link to="/home">Home</router-link>
+        <router-link to="/SubjectQueueForm">Subject Queue Form</router-link>
+        <router-link to="/queue">Queue</router-link>
+      </div>
+    </div>
   </div>
   <router-view />
 </template>
-
+<script>
+export default {
+  computed: {
+    hasUser() {
+      return (
+        this.$store.state.userInfo.username !== null ||
+        this.$store.state.userInfo.username !== undefined
+      );
+    },
+  },
+};
+</script>
 <style>
 html {
   background: #eceff4;
@@ -21,6 +37,10 @@ html {
 
 #nav {
   padding: 30px;
+}
+#routerButtons {
+  top: -10px;
+  width: 50rem;
 }
 
 #nav a {
@@ -40,6 +60,17 @@ html {
 #footer {
   position: relative;
   bottom: 0;
+}
+#routerButtons {
+  justify-content: center;
+}
+
+#navContent {
+  width: 50rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  border-bottom: solid #333232;
 }
 
 .logOutButton {

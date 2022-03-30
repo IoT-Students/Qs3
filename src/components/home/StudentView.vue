@@ -16,13 +16,8 @@ export default {
   components: {
     SubjectCard,
   },
-  // created() {
-  //   console.log("created");
-  //   this.$store.dispatch("getSubjects");
-  // },
   computed: {
     subjects() {
-      console.log("computed");
       return this.$store.state.subjects;
     },
   },
