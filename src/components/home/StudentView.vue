@@ -1,10 +1,11 @@
 <template>
   <SubjectCard
     v-for="subject in subjects"
-    :key="subject.id"
+    :key="subject.subjectId"
     :subject="subject"
     :studass="false"
-    @click="goToQueue(subject.id)"
+    @click="goToForm(subject.subjectId)"
+    @go-to-queue="goToQueue"
   >
   </SubjectCard>
 </template>
@@ -23,7 +24,13 @@ export default {
   },
   methods: {
     goToQueue(subjectId) {
-      this.$router.push({ name: "SubjectQueueForm", params: { subjectId }});
+      this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
+      console.log("ferdig emitted " + subjectId);
+      this.$router.push({ name: "Queue", params: { subjectId } });
+    },
+    goToForm(subjectId) {
+      console.log(subjectId);
+      this.$router.push({ name: "SubjectQueueForm", params: { subjectId } });
     },
   },
 };

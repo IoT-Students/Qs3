@@ -5,6 +5,7 @@ import { addSubjectQueue } from "../service/apiservice";
 export default createStore({
   state: {
     subjectQueue: {},
+    currentSubjectQueueId: null,
     userInfo: {},
     subjects: [],
     subjectQueues: [],
@@ -13,6 +14,9 @@ export default createStore({
   mutations: {
     ADD_SUBJECT_QUEUE(state, subjectQueue) {
       state.subjectQueue = subjectQueue;
+    },
+    SET_SUBJECT_QUEUE_ID(state, subjectId) {
+      state.currentSubjectQueueId = subjectId;
     },
     SET_SUBJECT_QUEUES(state, subjectQueues) {
       state.subjectQueues = subjectQueues
@@ -28,14 +32,17 @@ export default createStore({
     },
   },
   actions: {
+    addCurrentSubjectQueueId({ commit }, subjectId) {
+      commit("SET_SUBJECT_QUEUE_ID", subjectId)
+    },
     createSubjectQueue({ commit }, subjectQueue) {
       commit("ADD_SUBJECT_QUEUE", subjectQueue);
       addSubjectQueue(subjectQueue).then((response) => {
-        return response
-      })
+        return response;
+      });
     },
-    getAllSubjectQueues({ commit }){
-      getSubjectQueues() ////Legg til subjectId som man er i som parameter
+    getAllSubjectQueues({ commit }, subjectId){
+      getSubjectQueues(subjectId) ////Legg til subjectId som man er i som parameter
           .then((response) => {
             commit("SET_SUBJECT_QUEUES", response);
             console.log(response);

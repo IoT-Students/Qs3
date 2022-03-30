@@ -1,7 +1,7 @@
 <template>
   <div class="queuePosition">
     <router-link :to="{ name: 'QueuePosition' }">Posisjon</router-link>
-    <router-link :to="{ name: 'QueueList' }">Liste</router-link>
+    <router-link @click="getQueue" :to="{ name: 'QueueList' }">Liste</router-link>
   </div>
   <router-view></router-view>
 </template>
@@ -13,6 +13,18 @@ export default {
   data() {
     return {};
   },
+  props: {
+    subjectId: {
+      type: Number,
+      required: true,
+    },
+  },
+  methods: {
+    getQueue() {
+      console.log("Fra ")
+      this.$store.dispatch("getAllSubjectQueues", this.subjectId);
+    }
+  }
 };
 </script>
 <style scoped>

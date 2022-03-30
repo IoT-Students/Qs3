@@ -16,9 +16,6 @@ export default {
   components: {
     QueueCard,
   },
-  created() {
-    this.$store.dispatch("getAllSubjectQueues");
-  },
   methods: {
     goToDetails(personId) {
       console.log("Bygning er: " + this.$store.state.subjectQueue.bygning);

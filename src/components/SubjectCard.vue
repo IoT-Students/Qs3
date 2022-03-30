@@ -34,8 +34,10 @@
           </div>
         </div>
         <div v-if="!studass" class="queue-buttons">
-          <button @click.stop="dummyClick" id="exercise-button">Øvinger</button>
-          <button @click.stop="dummyClick" id="queue-button">Til kø</button>
+          <button @click="dummyClick" id="exercise-button">
+            Still deg i kø
+          </button>
+          <button @click.stop="goToQueue" id="queue-button">Se kø</button>
           <button @click.stop="dummyClick" id="chat-button">Chat</button>
         </div>
       </section>
@@ -63,6 +65,9 @@ export default {
     dummyClick() {
       console.log("Button is clicked");
     },
+    goToQueue() {
+      this.$emit("go-to-queue", this.subject.subjectId);
+    }
   },
 };
 </script>

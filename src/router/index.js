@@ -24,6 +24,7 @@ const routes = [
   {
     path: "/subjectQueueForm",
     name: "SubjectQueueForm",
+    props: true,
     component: SubjectQueueForm,
   },
   {
@@ -46,6 +47,7 @@ const routes = [
   {
     path: "/queue",
     name: "Queue",
+    props: true,
     component: Queue,
     children: [
       {
