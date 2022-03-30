@@ -79,7 +79,7 @@ const routes = [
     component: HomeAdmin,
     children: [
       {
-        path: "/",
+        path: "/home/admin/add",
         name: "AddSubject",
         component: AddSubject,
       },

@@ -6,11 +6,11 @@
       </div>
     </div>
     <SubjectCard
-        v-for="subject in subjects"
-        :key="subject.id"
-        :subject="subject"
-        :studass="false"
-        @click="goToQueue"
+      v-for="subject in subjects"
+      :key="subject.id"
+      :subject="subject"
+      :studass="false"
+      @click="goToQueue"
     >
     </SubjectCard>
     <router-view></router-view>
