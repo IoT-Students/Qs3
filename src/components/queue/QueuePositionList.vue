@@ -6,6 +6,7 @@
         :user="queueUser"
     />
   </div>
+  <div><router-link to="/SubjectQueueForm">Edit info</router-link></div>
   <button @click="removeFromQueue()">Delete</button>
 </template>
 

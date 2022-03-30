@@ -1,19 +1,17 @@
 <template>
   <h1>{{ queueUser.type }} kø</h1>
   <div class="queueInfoContainer">
-    <div>Rom: {{ queueUser.room }}</div>
-    <div>Bord: {{ queueUser.table }}</div>
+    <div> Bygning: {{ queueUser.building }}</div>
+    <div> Rom: {{ queueUser.room }}</div>
+    <div> Type: {{queueUser.type}}</div>
   </div>
-  <div><router-link to="/SubjectQueueForm">Edit info</router-link></div>
-
   <div class="position">
     <h3>Your position</h3>
-    <h1>{{ queueUser.position }}</h1>
+    <h1> 5 </h1>
   </div>
-
   <div class="assignments">
     <h3>Assignments</h3>
-    <div>{{ queueUser.assignment }}</div>
+    <div>{{ queueUser.assignments }}</div>
   </div>
 </template>
 
