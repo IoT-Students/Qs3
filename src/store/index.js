@@ -35,7 +35,7 @@ export default createStore({
       })
     },
     getAllSubjectQueues({ commit }){
-      getSubjectQueues(this.state.userInfo.userID)
+      getSubjectQueues() ////Legg til subjectId som man er i som parameter
           .then((response) => {
             commit("SET_SUBJECT_QUEUES", response);
             console.log(response);
