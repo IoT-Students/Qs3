@@ -4,7 +4,7 @@
     :key="subject.id"
     :subject="subject"
     :studass="false"
-    @click="goToQueue"
+    @click="goToQueue(subject.id)"
   >
   </SubjectCard>
 </template>
@@ -25,8 +25,8 @@ export default {
     },
   },
   methods: {
-    goToQueue() {
-      this.$router.push({ name: "SubjectQueueForm" });
+    goToQueue(subjectId) {
+      this.$router.push({ name: "SubjectQueueForm", params: { subjectId }});
     },
   },
 };

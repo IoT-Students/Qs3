@@ -1,43 +1,33 @@
 <template>
   <div class="queues">
     <QueueCard
-      v-for="person in queues"
-      :key="person.id"
-      :person="person"
-      @click="goToDetails(person.id)"
+      v-for="user in subjectQueues"
+      :key="user.id"
+      :user="user"
+      @click="goToDetails(user.id)"
     />
   </div>
 </template>
 
 <script>
-import QueueCard from "@/components/queue/QueueCard";
+import QueueCard from "./QueueCard";
 export default {
   name: "QueueList",
   components: {
     QueueCard,
   },
-  data() {
-    return {
-      queues: [
-        {
-          id: 1,
-          name: "Marius Klemp Petersen",
-          position: 2,
-          message: "Du er i kø",
-        },
-        {
-          id: 2,
-          name: "Magnus Farstad",
-          position: 3,
-          message: "Du er i kø",
-        },
-      ],
-    };
+  created() {
+    this.$store.dispatch("getAllSubjectQueues");
   },
   methods: {
     goToDetails(personId) {
       console.log("Bygning er: " + this.$store.state.subjectQueue.bygning);
       this.$router.push({ name: "QueueCardDetails", params: { personId } });
+    },
+  },
+  computed: {
+    subjectQueues() {
+      return this.$store.state.subjectQueues;
     },
   },
 };

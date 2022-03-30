@@ -1,9 +1,9 @@
 <template>
   <div class="queue-card">
     <section class="card-grid">
-      <div class="queue-number">Nr. {{ person.position }}</div>
-      <div class="name">{{ person.name }}</div>
-      <div class="info">{{ person.message }}</div>
+      <div class="queue-number">Nr. {{ user.campus }}</div>
+      <div class="name">{{ user.building }}</div>
+      <div class="info">{{ user.assignments }}</div>
     </section>
   </div>
 </template>
@@ -11,7 +11,7 @@
 <script>
 export default {
   props: {
-    person: {
+    user: {
       type: Object,
       required: true,
     },

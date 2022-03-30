@@ -90,6 +90,12 @@ import { useStore } from "vuex"
 import { useRouter } from "vue-router"
 
 export default {
+  props: {
+    subjectId: {
+      type: Number,
+      required: true,
+    }
+  },
   data() {
     return {
       subjectQueue: {
@@ -140,9 +146,10 @@ export default {
     const router = useRouter()
 
     function submit() {
-      const subject ={
+      const subjectQueueRequest ={
         ...this.subjectQueue,
-        //userId: this.$store.userInfo.userID,
+        userId: this.$store.userInfo.userID,
+        subjectId: this.subjectId,
         campus: this.campus,
         building: this.building,
         room: this.room,
@@ -150,9 +157,9 @@ export default {
         assignments: this.assignments,
         type: this.type
       }
-      console.log(subject)
+      console.log(subjectQueueRequest)
 
-      store.dispatch('createSubjectQueue', subject).then(()  => {
+      store.dispatch('createSubjectQueue', subjectQueueRequest).then(()  => {
         router.push({
           name: 'Queue'
         })

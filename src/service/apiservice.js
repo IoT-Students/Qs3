@@ -14,18 +14,8 @@ export function doLogin(userInfo) {
 }
 
 export function addSubjectQueue(subjectQueue){
-
-    const subjectQueueRequest = {
-        campus: subjectQueue.campus,
-        building: subjectQueue.building,
-        room: subjectQueue.room,
-        table: subjectQueue.table,
-        assignments: subjectQueue.assignments,
-        type: subjectQueue.type
-    }
-
     return axios
-        .post("http://localhost:8085/subjectQueue", subjectQueueRequest)
+        .post("http://localhost:8085/subjectQueue", subjectQueue)
         .then((response) => {
             return response.data;
         });
@@ -37,5 +27,13 @@ export function getSubjects(userId){
             return response.data;
         });
 }
+export function getSubjectQueues(userId){
+    return axios
+        .get("http://localhost:8085/subjectQueue/" + userId)
+        .then((response) => {
+            return response.data;
+        });
+}
+
 
 
