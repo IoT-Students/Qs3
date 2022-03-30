@@ -3,7 +3,7 @@
     <QueuePosition
         v-for="queueUser in subjectQueue"
         :key="queueUser.id"
-        :user="queueUser"
+        :queueUser="queueUser"
     />
   </div>
   <div><router-link to="/SubjectQueueForm">Edit info</router-link></div>

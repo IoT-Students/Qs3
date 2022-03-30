@@ -27,6 +27,7 @@ export default {
       this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
       console.log("ferdig emitted " + subjectId);
       this.$store.dispatch("getAllSubjectQueues", subjectId);
+      this.$store.dispatch("getSubjectQueueUser", subjectId);
       this.$router.push({ name: "Queue", params: { subjectId } });
     },
     goToForm(subjectId) {

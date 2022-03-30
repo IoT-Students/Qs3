@@ -1,6 +1,6 @@
 <template>
   <div class="queuePosition">
-    <router-link @click="getQueueDetailed" :to="{ name: 'QueuePositionList' }"
+    <router-link :to="{ name: 'QueuePositionList' }"
       >Posisjon</router-link
     >
     <router-link :to="{ name: 'QueueList' }">Liste</router-link>
@@ -19,12 +19,6 @@ export default {
     subjectId: {
       type: Number,
       required: true,
-    },
-  },
-  methods: {
-    getQueueDetailed() {
-      console.log("Lister ut køen til user som er logget inn");
-      this.$store.dispatch("getSubjectQueueUser", this.subjectId);
     },
   },
 };
