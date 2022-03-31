@@ -15,6 +15,7 @@ import AdminSubjectView from "@/components/home/AdminSubjectView";
 import AddStudent from "@/components/AddStudent";
 import StudentsView from "@/components/StudentsView";
 import AddStudass from "@/components/AddStudass";
+import NotFoundPage from "@/views/NotFoundPage";
 
 const routes = [
   {
@@ -110,7 +111,7 @@ const routes = [
         path: "/home/admin/students",
         name: "StudentsView",
         component: StudentsView,
-      }
+      },
     ],
   },
 ];

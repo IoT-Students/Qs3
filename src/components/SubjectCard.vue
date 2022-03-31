@@ -71,7 +71,7 @@ export default {
     },
     goToQueue() {
       this.$emit("go-to-queue", this.subject.subjectId);
-    }
+    },
   },
 };
 </script>

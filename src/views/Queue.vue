@@ -1,8 +1,6 @@
 <template>
   <div class="queuePosition">
-    <router-link :to="{ name: 'QueuePositionList' }"
-      >Posisjon</router-link
-    >
+    <router-link :to="{ name: 'QueuePositionList' }">Posisjon</router-link>
     <router-link :to="{ name: 'QueueList' }">Liste</router-link>
   </div>
   <router-view></router-view>

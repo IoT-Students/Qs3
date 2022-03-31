@@ -3,7 +3,9 @@
     <div class="headerButtonsContainer">
       <div class="headerButtons">
         <router-link :to="{ name: 'AddSubject' }">Add subject</router-link>
-        <router-link :to="{ name: 'AdminSubjectView' }">View my subjects</router-link>
+        <router-link :to="{ name: 'AdminSubjectView' }"
+          >View my subjects</router-link
+        >
       </div>
     </div>
     <router-view></router-view>
@@ -11,7 +13,6 @@
 </template>
 
 <script>
-
 export default {
   name: "HeaderLayout",
 };

@@ -36,7 +36,8 @@ export default {
       console.log(subjectId)
       this.$router.push({ name: "AddStudass", params: { subjectId } });
     },
-    showStudents() {
+    showStudents(subjectId) {
+      this.$store.dispatch("addSubjectStudents", subjectId);
       this.$router.push({ name: "StudentsView" });
     }
   },

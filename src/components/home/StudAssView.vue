@@ -16,8 +16,7 @@ export default {
     SubjectCard,
   },
   data() {
-    return {
-    };
+    return {};
   },
   computed: {
     subjects() {

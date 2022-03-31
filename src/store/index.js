@@ -1,6 +1,10 @@
 import { createStore } from "vuex";
-import {getSubjectQueues, getSubjectQueueUser, getSubjects} from "../service/apiservice";
-import { addSubjectQueue } from "../service/apiservice";
+import {
+  getSubjectQueues,
+  getSubjectQueueUser,
+  getSubjects,
+} from "../service/apiservice";
+import { addSubjectQueue, getStudentsInSubject } from "../service/apiservice";
 
 export default createStore({
   state: {
@@ -8,7 +12,8 @@ export default createStore({
     currentSubjectQueueId: null,
     userInfo: {},
     subjects: [],
-    subjectQueues: []
+    subjectQueues: [],
+    subjectStudents: [],
   },
   mutations: {
     ADD_SUBJECT_QUEUE(state, subjectQueue) {
@@ -18,10 +23,10 @@ export default createStore({
       state.currentSubjectQueueId = subjectId;
     },
     SET_SUBJECT_QUEUES(state, subjectQueues) {
-      state.subjectQueues = subjectQueues
+      state.subjectQueues = subjectQueues;
     },
     SET_SUBJECT_QUEUE_USER(state, subjectQueue) {
-      state.subjectQueue = subjectQueue
+      state.subjectQueue = subjectQueue;
     },
     ADD_USER(state, userInfo) {
       state.userInfo = userInfo;
@@ -32,10 +37,17 @@ export default createStore({
     SET_SUBJECTS(state, subjects) {
       state.subjects = subjects;
     },
+    SET_STUDENTS(state, students) {
+      state.subjectStudents = students;
+    },
   },
   actions: {
+    async addSubjectStudents({ commit }, subjectId) {
+      let students = await getStudentsInSubject(subjectId);
+      commit("SET_STUDENTS", students);
+    },
     addCurrentSubjectQueueId({ commit }, subjectId) {
-      commit("SET_SUBJECT_QUEUE_ID", subjectId)
+      commit("SET_SUBJECT_QUEUE_ID", subjectId);
     },
     createSubjectQueue({ commit }, subjectQueue) {
       commit("ADD_SUBJECT_QUEUE", subjectQueue);
@@ -43,30 +55,29 @@ export default createStore({
         return response;
       });
     },
-    getAllSubjectQueues({ commit }, subjectId){
+    getAllSubjectQueues({ commit }, subjectId) {
       getSubjectQueues(subjectId)
-          .then((response) => {
-            commit("SET_SUBJECT_QUEUES", response);
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-    getSubjectQueueUser({commit}, subjectId){
+        .then((response) => {
+          commit("SET_SUBJECT_QUEUES", response);
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getSubjectQueueUser({ commit }, subjectId) {
       getSubjectQueueUser(subjectId, this.state.userInfo.userID)
-          .then((response) => {
-            commit("SET_SUBJECT_QUEUE_USER", response);
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-
+        .then((response) => {
+          commit("SET_SUBJECT_QUEUE_USER", response);
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     storeUser({ commit }, userInfo) {
-      commit('ADD_USER', userInfo)
-      console.log(this.state.userInfo.userID)
+      commit("ADD_USER", userInfo);
+      console.log(this.state.userInfo.userID);
     },
     getSubjects({ commit }) {
       console.log(this.state.userInfo.userID);

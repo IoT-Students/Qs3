@@ -3,15 +3,33 @@
     <div id="navContent">
       <p id="nameTitle">{{ $store.state.userInfo.name }}</p>
       <div id="routerButtons">
-        <router-link to="/home">Home</router-link>
-        <router-link to="/SubjectQueueForm">Subject Queue Form</router-link>
-        <router-link to="/queue">Queue</router-link>
+        <div v-if="isStudent">
+          <router-link v-if="isStudent" :to="{ name: 'StudentView' }">Home</router-link>
+          <router-link :to="{ name: 'SubjectQueueForm'}">Subject Queue Form</router-link>
+          <router-link :to="{ name: 'Queue' }">Queue</router-link>
+        </div>
+        <router-link v-if="isStudass" :to="{ name: 'StudAssView' }">Home</router-link>
+        <router-link v-if="isAdmin" :to="{ name: 'HomeAdmin' }">Home</router-link>
       </div>
     </div>
   </div>
   <router-view />
 </template>
-
+<script>
+export default {
+  computed: {
+    isStudent(){
+      return this.$store.state.userInfo.role === "Student";
+    },
+    isStudass() {
+      return this.$store.state.userInfo.role === "Studass";
+    },
+    isAdmin() {
+      return this.$store.state.userInfo.role === "Admin";
+    }
+  }
+}
+</script>
 <style>
 html {
   background: #eceff4;

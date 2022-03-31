@@ -5,7 +5,6 @@
       <h3>Please register student for subject with id!</h3>
       <div>
         <BaseInput v-model="name" label="Name" type="text" />
-
       </div>
       <button class="mybtn" type="submit">Sign up</button>
     </form>
