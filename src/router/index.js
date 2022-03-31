@@ -15,6 +15,7 @@ import AdminSubjectView from "@/components/home/AdminSubjectView";
 import AddStudent from "@/components/AddStudent";
 import StudentsView from "@/components/StudentsView";
 import NotFoundPage from "@/views/NotFoundPage";
+import AssignmentList from "../views/AssignmentList";
 
 const routes = [
   {
@@ -31,6 +32,13 @@ const routes = [
     props: true,
     component: SubjectQueueForm,
   },
+  {
+    path: "/assignments",
+    name: "AssignmentList",
+    props: true,
+    component: AssignmentList,
+  },
+
   {
     path: "/home",
     name: "Home",
