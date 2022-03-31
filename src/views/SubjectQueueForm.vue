@@ -36,6 +36,14 @@
 
       <fieldset>
         <legend>Øvinger</legend>
+        <div class="assignments">
+          <AssignmentFormCard
+              v-for="assignment in assignments"
+              :key="assignment.assignmentId"
+              :assignment="assignment"
+              @click="updateAssignmentNumber(assignment.assignmentNumber)"
+          />
+        </div>
 
         <BaseCheckBox
           v-model="assignmentOne"
@@ -85,8 +93,9 @@
 </template>
 
 <script>
+import AssignmentFormCard from "../components/AssignmentFormCard";
 import { useField, useForm } from "vee-validate";
-import { boolean, number, object, string } from "yup";
+import { number, object, string } from "yup";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 
@@ -97,6 +106,9 @@ export default {
       required: true,
     },
   },
+  components: {
+    AssignmentFormCard,
+  },
   data() {
     return {
       subjectQueue: {
@@ -104,12 +116,7 @@ export default {
         building: "",
         room: "",
         table: "",
-        assignments: {
-          assignmentOne: false,
-          assignmentTwo: false,
-          assignmentThree: false,
-          assignmentFour: false,
-        },
+        assignments: null,
         type: 1,
       },
       typeOptions: [
@@ -143,10 +150,12 @@ export default {
         building: this.building,
         room: this.room,
         table: this.table,
-        assignments: this.assignments,
+        assignment: this.assignment,
         type: this.type,
       };
-      console.log(subjectQueueRequest);
+      console.log("Dette er køobjektet: " + subjectQueueRequest.assignment);
+      console.log("Dette er køobjektet: " + this.assignment);
+
 
       store
         .dispatch("createSubjectQueue", subjectQueueRequest)
@@ -166,20 +175,13 @@ export default {
       room: string().required("A room is required"),
       table: string().required("A table is required"),
       type: number(),
-      assignmentOne: boolean().required("This is required"),
-      assignmentTwo: boolean(),
-      assignmentThree: boolean(),
-      assignmentFour: boolean(),
+      assignment: number(),
     });
 
     const { errors } = useForm({
       validationSchema,
       initialValues: {
         type: 1,
-        assignmentOne: false,
-        assignmentTwo: false,
-        assignmentThree: false,
-        assignmentFour: false,
       },
     });
 
@@ -188,10 +190,7 @@ export default {
     const { value: room } = useField("room");
     const { value: table } = useField("table");
     const { value: type } = useField("type");
-    const { value: assignmentOne } = useField("assignmentOne");
-    const { value: assignmentTwo } = useField("assignmentTwo");
-    const { value: assignmentThree } = useField("assignmentThree");
-    const { value: assignmentFour } = useField("assignmentFour");
+    const { value: assignment } = useField("assignment");
 
     return {
       campus,
@@ -199,12 +198,9 @@ export default {
       room,
       table,
       type,
-      assignmentOne,
-      assignmentTwo,
-      assignmentThree,
-      assignmentFour,
       submit,
       errors,
+      assignment,
     };
   },
   computed: {
@@ -221,17 +217,16 @@ export default {
       }
     },
     assignments() {
-      if (this.subjectQueue.assignments === true) {
-        let assignments = "";
-        for (let i = 0; i < this.subjectQueue.assignments; i++) {
-          assignments += this.subjectQueue.assignments + ",";
-        }
-        return assignments;
-      } else {
-        return null;
-      }
+      return this.$store.state.assignments;
     },
   },
+  methods: {
+    updateAssignmentNumber(assignmentNumber){
+      this.subjectQueue.assignment = assignmentNumber;
+      console.log(this.subjectQueue.assignment);
+      console.log(assignmentNumber);
+    }
+  }
 };
 </script>
 <style scoped>
@@ -244,6 +239,11 @@ legend {
   font-size: 28px;
   font-weight: 700;
   margin-top: 20px;
+}
+.assignments{
+  display: flex;
+  flex-direction: row;
+  padding: 0;
 }
 .mybtn,
 label,

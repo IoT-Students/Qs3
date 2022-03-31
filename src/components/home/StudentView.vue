@@ -33,6 +33,7 @@ export default {
     },
     goToForm(subjectId) {
       console.log("Er nå i form med subjectId: " + subjectId);
+      this.$store.dispatch("getAssignments", subjectId);
       this.$router.push({ name: "SubjectQueueForm", params: { subjectId } });
     },
     goToAssignments(subjectId){

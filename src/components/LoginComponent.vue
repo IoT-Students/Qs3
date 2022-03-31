@@ -100,7 +100,7 @@ export default {
   margin: 0 auto;
   margin-top: 15%;
   width: 300px;
-  background-color: darkgray;
+  background-color: black;
 
 
 }
@@ -117,10 +117,10 @@ export default {
   font-weight: 500;
 }
 #username{
-  color: black;
+  color: darkgray;
 }
 #password{
-  color: black;
+  color: darkgray;
 
 }
 
