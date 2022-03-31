@@ -40,7 +40,7 @@
           class="approveButtons"
           @click="$router.push({ name: 'QueueList' })"
         >
-          <div class="approve">Godkjenn</div>
+          <div class="approve" @click="approve">Godkjenn</div>
           <div class="wait">Vent</div>
           <div class="disapprove">Underkjenn</div>
         </div>
@@ -58,6 +58,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "QueueCardDetails",
   data() {
@@ -87,6 +89,23 @@ export default {
       return this.helpType === "Godkjenning";
     },
   },
+  methods: {
+    approve(){
+      const assignmentApprove = {
+        name: "Simen",
+        subjectId: 26,
+        assignmentNumber: 3,
+      };
+      const response = axios.post("http://localhost:8085/approveAssignment", assignmentApprove);
+      response.then((resolvedResult) => {
+        console.log(resolvedResult.data);
+        this.$router.push({
+          name: "QueueList",
+        });
+      });
+
+    }
+  }
 };
 </script>
 

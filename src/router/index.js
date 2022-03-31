@@ -14,6 +14,7 @@ import AddSubject from "@/components/AddSubject";
 import AdminSubjectView from "@/components/home/AdminSubjectView";
 import AddStudent from "@/components/AddStudent";
 import StudentsView from "@/components/StudentsView";
+import AddStudass from "@/components/AddStudass";
 
 const routes = [
   {
@@ -98,6 +99,12 @@ const routes = [
         name: "AddStudent",
         props: true,
         component: AddStudent,
+      },
+      {
+        path: "/home/admin/addStudass",
+        name: "AddStudass",
+        props: true,
+        component: AddStudass,
       },
       {
         path: "/home/admin/students",

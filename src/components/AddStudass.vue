@@ -1,5 +1,5 @@
 <template>
-  <h1>Her kan du legge til studenter</h1>
+  <h1>Her kan du legge til studass</h1>
   <div class="form-container">
     <form @submit.prevent="submit">
       <h3>Please register student for subject with id!</h3>
@@ -35,14 +35,14 @@ export default {
         name: this.name,
       };
       console.log(this.subjectId + ", " + this.name);
-      const response = axios.post("http://localhost:8085/saveStudent", subjectUser);
-      response.then((resolvedResult) => {
-        console.log(resolvedResult.data);
-        this.$router.push({
-          name: "HomeAdmin",
+      const response = axios.post("http://localhost:8085/saveTeacherSubject", subjectUser);
+        response.then((resolvedResult) => {
+          console.log(resolvedResult.data);
+          this.$router.push({
+            name: "HomeAdmin",
+          });
         });
-      });
-    },
+    }
   },
 }
 </script>
