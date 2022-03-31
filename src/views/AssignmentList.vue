@@ -1,9 +1,9 @@
 <template>
   <div class="assignments">
     <AssignmentCard
-        v-for="assignment in assignments"
-        :key="assignment.assignmentId"
-        :assignment="assignment"
+      v-for="assignment in assignments"
+      :key="assignment.assignmentId"
+      :assignment="assignment"
     />
   </div>
 </template>
@@ -26,9 +26,7 @@ export default {
       return this.$store.state.assignments;
     },
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -14,6 +14,7 @@
       @click="goToDetails(user)"
     />
   </div>
+  <div v-show="isEmpty" id="emptyQueue">Køen er tom!</div>
 </template>
 
 <script>
@@ -34,13 +35,19 @@ export default {
       console.log("Navn er " + user.name);
       this.$store.dispatch("addSubjectQueueJoin", user);
       //console.log(this.$store.state.subjectQueueJoin.name);
-      this.$router.push({ name: "QueueCardDetails"});
+      this.$router.push({ name: "QueueCardDetails" });
     },
   },
   computed: {
     subjectQueues() {
       return this.$store.state.subjectQueues;
     },
+    isEmpty() {
+      return this.$store.state.subjectQueues.length === 0;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getAllSubjectQueues");
   },
 };
 </script>

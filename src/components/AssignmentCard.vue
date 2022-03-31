@@ -1,8 +1,10 @@
 <template>
   <div class="assignmentCard">
     <section class="card-grid">
-      <div class="assignment-number">Øvingsnummer: {{ assignment.assignmentNumber}}</div>
-      <div class="status"> Status: {{assignment.status}}</div>
+      <div class="assignment-number">
+        Øvingsnummer: {{ assignment.assignmentNumber }}
+      </div>
+      <div class="status">Status: {{ assignment.status }}</div>
     </section>
   </div>
 </template>
@@ -16,13 +18,12 @@ export default {
       type: Object,
       required: true,
     },
-  }
-}
+  },
+};
 </script>
 
-
 <style scoped>
-.assignmentCard{
+.assignmentCard {
   padding: 20px;
   width: 40rem;
   cursor: pointer;
@@ -38,6 +39,4 @@ export default {
   display: grid;
   grid-template-columns: 10% 40% 50%;
 }
-
-
 </style>

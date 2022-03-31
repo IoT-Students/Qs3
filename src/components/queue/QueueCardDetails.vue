@@ -6,7 +6,7 @@
     <div class="queueCard">
       <section class="cardGrid">
         <div class="content">
-          <h2 :class="{ altTitle: !isType }">{{ helpType }}</h2>
+          <h2 :class="{ altTitle: !isType }">{{ userType }}</h2>
           <h3>{{ user.name }}</h3>
           <section class="campus-building">
             <div class="location" id="campus">
@@ -28,18 +28,14 @@
               <h4>{{ user.tabl }}</h4>
             </div>
           </section>
-          <secton class="assignments-section">
+          <section class="assignments-section">
             <div class="assignments">
               <p>Øvinger:</p>
               <h4>3, 4</h4>
             </div>
-          </secton>
+          </section>
         </div>
-        <div
-          v-if="isType"
-          class="approveButtons"
-          @click="$router.push({ name: 'QueueList' })"
-        >
+        <div v-if="isType" class="approveButtons">
           <div class="approve" @click="approve">Godkjenn</div>
           <div class="wait">Vent</div>
           <div class="disapprove">Underkjenn</div>
@@ -58,50 +54,40 @@
 </template>
 
 <script>
-import axios from "axios";
+import { approveAssignment } from "@/service/apiservice";
 
 export default {
   name: "QueueCardDetails",
   data() {
     return {
-      campus: "",
-      bygning: "",
-      rom: "",
-      bord: "",
-      øvinger: {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: false,
-      },
-      helpType: "Godkjenning",
       user: this.$store.state.subjectQueueJoin,
     };
   },
   computed: {
     isType() {
-      return this.helpType === "Godkjenning";
+      return this.user.type === 0;
+    },
+    userType() {
+      if (this.user.type === 1) {
+        return "Hjelp";
+      } else {
+        return "Godkjenning";
+      }
     },
   },
   methods: {
-    approve(){
+    async approve() {
       console.log(this.user.name);
       const assignmentApprove = {
         name: this.user.name,
         subjectId: this.user.subjectId,
         assignmentNumber: 3,
       };
-      const response = axios.post("http://localhost:8085/approveAssignment", assignmentApprove);
-      response.then((resolvedResult) => {
-        console.log(resolvedResult.data);
-        this.$router.push({
-          name: "QueueList",
-        });
-      });
-
-    }
-  }
+      let response = await approveAssignment(assignmentApprove);
+      console.log(response);
+      await this.$router.push({ name: "QueueList" });
+    },
+  },
 };
 </script>
 

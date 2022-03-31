@@ -25,10 +25,11 @@ export default {
   },
   methods: {
     goToQueue(subjectId) {
+      console.log(typeof subjectId);
       this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
       console.log("ferdig emitted " + subjectId);
       //this.$store.dispatch("getAllSubjectQueues", subjectId);
-      this.$router.push({ name: "Queue", params: { subjectId } });
+      this.$router.push({ name: "QueueList" });
     },
   },
 };
