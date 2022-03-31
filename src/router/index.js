@@ -114,6 +114,11 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFoundPage",
+    component:NotFoundPage,
+  },
 ];
 
 const router = createRouter({
