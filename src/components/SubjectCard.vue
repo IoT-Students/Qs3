@@ -41,9 +41,8 @@
           <button @click.stop="goToAssignments" id="chat-button">Se dine øvinger</button>
         </div>
         <div v-if="studass">
-          <button @click.stop="goToQueue" id="queue-button-studass">
-            Se kø
-          </button>
+          <button @click.stop="goToQueue" id="queue-button-studass">Se kø</button>
+
         </div>
       </section>
     </div>

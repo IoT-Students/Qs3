@@ -14,6 +14,7 @@ import AddSubject from "@/components/AddSubject";
 import AdminSubjectView from "@/components/home/AdminSubjectView";
 import AddStudent from "@/components/AddStudent";
 import StudentsView from "@/components/StudentsView";
+import AddStudass from "@/components/AddStudass";
 import NotFoundPage from "@/views/NotFoundPage";
 import AssignmentList from "../views/AssignmentList";
 
@@ -107,6 +108,12 @@ const routes = [
         name: "AddStudent",
         props: true,
         component: AddStudent,
+      },
+      {
+        path: "/home/admin/addStudass",
+        name: "AddStudass",
+        props: true,
+        component: AddStudass,
       },
       {
         path: "/home/admin/students",

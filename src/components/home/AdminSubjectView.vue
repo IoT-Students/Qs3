@@ -6,6 +6,7 @@
     :studass="false"
     @click="showStudents(subject.subjectId)"
     @add-students="goToAddStudent"
+    @add-studass="goToAddStudass"
   >
   </AdminSubjectCard>
 </template>
@@ -29,6 +30,10 @@ export default {
     goToAddStudent(subjectId) {
       console.log(subjectId);
       this.$router.push({ name: "AddStudent", params: { subjectId } });
+    },
+    goToAddStudass(subjectId) {
+      console.log(subjectId);
+      this.$router.push({ name: "AddStudass", params: { subjectId } });
     },
     showStudents(subjectId) {
       this.$store.dispatch("addSubjectStudents", subjectId);

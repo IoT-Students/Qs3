@@ -44,7 +44,10 @@ button {
   display: inline-flex;
   font-family: "Open sans", sans-serif;
   font-size: 100%;
-  line-height: 1.15;
+  color: white;
+  line-height: 1.5;
   margin: 0;
+  border-radius: 4px;
+  background-color: #333232;
 }
 </style>

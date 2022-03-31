@@ -1,6 +1,5 @@
 <template>
   <div class="homeadmin">
-    <h1>Home</h1>
     <HomeAdminLayout />
   </div>
 </template>
