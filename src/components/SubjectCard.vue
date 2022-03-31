@@ -38,11 +38,14 @@
             Still deg i kø
           </button>
           <button @click.stop="goToQueue" id="queue-button">Se kø</button>
-          <button @click.stop="goToAssignments" id="chat-button">Se dine øvinger</button>
+          <button @click.stop="goToAssignments" id="chat-button">
+            Se dine øvinger
+          </button>
         </div>
         <div v-if="studass">
-          <button @click.stop="goToQueue" id="queue-button-studass">Se kø</button>
-
+          <button @click.stop="goToQueue" id="queue-button-studass">
+            Se kø
+          </button>
         </div>
       </section>
     </div>
@@ -72,10 +75,9 @@ export default {
     goToQueue() {
       this.$emit("go-to-queue", this.subject.subjectId);
     },
-    goToAssignments(){
+    goToAssignments() {
       this.$emit("go-to-assignments", this.subject.subjectId);
-
-    }
+    },
   },
 };
 </script>

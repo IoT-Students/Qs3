@@ -26,21 +26,22 @@ export default {
   methods: {
     goToQueue(subjectId) {
       this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
-      console.log("ferdig emitted " + subjectId);
-      this.$store.dispatch("getAllSubjectQueues", subjectId);
+      this.$store.dispatch("getAllSubjectQueues");
       this.$store.dispatch("getSubjectQueueUser", subjectId);
       this.$router.push({ name: "Queue", params: { subjectId } });
     },
     goToForm(subjectId) {
       console.log("Er nå i form med subjectId: " + subjectId);
+      this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
+      this.$router.push({ name: "SubjectQueueForm" });
       this.$store.dispatch("getAssignments", subjectId);
       this.$router.push({ name: "SubjectQueueForm", params: { subjectId } });
     },
-    goToAssignments(subjectId){
+    goToAssignments(subjectId) {
+      this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
       this.$store.dispatch("getAssignments", subjectId);
-      this.$router.push({ name: "AssignmentList", params: { subjectId } });
-
-    }
+      this.$router.push({ name: "AssignmentList" });
+    },
   },
 };
 </script>

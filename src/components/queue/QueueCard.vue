@@ -1,9 +1,10 @@
 <template>
   <div class="student-card">
     <section class="card-grid">
-      <div class="student-number">Bruker: {{ user.userId }}</div>
-      <div class="name" v-if="user.type === 1">Type: Hjelp</div>
-      <div v-else>Type: Godkjenning</div>
+      <p class="queue-number">Nr. 1</p>
+      <div class="student-name">{{ user.name }}</div>
+      <div class="type" v-if="user.type === 1">Type: Hjelp</div>
+      <div class="type" v-else>Type: Godkjenning</div>
       <div class="info">Øving: {{ user.assignments }}</div>
     </section>
   </div>
@@ -16,9 +17,10 @@ export default {
       type: Object,
       required: true,
     },
-    studass: {
-      type: Boolean,
-      required: true,
+    computed: {
+      isStudent() {
+        return this.$store.state.userInfo.role;
+      },
     },
   },
 };
@@ -39,8 +41,16 @@ export default {
 }
 .card-grid {
   display: grid;
-  grid-template-columns: 10% 40% 50%;
+  grid-template-columns: 15% 30% 25% 30%;
 }
-.student-number {
+.student-name {
+  text-align: left;
+  font-weight: bold;
+  font-size: larger;
+}
+.queue-number {
+  margin: 0;
+  text-align: left;
+  padding: 2px;
 }
 </style>

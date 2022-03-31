@@ -48,7 +48,10 @@ export default {
           name: this.$store.state.userInfo.name,
           subjectId: resolvedResult.data,
         };
-        axios.post("http://localhost:8085/subject/students/saveTeacherSubject", subjectUser);
+        axios.post(
+          "http://localhost:8085/subject/students/saveTeacherSubject",
+          subjectUser
+        );
         this.$router.push({
           name: "HomeAdmin",
         });

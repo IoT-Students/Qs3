@@ -34,7 +34,10 @@ export default {
         name: this.name,
       };
       console.log(this.subjectId + ", " + this.name);
-      const response = axios.post("http://localhost:8085/subject/students/saveStudent", subjectUser);
+      const response = axios.post(
+        "http://localhost:8085/subject/students/saveStudent",
+        subjectUser
+      );
       response.then((resolvedResult) => {
         console.log(resolvedResult.data);
         this.$router.push({
@@ -43,9 +46,7 @@ export default {
       });
     },
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

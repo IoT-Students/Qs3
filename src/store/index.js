@@ -11,12 +11,12 @@ export default createStore({
   state: {
     subjectQueueJoin: {},
     subjectQueue: {},
-    currentSubjectQueueId: null,
+    currentSubjectId: null,
     userInfo: {},
     subjects: [],
     subjectQueues: [],
     subjectStudents: [],
-    assignments: []
+    assignments: [],
   },
   mutations: {
     SET_SUBJECT_QUEUE_JOIN(state, subjectQueueJoin) {
@@ -26,7 +26,7 @@ export default createStore({
       state.subjectQueue = subjectQueue;
     },
     SET_SUBJECT_QUEUE_ID(state, subjectId) {
-      state.currentSubjectQueueId = subjectId;
+      state.currentSubjectId = subjectId;
     },
     SET_SUBJECT_QUEUES(state, subjectQueues) {
       state.subjectQueues = subjectQueues;
@@ -46,8 +46,8 @@ export default createStore({
     SET_STUDENTS(state, students) {
       state.subjectStudents = students;
     },
-    SET_ASSIGNMENTS(state, assignments){
-      state.assignments = assignments
+    SET_ASSIGNMENTS(state, assignments) {
+      state.assignments = assignments;
     },
   },
   actions: {
@@ -67,8 +67,8 @@ export default createStore({
         return response;
       });
     },
-    getAllSubjectQueues({ commit }, subjectId) {
-      getSubjectQueues(subjectId)
+    getAllSubjectQueues({ commit }) {
+      getSubjectQueues(this.state.currentSubjectId)
         .then((response) => {
           commit("SET_SUBJECT_QUEUES", response);
           console.log(response);
@@ -102,15 +102,15 @@ export default createStore({
           console.log(error);
         });
     },
-    getAssignments({ commit }, subjectId) {
-      getAssignments(this.state.userInfo.userID, subjectId)
-          .then((response) => {
-            commit("SET_ASSIGNMENTS", response);
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+    getAssignments({ commit }) {
+      getAssignments(this.state.userInfo.userID, this.state.currentSubjectId)
+        .then((response) => {
+          commit("SET_ASSIGNMENTS", response);
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 

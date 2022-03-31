@@ -1,8 +1,8 @@
 <template>
   <div class="student-card">
     <section class="card-grid">
-      <div class="student-number">i</div>
-      <div class="name" >{{ student.name }}</div>
+      <div class="student-name">i</div>
+      <div class="name">{{ student.name }}</div>
       <div class="info">{{ student.role }}</div>
       <div id="email">{{ student.email }}</div>
     </section>

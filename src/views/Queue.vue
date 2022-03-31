@@ -1,9 +1,9 @@
 <template>
   <div class="queuePosition">
-    <router-link :to="{ name: 'QueuePositionList' }">Posisjon</router-link>
-    <router-link @click="getSubjectQueue" :to="{ name: 'QueueList' }"
-      >Liste</router-link
+    <router-link v-show="isStudent" :to="{ name: 'QueuePositionList' }"
+      >Posisjon</router-link
     >
+    <router-link :to="{ name: 'QueueList' }">Liste</router-link>
   </div>
   <router-view></router-view>
 </template>
@@ -15,15 +15,9 @@ export default {
   data() {
     return {};
   },
-  props: {
-    subjectId: {
-      type: Number,
-      required: true,
-    },
-  },
-  methods: {
-    getSubjectQueue() {
-      this.$store.dispatch("getAllSubjectQueues", this.subjectId);
+  computed: {
+    isStudent() {
+      return this.$store.state.userInfo.role === "Student";
     },
   },
 };

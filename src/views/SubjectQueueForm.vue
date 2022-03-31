@@ -88,7 +88,7 @@
       </BaseButton>
     </form>
     <pre>{{ subjectQueue }}</pre>
-    <pre> {{ subjectId }} </pre>
+    <pre> {{ $store.state.currentSubjectId }} </pre>
   </div>
 </template>
 
@@ -135,17 +135,15 @@ export default {
     };
   },
 
-  setup(props) {
+  setup() {
     const store = useStore();
     const router = useRouter();
-
-    console.log(props.subjectId);
 
     function submit() {
       const subjectQueueRequest = {
         ...this.subjectQueue,
         userId: store.state.userInfo.userID,
-        subjectId: props.subjectId,
+        subjectId: store.state.currentSubjectId,
         campus: this.campus,
         building: this.building,
         room: this.room,
@@ -160,12 +158,12 @@ export default {
       store
         .dispatch("createSubjectQueue", subjectQueueRequest)
         .then(() => {
-          store.dispatch("getSubjectQueueUser", props.subjectId);
-          store.dispatch("getAllSubjectQueues", props.subjectId);
+          store.dispatch("getSubjectQueueUser", subjectQueueRequest.subjectId);
+          store.dispatch("getAllSubjectQueues");
         })
         .then(() => {
           router.push({
-            name: "Queue",
+            name: "QueueList",
           });
         });
     }

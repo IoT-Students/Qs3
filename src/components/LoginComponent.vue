@@ -1,6 +1,5 @@
 <template>
-  <div class="loginContainer border ">
-
+  <div class="loginContainer border">
     <div class="header">
       <div>QS<span>3</span></div>
     </div>
@@ -11,19 +10,19 @@
         <fieldset>
           <p id="username">Username</p>
           <BaseInput
-              id="username"
-              class="baseInput"
-              v-model="userInfo.username"
-              type="text"
+            id="username"
+            class="baseInput"
+            v-model="userInfo.username"
+            type="text"
           />
         </fieldset>
         <fieldset>
           <p id="password">Password</p>
           <BaseInput
-              id="password"
-              class="baseInput"
-              v-model="userInfo.password"
-              type="text"
+            id="password"
+            class="baseInput"
+            v-model="userInfo.password"
+            type="text"
           />
         </fieldset>
         <BaseButton type="submit" class="mybtn" something="else">
@@ -31,7 +30,6 @@
         </BaseButton>
       </form>
     </div>
-
   </div>
 </template>
 
@@ -92,7 +90,7 @@ export default {
 </script>
 
 <style scoped>
-.loginContainer{
+.loginContainer {
   display: flex;
   flex-direction: column;
   row-gap: 2px;
@@ -105,14 +103,14 @@ export default {
 
 }
 .border {
-  border:1px solid;
-  border-color:black;
+  border: 1px solid;
+  border-color: black;
   border-radius: 25px;
 }
 
-.header div{
+.header div {
   color: #fff;
-  font-family: 'Exo', sans-serif;
+  font-family: "Exo", sans-serif;
   font-size: 60px;
   font-weight: 500;
 }
@@ -124,7 +122,7 @@ export default {
 
 }
 
-.header div span{
+.header div span {
   color: #5379fa !important;
 }
 
@@ -138,7 +136,6 @@ label,
 input,
 optgroup,
 select,
-
 input,
 [type="text"] {
   height: 100px;
@@ -189,5 +186,4 @@ input,
   transform: scale(1);
   box-shadow: none;
 }
-
 </style>
