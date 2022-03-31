@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import {
+  getAssignments,
   getSubjectQueues,
   getSubjectQueueUser,
   getSubjects,
@@ -15,6 +16,7 @@ export default createStore({
     subjects: [],
     subjectQueues: [],
     subjectStudents: [],
+    assignments: []
   },
   mutations: {
     SET_SUBJECT_QUEUE_JOIN(state, subjectQueueJoin) {
@@ -43,6 +45,9 @@ export default createStore({
     },
     SET_STUDENTS(state, students) {
       state.subjectStudents = students;
+    },
+    SET_ASSIGNMENTS(state, assignments){
+      state.assignments = assignments
     },
   },
   actions: {
@@ -96,6 +101,16 @@ export default createStore({
         .catch((error) => {
           console.log(error);
         });
+    },
+    getAssignments({ commit }, subjectId) {
+      getAssignments(this.state.userInfo.userID, subjectId)
+          .then((response) => {
+            commit("SET_ASSIGNMENTS", response);
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     },
   },
 

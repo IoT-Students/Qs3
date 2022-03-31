@@ -6,6 +6,7 @@
     :studass="false"
     @click="goToForm(subject.subjectId)"
     @go-to-queue="goToQueue"
+    @go-to-assignments="goToAssignments(subject.subjectId)"
   >
   </SubjectCard>
 </template>
@@ -34,6 +35,11 @@ export default {
       console.log("Er nå i form med subjectId: " + subjectId);
       this.$router.push({ name: "SubjectQueueForm", params: { subjectId } });
     },
+    goToAssignments(subjectId){
+      this.$store.dispatch("getAssignments", subjectId);
+      this.$router.push({ name: "AssignmentList", params: { subjectId } });
+
+    }
   },
 };
 </script>

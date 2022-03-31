@@ -38,7 +38,7 @@
             Still deg i kø
           </button>
           <button @click.stop="goToQueue" id="queue-button">Se kø</button>
-          <button @click.stop="dummyClick" id="chat-button">Chat</button>
+          <button @click.stop="goToAssignments" id="chat-button">Se dine øvinger</button>
         </div>
         <div v-if="studass">
           <button @click.stop="goToQueue" id="queue-button-studass">Se kø</button>
@@ -72,6 +72,10 @@ export default {
     goToQueue() {
       this.$emit("go-to-queue", this.subject.subjectId);
     },
+    goToAssignments(){
+      this.$emit("go-to-assignments", this.subject.subjectId);
+
+    }
   },
 };
 </script>

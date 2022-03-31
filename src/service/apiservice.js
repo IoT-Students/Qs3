@@ -52,3 +52,12 @@ export function getStudentsInSubject(subjectId) {
     return response.data;
   });
 }
+
+export function getAssignments(userId, subjectId) {
+    return axios.get("http://localhost:8085/assignment/" + userId + "/" + subjectId).then((response) => {
+        console.log(
+            "Alle øvinger til en student i et gitt fag er " + subjectId + " er " + response.data
+        );
+        return response.data;
+    });}
+
