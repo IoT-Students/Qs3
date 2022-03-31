@@ -7,25 +7,25 @@
       <section class="cardGrid">
         <div class="content">
           <h2 :class="{ altTitle: !isType }">{{ helpType }}</h2>
-          <h3>{{ $store.state.userInfo.name }}</h3>
+          <h3>{{ user.name }}</h3>
           <section class="campus-building">
             <div class="location" id="campus">
               <p>Campus:</p>
-              <h3>{{ $store.state.subjectQueue.campus }}</h3>
+              <h3>{{ user.campus }}</h3>
             </div>
             <div class="location" id="building">
               <p>Bygning:</p>
-              <h3>{{ $store.state.subjectQueue.bygning }}</h3>
+              <h3>{{ user.building }}</h3>
             </div>
           </section>
           <section class="room-table">
             <div class="location" id="room">
               <p>Rom:</p>
-              <h4>{{ $store.state.subjectQueue.rom }}</h4>
+              <h4>{{ user.room }}</h4>
             </div>
             <div class="location" id="table">
               <p>Bord nr:</p>
-              <h4>{{ $store.state.subjectQueue.bord }}</h4>
+              <h4>{{ user.tabl }}</h4>
             </div>
           </section>
           <secton class="assignments-section">
@@ -51,7 +51,7 @@
       </section>
     </div>
   </section>
-  <div>{{ personId }}</div>
+  <div>{{ user.subjectQueueId }}</div>
 
   <button @click="$router.go(-1)"></button>
   <button @click="test"></button>
@@ -76,13 +76,8 @@ export default {
         5: false,
       },
       helpType: "Godkjenning",
+      user: this.$store.state.subjectQueueJoin,
     };
-  },
-  props: {
-    personId: {
-      type: Number,
-      required: true,
-    },
   },
   computed: {
     isType() {
@@ -91,9 +86,10 @@ export default {
   },
   methods: {
     approve(){
+      console.log(this.user.name);
       const assignmentApprove = {
-        name: "Simen",
-        subjectId: 26,
+        name: this.user.name,
+        subjectId: this.user.subjectId,
         assignmentNumber: 3,
       };
       const response = axios.post("http://localhost:8085/approveAssignment", assignmentApprove);

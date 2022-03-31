@@ -1,7 +1,9 @@
 <template>
   <div class="queuePosition">
     <router-link :to="{ name: 'QueuePositionList' }">Posisjon</router-link>
-    <router-link :to="{ name: 'QueueList' }">Liste</router-link>
+    <router-link @click="getSubjectQueue" :to="{ name: 'QueueList' }"
+      >Liste</router-link
+    >
   </div>
   <router-view></router-view>
 </template>
@@ -17,6 +19,11 @@ export default {
     subjectId: {
       type: Number,
       required: true,
+    },
+  },
+  methods: {
+    getSubjectQueue() {
+      this.$store.dispatch("getAllSubjectQueues", this.subjectId);
     },
   },
 };

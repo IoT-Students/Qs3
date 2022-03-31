@@ -11,7 +11,7 @@
       v-for="user in subjectQueues"
       :key="user.subjectQueueId"
       :user="user"
-      @click="goToDetails(user.id)"
+      @click="goToDetails(user)"
     />
   </div>
 </template>
@@ -29,10 +29,12 @@ export default {
     QueueCard,
   },
   methods: {
-    goToDetails(personId) {
+    goToDetails(user) {
       console.log(this.userRole);
-      console.log("Bygning er: " + this.$store.state.subjectQueue.bygning);
-      this.$router.push({ name: "QueueCardDetails", params: { personId } });
+      console.log("Navn er " + user.name);
+      this.$store.dispatch("addSubjectQueueJoin", user);
+      //console.log(this.$store.state.subjectQueueJoin.name);
+      this.$router.push({ name: "QueueCardDetails"});
     },
   },
   computed: {

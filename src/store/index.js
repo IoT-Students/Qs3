@@ -8,6 +8,7 @@ import { addSubjectQueue, getStudentsInSubject } from "../service/apiservice";
 
 export default createStore({
   state: {
+    subjectQueueJoin: {},
     subjectQueue: {},
     currentSubjectQueueId: null,
     userInfo: {},
@@ -16,6 +17,9 @@ export default createStore({
     subjectStudents: [],
   },
   mutations: {
+    SET_SUBJECT_QUEUE_JOIN(state, subjectQueueJoin) {
+      state.subjectQueueJoin = subjectQueueJoin;
+    },
     ADD_SUBJECT_QUEUE(state, subjectQueue) {
       state.subjectQueue = subjectQueue;
     },
@@ -42,6 +46,9 @@ export default createStore({
     },
   },
   actions: {
+    addSubjectQueueJoin({ commit }, subjectQueueJoin) {
+      commit("SET_SUBJECT_QUEUE_JOIN", subjectQueueJoin);
+    },
     async addSubjectStudents({ commit }, subjectId) {
       let students = await getStudentsInSubject(subjectId);
       commit("SET_STUDENTS", students);
