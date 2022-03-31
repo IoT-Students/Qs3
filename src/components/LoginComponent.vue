@@ -71,7 +71,7 @@ export default {
             break;
 
           case "Studass":
-            // Her må fagene til studass hentes til state fra database
+            this.$store.dispatch("getSubjects");
             this.$router.push({ name: "StudAssView" });
             break;
 

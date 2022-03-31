@@ -4,6 +4,7 @@
     :key="subject.id"
     :subject="subject"
     :studass="true"
+    @go-to-queue="goToQueue"
   ></SubjectCard>
 </template>
 
@@ -16,17 +17,20 @@ export default {
   },
   data() {
     return {
-      subjects: [
-        {
-          id: 3,
-          title: "Fullstack",
-          code: "IDATT2105",
-          queueAmount: 2,
-          eta: "",
-          message: "Du kan foreløpig ikke godkjenne noen i dette faget",
-        },
-      ],
     };
+  },
+  computed: {
+    subjects() {
+      return this.$store.state.subjects;
+    },
+  },
+  methods: {
+    goToQueue(subjectId) {
+      this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
+      console.log("ferdig emitted " + subjectId);
+      this.$store.dispatch("getAllSubjectQueues", subjectId);
+      this.$router.push({ name: "Queue", params: { subjectId } });
+    },
   },
 };
 </script>

@@ -16,6 +16,10 @@ export default {
       type: Object,
       required: true,
     },
+    studass: {
+      type: Boolean,
+      required: true,
+    },
   },
 };
 </script>

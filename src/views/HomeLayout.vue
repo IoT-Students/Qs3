@@ -3,7 +3,7 @@
     <h4>Dine emner:</h4>
     <router-view></router-view>
   </div>
-  <div v-else>Ingen bruker logget inn!</div>
+  <div v-else>Ingen fag registrert!</div>
 </template>
 
 <script>
