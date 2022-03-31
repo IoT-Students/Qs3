@@ -45,7 +45,7 @@ export function getSubjectQueueUser(subjectId, userId) {
 }
 
 export function getStudentsInSubject(subjectId) {
-  return axios.get("http://localhost:8085/" + subjectId).then((response) => {
+  return axios.get("http://localhost:8085/subject/students/" + subjectId).then((response) => {
     console.log(
       "Alle studenter fra subjectId " + subjectId + " er " + response.data
     );
