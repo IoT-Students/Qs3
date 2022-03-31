@@ -41,7 +41,9 @@
           <button @click.stop="dummyClick" id="chat-button">Chat</button>
         </div>
         <div v-if="studass">
-          <button @click.stop="goToQueue" id="queue-button-studass">Se kø</button>
+          <button @click.stop="goToQueue" id="queue-button-studass">
+            Se kø
+          </button>
         </div>
       </section>
     </div>
@@ -70,7 +72,7 @@ export default {
     },
     goToQueue() {
       this.$emit("go-to-queue", this.subject.subjectId);
-    }
+    },
   },
 };
 </script>

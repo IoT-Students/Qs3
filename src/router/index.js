@@ -14,6 +14,7 @@ import AddSubject from "@/components/AddSubject";
 import AdminSubjectView from "@/components/home/AdminSubjectView";
 import AddStudent from "@/components/AddStudent";
 import StudentsView from "@/components/StudentsView";
+import NotFoundPage from "@/views/NotFoundPage";
 
 const routes = [
   {
@@ -103,8 +104,13 @@ const routes = [
         path: "/home/admin/students",
         name: "StudentsView",
         component: StudentsView,
-      }
+      },
     ],
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFoundPage",
+    component: NotFoundPage,
   },
 ];
 

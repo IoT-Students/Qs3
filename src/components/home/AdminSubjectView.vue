@@ -1,11 +1,11 @@
 <template>
   <AdminSubjectCard
-      v-for="subject in subjects"
-      :key="subject.subjectId"
-      :subject="subject"
-      :studass="false"
-      @click="showStudents"
-      @add-students="goToAddStudent"
+    v-for="subject in subjects"
+    :key="subject.subjectId"
+    :subject="subject"
+    :studass="false"
+    @click="showStudents(subject.subjectId)"
+    @add-students="goToAddStudent"
   >
   </AdminSubjectCard>
 </template>
@@ -27,16 +27,15 @@ export default {
   },
   methods: {
     goToAddStudent(subjectId) {
-      console.log(subjectId)
+      console.log(subjectId);
       this.$router.push({ name: "AddStudent", params: { subjectId } });
     },
-    showStudents() {
+    showStudents(subjectId) {
+      this.$store.dispatch("addSubjectStudents", subjectId);
       this.$router.push({ name: "StudentsView" });
-    }
+    },
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

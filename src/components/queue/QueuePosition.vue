@@ -1,14 +1,14 @@
 <template>
-  <h1>Du er nå i kø! </h1>
+  <h1>Du er nå i kø!</h1>
   <div class="queueInfoContainer">
-    <div> Bygning: {{ queueUser.building }}</div>
-    <div> Rom: {{ queueUser.room }}</div>
-    <div v-if="queueUser.type === 1"> Type: Hjelp</div>
-    <div v-else> Type: Godkjenning </div>
+    <div>Bygning: {{ queueUser.building }}</div>
+    <div>Rom: {{ queueUser.room }}</div>
+    <div v-if="queueUser.type === 1">Type: Hjelp</div>
+    <div v-else>Type: Godkjenning</div>
   </div>
   <div class="position">
     <h3>Your position</h3>
-    <h1> LEGG INN POSISJON HER </h1>
+    <h1>LEGG INN POSISJON HER</h1>
   </div>
   <div class="assignments">
     <h3>Assignments</h3>

@@ -2,43 +2,45 @@
   <section class="subjectCardContainer">
     <div class="subjectCard">
       <section class="cardGrid">
-     <div class="content">
-      <section class="meta-grid">
-        <div class="subject-info">
-          <h3 id="title">{{ subject.subjectName }}</h3>
-          <h4 id="code">{{ subject.subjectCode }}</h4>
-        </div>
-        <div class="queue-info">
-          <div id="imageContainer">
-            <p>
-              <img
-                  src="../assets/images/outline_people_black_24dp.png"
-                  alt="Hourglass"
-              />
-              {{ subject.queueAmount }}
-            </p>
-            <p v-if="!studass">
-              <img
-                  src="../assets/images/outline_hourglass_bottom_black_24dp.png"
-                  alt="Hourglass"
-              />
-              {{ subject.eta }}
+        <div class="content">
+          <section class="meta-grid">
+            <div class="subject-info">
+              <h3 id="title">{{ subject.subjectName }}</h3>
+              <h4 id="code">{{ subject.subjectCode }}</h4>
+            </div>
+            <div class="queue-info">
+              <div id="imageContainer">
+                <p>
+                  <img
+                    src="../assets/images/outline_people_black_24dp.png"
+                    alt="Hourglass"
+                  />
+                  {{ subject.queueAmount }}
+                </p>
+                <p v-if="!studass">
+                  <img
+                    src="../assets/images/outline_hourglass_bottom_black_24dp.png"
+                    alt="Hourglass"
+                  />
+                  {{ subject.eta }}
+                </p>
+              </div>
+            </div>
+          </section>
+          <div class="subject-message">
+            <p id="notice-message">
+              {{ subject.message }}
             </p>
           </div>
         </div>
+        <div class="queue-buttons">
+          <button @click.stop="addStudents()" id="exercise-button">
+            Add students
+          </button>
+        </div>
       </section>
-      <div class="subject-message">
-        <p id="notice-message">
-          {{ subject.message }}
-        </p>
-      </div>
-    </div>
-    <div class="queue-buttons">
-      <button @click.stop="addStudents()" id="exercise-button">Add students</button>
     </div>
   </section>
-</div>
-</section>
 </template>
 
 <script>
@@ -153,7 +155,7 @@ img {
   border: solid #1c658c;
   background: #eceff4;
   box-shadow: rgb(3 8 20 / 10%) 0px 0.15rem 0.5rem,
-  rgb(2 8 20 / 10%) 0px 0.075rem 0.175rem;
+    rgb(2 8 20 / 10%) 0px 0.075rem 0.175rem;
   cursor: pointer;
   transition: 0.3s ease;
 }

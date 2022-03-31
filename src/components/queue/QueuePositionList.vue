@@ -1,9 +1,9 @@
 <template>
   <div class="queues">
     <QueuePosition
-        v-for="queueUser in subjectQueue"
-        :key="queueUser.id"
-        :queueUser="queueUser"
+      v-for="queueUser in subjectQueue"
+      :key="queueUser.id"
+      :queueUser="queueUser"
     />
   </div>
   <div><router-link to="/SubjectQueueForm">Edit info</router-link></div>
@@ -25,8 +25,8 @@ export default {
   methods: {
     removeFromQueue() {
       alert("You are now removed from the queue");
-      },
     },
+  },
 };
 </script>
 

@@ -1,23 +1,20 @@
 <template>
   <div class="student-card">
     <section class="card-grid">
-      <div class="student-number">Bruker: {{ user.userId }}</div>
-      <div class="name" v-if="user.type === 1">Type: Hjelp</div>
-      <div v-else>Type: Godkjenning</div>
-      <div class="info">Øving: {{ user.assignments }}</div>
+      <div class="student-number">i</div>
+      <div class="name" >{{ student.name }}</div>
+      <div class="info">{{ student.role }}</div>
+      <div id="email">{{ student.email }}</div>
     </section>
   </div>
 </template>
 
 <script>
 export default {
+  name: "StudentsCard",
   props: {
-    user: {
+    student: {
       type: Object,
-      required: true,
-    },
-    studass: {
-      type: Boolean,
       required: true,
     },
   },
@@ -30,6 +27,7 @@ export default {
   width: 40rem;
   cursor: pointer;
   border: 1px solid #1c658c;
+  margin: 0 auto;
   margin-bottom: 18px;
   border-radius: 5px;
 }
@@ -39,8 +37,9 @@ export default {
 }
 .card-grid {
   display: grid;
-  grid-template-columns: 10% 40% 50%;
+  grid-template-columns: 10% 30% 30% 30%;
 }
-.student-number {
+.name {
+  font-weight: bold;
 }
 </style>
