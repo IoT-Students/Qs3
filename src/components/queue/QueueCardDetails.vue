@@ -31,7 +31,7 @@
           <section class="assignments-section">
             <div class="assignments">
               <p>Øvinger:</p>
-              <h4>3, 4</h4>
+              <h4>{{user.assignment}}</h4>
             </div>
           </section>
         </div>
@@ -81,7 +81,7 @@ export default {
       const assignmentApprove = {
         name: this.user.name,
         subjectId: this.user.subjectId,
-        assignmentNumber: 3,
+        assignmentNumber: this.user.assignment,
       };
       let response = await approveAssignment(assignmentApprove);
       console.log(response);
