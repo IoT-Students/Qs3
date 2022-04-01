@@ -47,7 +47,7 @@ button {
   color: white;
   line-height: 1.5;
   margin: 0;
-  border-radius: 4px;
-  background-color: #333232;
+  border-radius: 7px;
+  background-color: rgba(23, 28, 37, 0.4);
 }
 </style>

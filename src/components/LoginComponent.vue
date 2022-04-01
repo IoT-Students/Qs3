@@ -1,33 +1,45 @@
 <template>
   <div class="loginContainer border">
-    <div class="header">
-      <div>QS<span>3</span></div>
-    </div>
-
-    <div class="loginFunction">
+    <div class="titleInfo">
+      <div class="header">
+        <div>QS<span>3</span></div>
+      </div>
       <h1 id="loginTitle">Login to QS3</h1>
+    </div>
+    <div class="loginFunction">
       <form class="login" @submit.prevent="SignIn">
-        <fieldset>
-          <p id="username">Username</p>
-          <BaseInput
-            id="username"
-            class="baseInput"
-            v-model="userInfo.username"
-            type="text"
-          />
-        </fieldset>
-        <fieldset>
-          <p id="password">Password</p>
-          <BaseInput
-            id="password"
-            class="baseInput"
-            v-model="userInfo.password"
-            type="text"
-          />
-        </fieldset>
-        <BaseButton type="submit" class="mybtn" id="loginButton" something="else">
-          Sign in
-        </BaseButton>
+        <div class="infoContainer">
+          <fieldset>
+            <div class="passwordContainer">
+              <div class="password">
+                <p id="username">Username</p>
+              </div>
+              <BaseInput
+                  id="username"
+                  class="baseInput"
+                  v-model="userInfo.username"
+                  type="text"
+              />
+
+            </div>
+
+          </fieldset>
+          <fieldset>
+            <div class="passwordContainer">
+              <div class="password">
+                <p id="password">Password</p>
+              </div>
+              <BaseInput
+                  id="password"
+                  class="baseInput"
+                  v-model="userInfo.password"
+                  type="text"
+              />
+            </div>
+
+          </fieldset>
+          <button type="submit" class="mybtn" id="loginButton" something="else">Sign in</button>
+        </div>
       </form>
     </div>
   </div>
@@ -35,14 +47,12 @@
 
 <script>
 import BaseInput from "@/components/BaseInput";
-import BaseButton from "./BaseButton";
 import { doLogin } from "@/service/apiservice";
 
 export default {
   name: "LoginComponent",
   components: {
     BaseInput,
-    BaseButton,
   },
   data() {
     return {
@@ -98,37 +108,57 @@ export default {
   margin: 0 auto;
   margin-top: 15%;
   width: 300px;
-  background-color: black;
-
-
 }
-.border {
-  border: 1px solid;
-  border-color: black;
-  border-radius: 25px;
+
+#loginTitle{
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-weight: 100;
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.95);
+}
+.header{
+  width: 100px;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .header div {
   color: #fff;
-  font-family: "Exo", sans-serif;
-  font-size: 60px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 40px;
   font-weight: 500;
 }
 #username{
-  color: darkgray;
+  color: #C9D1D9;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  margin: 0 auto;
 }
 #password{
-  color: darkgray;
+  color: #C9D1D9;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  margin: 0 auto;
 
+}
+.infoContainer{
+  border: 1px solid rgba(0, 0, 0, 0.96);
+  border-radius: 10px;
+  background-color: #161B22;
 }
 
 .header div span {
   color: #5379fa !important;
 }
+.passwordContainer{
+  max-width: 180px;
+  margin: 0 auto;
+}
+.password{
+  text-align: left;
+}
 
 fieldset {
   border: 0;
-  margin: 0;
+  margin: 20px;
   padding: 0;
 }
 mybtn,
@@ -157,16 +187,13 @@ input,
 
 .mybtn {
   align-items: center;
-  justify-content: space-between;
-  width: 170px;
-  height: 15px;
-  padding: 20px;
-  background-color: cornflowerblue;
-  border-radius: 4px;
-  text-align: center;
-  font-weight: 600;
-  transition: all 0.2s linear;
-  margin: 0 auto;
+ padding: 10px;
+  width: 180px;
+  color: white;
+  background-color: #5379fa;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  border-radius: 6px;
+  font-weight: 700;
 }
 .mybtn:hover {
   -webkit-transform: scale(1.02);

@@ -111,18 +111,6 @@ export default {
   },
 
   computed: {
-    isError() {
-      if (
-        this.errors.campus ||
-        this.errors.building ||
-        this.errors.room ||
-        this.errors.table
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    },
     assignments() {
       return this.$store.state.assignments;
     },
