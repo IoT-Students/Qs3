@@ -7,17 +7,28 @@
           <router-link v-if="isStudent" :to="{ name: 'StudentView' }"
             >Home</router-link
           >
-          <router-link :to="{ name: 'SubjectQueueForm' }"
-            >Subject Queue Form</router-link
+          <router-link :to="{ name: 'Login' }" @click="clearState"
+            >Logout</router-link
           >
-          <router-link :to="{ name: 'Queue' }">Queue</router-link>
         </div>
-        <router-link v-if="isStudass" :to="{ name: 'StudAssView' }"
+        <div v-if="isStudass">
+          <router-link :to="{ name: 'StudAssView' }"
           >Home</router-link
-        >
-        <router-link v-if="isAdmin" :to="{ name: 'HomeAdmin' }"
+          >
+          <router-link :to="{ name: 'Login' }" @click="clearState"
+          >Logout</router-link
+          >
+        </div>
+        <div v-if="isAdmin">
+          <router-link :to="{ name: 'HomeAdmin' }"
           >Home</router-link
-        >
+          >
+          <router-link :to="{ name: 'Login' }" @click="clearState"
+          >Logout</router-link
+          >
+        </div>
+
+
       </div>
     </div>
   </div>
@@ -36,6 +47,11 @@ export default {
       return this.$store.state.userInfo.role === "Admin";
     },
   },
+  methods: {
+    clearState(){
+      this.$store.dispatch('resetState');
+    }
+  }
 };
 </script>
 <style>

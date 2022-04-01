@@ -7,8 +7,8 @@ import {
 } from "../service/apiservice";
 import { addSubjectQueue, getStudentsInSubject } from "../service/apiservice";
 
-export default createStore({
-  state: {
+const getDefaultState = () => {
+  return {
     subjectQueueJoin: {},
     subjectQueue: {},
     currentSubjectId: null,
@@ -16,8 +16,16 @@ export default createStore({
     subjects: [],
     subjectQueues: [],
     subjectStudents: [],
-  },
+  }
+}
+const state = getDefaultState()
+
+export default createStore({
+  state,
   mutations: {
+    RESET_STATE(state) {
+      Object.assign(state, getDefaultState())
+    },
     SET_SUBJECT_QUEUE_JOIN(state, subjectQueueJoin) {
       state.subjectQueueJoin = subjectQueueJoin;
     },
@@ -50,6 +58,10 @@ export default createStore({
     },
   },
   actions: {
+    resetState({ commit }) {
+      console.log("Reset state!")
+      commit('RESET_STATE')
+    },
     addSubjectQueueJoin({ commit }, subjectQueueJoin) {
       commit("SET_SUBJECT_QUEUE_JOIN", subjectQueueJoin);
     },
