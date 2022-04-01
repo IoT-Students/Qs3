@@ -4,8 +4,8 @@
       <div class="assignment-number">
         Øving: {{ assignment.assignmentNumber }}
       </div>
-      <div class="status" v-if="assignment.status === true">Status: Godkjent</div>
-      <div class="status" v-else>Status: Underkjent</div>
+      <div class="statusGodkjent" v-if="assignment.status === true">Status: <span id="godkjentSpan">Godkjent</span></div>
+      <div class="statusUnderkjent" v-else>Status: <span id="underkjentSpan"> Underkjent</span> </div>
     </section>
   </div>
 </template>
@@ -43,6 +43,14 @@ export default {
   display: grid;
   grid-template-columns: 40% 50%;
   font-weight: bold;
-
 }
+
+#godkjentSpan{
+  color: green;
+}
+
+#underkjentSpan{
+  color: red;
+}
+
 </style>
