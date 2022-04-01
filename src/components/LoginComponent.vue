@@ -25,7 +25,7 @@
             type="text"
           />
         </fieldset>
-        <BaseButton type="submit" class="mybtn" something="else">
+        <BaseButton type="submit" class="mybtn" id="loginButton" something="else">
           Sign in
         </BaseButton>
       </form>

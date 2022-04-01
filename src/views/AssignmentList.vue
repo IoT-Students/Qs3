@@ -1,5 +1,6 @@
 <template>
   <div class="assignments">
+    <h2 class="assignmentListHeader">Øvinger</h2>
     <AssignmentCard
       v-for="assignment in assignments"
       :key="assignment.assignmentId"
@@ -29,4 +30,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.assignmentListHeader{
+  text-decoration: underline;
+}
+</style>
