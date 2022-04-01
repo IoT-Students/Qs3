@@ -141,10 +141,6 @@ export default {
             "getSubjectQueueUser",
             subjectQueueRequest.subjectId
           );
-          this.$store.dispatch(
-            "getSubjectQueueUser",
-            subjectQueueRequest.subjectId
-          );
           this.$store.dispatch("getAllSubjectQueues");
         })
         .then(() => {
