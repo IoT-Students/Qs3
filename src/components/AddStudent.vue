@@ -4,14 +4,18 @@
     <form @submit.prevent="submit">
       <h3>Please register student for subject with id!</h3>
       <div>
-        <BaseInput v-model="name" label="Name" type="text" />
+        <textarea class="inputStudents" v-model="names"/>
       </div>
-      <button class="mybtn" type="submit">Sign up</button>
+      <div>
+        <button class="mybtn" type="submit">Sign up</button>
+      </div>
     </form>
   </div>
 </template>
 
 <script>
+
+
 import axios from "axios";
 
 export default {
@@ -24,19 +28,30 @@ export default {
   },
   data() {
     return {
-      name: "",
+      names: "",
     };
   },
   methods: {
     submit() {
-      const subjectUser = {
-        subjectId: this.subjectId,
-        name: this.name,
-      };
-      console.log(this.subjectId + ", " + this.name);
+      console.log(this.names);
+      const myArray = this.names.split(",").map(function(item){
+        return item.trim();
+      });
+      console.log(myArray);
+
+      let subjectUserArray = [];
+      for(let i=0; i < myArray.length; i++){
+        const subjectUser = {
+          subjectId: this.subjectId,
+          name: myArray[i],
+        };
+        subjectUserArray.push(subjectUser)
+      }
+      console.log(subjectUserArray);
+
       const response = axios.post(
-        "http://localhost:8085/subject/students/saveStudent",
-        subjectUser
+        "http://localhost:8085/subject/students/saveStudents",
+        subjectUserArray
       );
       response.then((resolvedResult) => {
         console.log(resolvedResult.data);
@@ -49,4 +64,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.inputStudents{
+  height: 100px;
+  width: 400px;
+  overflow: auto;
+}
+</style>
