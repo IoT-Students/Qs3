@@ -1,4 +1,6 @@
 <template>
+  <div>
+  </div>
   <div class="assignmentCardContainer">
     <section class="card-grid">
       <div class="assignment-number">
@@ -18,6 +20,11 @@ export default {
     assignment: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    requiredAssignments() {
+      return this.$store.state.subject.requiredAssignmentAmount;
     },
   },
 };
