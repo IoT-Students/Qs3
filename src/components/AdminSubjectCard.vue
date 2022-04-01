@@ -11,18 +11,8 @@
             <div class="queue-info">
               <div id="imageContainer">
                 <p>
-                  <img
-                    src="../assets/images/outline_people_black_24dp.png"
-                    alt="Hourglass"
-                  />
-                  {{ subject.queueAmount }}
-                </p>
-                <p v-if="!studass">
-                  <img
-                    src="../assets/images/outline_hourglass_bottom_black_24dp.png"
-                    alt="Hourglass"
-                  />
-                  {{ subject.eta }}
+                  Antall i kø:
+                  {{ subject.queueSize }}
                 </p>
               </div>
             </div>
@@ -34,8 +24,8 @@
           </div>
         </div>
         <div class="queue-buttons">
-          <button @click.stop="addStudents()">Add students</button>
-          <button @click.stop="addStudass()">Add stud.add</button>
+          <button @click.stop="addStudents()" id="addStudentsButton">Add students</button>
+          <button @click.stop="addStudass()" id="addStudassButton">Add stud.ass</button>
         </div>
       </section>
     </div>
@@ -102,6 +92,16 @@ button {
 img {
   display: inline-block;
   margin: 0 auto;
+}
+#addStudentsButton {
+  border: solid #2e74f3;
+  color: #2e74f3;
+  background: floralwhite;
+}
+#addStudassButton {
+  border: solid green;
+  color: green;
+  background: floralwhite;
 }
 #exercise-button {
   border: solid #2e74f3;

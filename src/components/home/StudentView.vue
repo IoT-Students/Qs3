@@ -28,14 +28,14 @@ export default {
       this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
       this.$store.dispatch("getAllSubjectQueues");
       this.$store.dispatch("getSubjectQueueUser", subjectId);
-      this.$router.push({ name: "Queue", params: { subjectId } });
+      this.$router.push({ name: "QueueList" });
     },
     goToForm(subjectId) {
       console.log("Er nå i form med subjectId: " + subjectId);
       this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
       this.$router.push({ name: "SubjectQueueForm" });
       this.$store.dispatch("getAssignments", subjectId);
-      this.$router.push({ name: "SubjectQueueForm", params: { subjectId } });
+      this.$router.push({ name: "SubjectQueueForm" });
     },
     goToAssignments(subjectId) {
       this.$store.dispatch("addCurrentSubjectQueueId", subjectId);

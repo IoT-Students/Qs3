@@ -2,9 +2,10 @@
   <div id="nav" v-if="!$route.meta.hideNavbar">
     <div id="navContent">
       <p id="nameTitle">{{ $store.state.userInfo.name }}</p>
+      <div></div>
       <div id="routerButtons">
         <div v-if="isStudent">
-          <router-link v-if="isStudent" :to="{ name: 'StudentView' }"
+          <router-link @click="loadSubjects" v-if="isStudent" :to="{ name: 'StudentView' }"
             >Home</router-link
           >
           <router-link :to="{ name: 'Login' }" @click="clearState"
@@ -12,7 +13,7 @@
           >
         </div>
         <div v-if="isStudass">
-          <router-link :to="{ name: 'StudAssView' }"
+          <router-link @click="loadSubjects" :to="{ name: 'StudAssView' }"
           >Home</router-link
           >
           <router-link :to="{ name: 'Login' }" @click="clearState"
@@ -20,7 +21,7 @@
           >
         </div>
         <div v-if="isAdmin">
-          <router-link :to="{ name: 'HomeAdmin' }"
+          <router-link @click="loadSubjects" :to="{ name: 'HomeAdmin' }"
           >Home</router-link
           >
           <router-link :to="{ name: 'Login' }" @click="clearState"
@@ -49,7 +50,10 @@ export default {
   },
   methods: {
     clearState(){
-      this.$store.dispatch('resetState');
+      this.$store.dispatch("resetState");
+    },
+    loadSubjects() {
+      this.$store.dispatch("getSubjects");
     }
   }
 };
@@ -93,14 +97,18 @@ html {
   bottom: 0;
 }
 #routerButtons {
-  justify-content: center;
+  padding: 15px;
+  width: min-content;
+  align-items: center;
+  text-align: right;
+  justify-content: right;
 }
 
 #navContent {
   width: 50rem;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 15% 66% 19%;
   border-bottom: solid #333232;
 }
 

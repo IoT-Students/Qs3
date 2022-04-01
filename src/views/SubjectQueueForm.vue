@@ -1,47 +1,59 @@
 <template>
   <div class="form-container">
-    <h1>Still deg i kø!</h1>
+    <h1 class="title">Still deg i kø!</h1>
     <form class="form" @submit.prevent="submit">
       <fieldset>
-        <legend>Lokasjon</legend>
-        <BaseSelect
-          :options="Campus"
-          v-model="subjectQueue.campus"
-          label="Select a campus"
-        />
+        <legend id="title">Lokasjon</legend>
+        <div class="location">
+          <BaseSelect
+              :options="Campus"
+              v-model="subjectQueue.campus"
+              label="Select a campus"
+
+          />
+        </div>
         <p></p>
-        <BaseSelect
-          :options="Buildings"
-          v-model="subjectQueue.building"
-          label="Select a building"
-        />
+        <div class="location">
+          <BaseSelect
+              :options="Buildings"
+              v-model="subjectQueue.building"
+              label="Select a building"
+          />
+        </div>
         <p></p>
-        <BaseSelect
-          :options="Rooms"
-          v-model="subjectQueue.room"
-          label="Select a room"
-        />
+        <div class="location">
+          <BaseSelect
+              :options="Rooms"
+              v-model="subjectQueue.room"
+              label="Select a room"
+              class="location"
+          />
+        </div>
         <p></p>
-        <BaseSelect
-          :options="Tables"
-          v-model="subjectQueue.table"
-          label="Select a table"
-        />
+        <div class="location">
+          <BaseSelect
+              :options="Tables"
+              v-model="subjectQueue.table"
+              label="Select a table"
+              class="location"
+          />
+        </div>
       </fieldset>
       <fieldset>
-        <legend>Øvinger</legend>
+        <legend class="title">Øvinger</legend>
         <div class="assignments">
           <AssignmentFormCard
             v-for="assignment in assignments"
             :key="assignment.assignmentId"
             :assignment="assignment"
             @click="updateAssignmentNumber(assignment.assignmentNumber)"
+            type="button"
           />
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>Type</legend>
+        <legend class="title">Type</legend>
 
         <BaseRadioGroup
           v-model="subjectQueue.type"
@@ -97,76 +109,7 @@ export default {
       Tables: ["1", "2", "3"],
     };
   },
-  /*
 
-  setup() {
-    const store = useStore();
-    const router = useRouter();
-
-    function submit() {
-      const subjectQueueRequest = {
-        ...this.subjectQueue,
-        userId: store.state.userInfo.userID,
-        subjectId: store.state.currentSubjectId,
-        campus: this.campus,
-        building: this.building,
-        room: this.room,
-        table: this.table,
-        assignment: this.assignment,
-        type: this.type,
-      };
-      console.log("Dette er køobjektet: " + subjectQueueRequest.assignment);
-      console.log("Dette er køobjektet: " + this.assignment);
-
-
-      store
-        .dispatch("createSubjectQueue", subjectQueueRequest)
-        .then(() => {
-          store.dispatch("getSubjectQueueUser", subjectQueueRequest.subjectId);
-          store.dispatch("getAllSubjectQueues");
-        })
-        .then(() => {
-          router.push({
-            name: "QueueList",
-          });
-        });
-    }
-    const validationSchema = object({
-      campus: string().required("A campus is required"),
-      building: string().required("A building is required"),
-      room: string().required("A room is required"),
-      table: string().required("A table is required"),
-      type: number(),
-      assignment: number(),
-    });
-
-    const { errors } = useForm({
-      validationSchema,
-      initialValues: {
-        type: 1,
-      },
-    });
-
-    const { value: campus } = useField("campus");
-    const { value: building } = useField("building");
-    const { value: room } = useField("room");
-    const { value: table } = useField("table");
-    const { value: type } = useField("type");
-    const { value: assignment } = useField("assignment");
-
-    return {
-      campus,
-      building,
-      room,
-      table,
-      type,
-      submit,
-      errors,
-      assignment,
-    };
-
-  },
-  */
   computed: {
     isError() {
       if (
@@ -210,7 +153,10 @@ export default {
             "getSubjectQueueUser",
             subjectQueueRequest.subjectId
           );
-          this.$store.dispatch("getSubjectQueueUser", subjectQueueRequest.subjectId);
+          this.$store.dispatch(
+            "getSubjectQueueUser",
+            subjectQueueRequest.subjectId
+          );
           this.$store.dispatch("getAllSubjectQueues");
         })
         .then(() => {
@@ -225,7 +171,7 @@ export default {
 <style scoped>
 fieldset {
   border: 0;
-  margin: 0;
+  margin: 2.5rem;
   padding: 0;
 }
 legend {
@@ -233,10 +179,28 @@ legend {
   font-weight: 700;
   margin-top: 20px;
 }
-.assignments {
-  display: flex;
-  flex-direction: row;
+.title {
+  margin: 5px;
 }
+#title {
+  margin: 2rem auto;
+}
+.assignments {
+  margin: 0 auto;
+  padding: 10px;
+}
+.form {
+  border: solid #1c658c;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.location {
+  max-width: 300px;
+  text-align: left;
+  margin: 0 auto;
+}
+
 .mybtn,
 label,
 input,

@@ -1,10 +1,13 @@
 <template>
-  <div class="assignmentCard" data-status="{{assignment.status}}">
+  <button
+    class="assignmentCard"
+    :class="{ disabled: isApproved }"
+    :disabled="isApproved"
+  >
     <section class="card-grid">
       <div class="assignment-number">{{ assignment.assignmentNumber }}</div>
-      <div class="assignment-status">{{ assignment.status }}</div>
     </section>
-  </div>
+  </button>
 </template>
 
 <script>
@@ -16,8 +19,13 @@ export default {
       type: Object,
       required: true,
     },
-  }
-}
+  },
+  computed: {
+    isApproved() {
+      return this.assignment.status;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -27,16 +35,26 @@ export default {
 [data-status="false"] {
   color: red;
 }
-.assignmentCard{
+.assignmentCard {
   padding: 0px;
   width: 3rem;
   align-items: center;
-  border: 1px solid #1c658c;
+  border: 2px solid #1c658c;
   border-radius: 5px;
+  margin: 5px;
+  height: 2rem;
 }
 .assignmentCard:hover {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
-
+.disabled {
+  border: solid green 1px;
+}
+.disabled:hover {
+  cursor: default;
+  box-shadow: 0 0 0 0;
+  transform: scale(1);
+}
 </style>
