@@ -5,7 +5,7 @@
       <div class="student-name">{{ user.name }}</div>
       <div class="type" v-if="user.type === 1">Type: Hjelp</div>
       <div class="type" v-else>Type: Godkjenning</div>
-      <div class="info">Øving: {{ user.assignments }}</div>
+      <div class="info">Øving: {{ user.assignment }}</div>
     </section>
   </div>
 </template>

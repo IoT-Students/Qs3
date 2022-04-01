@@ -16,6 +16,7 @@ export function addSubjectQueue(subjectQueue) {
   return axios
     .post("http://localhost:8085/subjectQueue", subjectQueue)
     .then((response) => {
+        console.log(typeof (subjectQueue.assignment))
       return response.data;
     });
 }
@@ -30,7 +31,7 @@ export function getSubjectQueues(subjectId) {
   return axios
     .get("http://localhost:8085/subjectQueue/" + subjectId)
     .then((response) => {
-      return response.data;
+     return response.data;
     });
 }
 
@@ -38,7 +39,7 @@ export function getSubjectQueueUser(subjectId, userId) {
   return axios
     .get("http://localhost:8085/subjectQueue/" + subjectId + "/" + userId)
     .then((response) => {
-      console.log(response.data);
+     // console.log(response.data);
       return response.data;
     });
 }

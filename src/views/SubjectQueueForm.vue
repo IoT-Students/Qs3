@@ -4,77 +4,50 @@
     <form class="form" @submit.prevent="submit">
       <fieldset>
         <legend>Lokasjon</legend>
-
         <BaseSelect
           :options="Campus"
-          v-model="campus"
+          v-model="subjectQueue.campus"
           label="Select a campus"
-          :error="errors.campus"
+
         />
         <p></p>
         <BaseSelect
           :options="Buildings"
-          v-model="building"
+          v-model="subjectQueue.building"
           label="Select a building"
-          :error="errors.building"
         />
         <p></p>
         <BaseSelect
           :options="Rooms"
-          v-model="room"
+          v-model="subjectQueue.room"
           label="Select a room"
-          :error="errors.room"
         />
         <p></p>
         <BaseSelect
           :options="Tables"
-          v-model="table"
+          v-model="subjectQueue.table"
           label="Select a table"
-          :error="errors.table"
         />
       </fieldset>
-
       <fieldset>
         <legend>Øvinger</legend>
         <div class="assignments">
           <AssignmentFormCard
-              v-for="assignment in assignments"
-              :key="assignment.assignmentId"
-              :assignment="assignment"
-              @click="updateAssignmentNumber(assignment.assignmentNumber)"
+            v-for="assignment in assignments"
+            :key="assignment.assignmentId"
+            :assignment="assignment"
+            @click="updateAssignmentNumber(assignment.assignmentNumber)"
           />
         </div>
-
-        <BaseCheckBox
-          v-model="assignmentOne"
-          label="1"
-          :error="errors.assignmentOne"
-        />
-        <BaseCheckBox
-          v-model="assignmentTwo"
-          label="2"
-          :error="errors.assignmentTwo"
-        />
-        <BaseCheckBox
-          v-model="assignmentThree"
-          label="3"
-          :error="errors.assignmentThree"
-        />
-        <BaseCheckBox
-          v-model="assignmentFour"
-          label="4"
-          :error="errors.assignmentFour"
-        />
       </fieldset>
 
       <fieldset>
         <legend>Type</legend>
 
         <BaseRadioGroup
-          v-model="type"
+          v-model="subjectQueue.type"
           name="type"
           :options="typeOptions"
-          :error="errors.type"
         />
       </fieldset>
 
@@ -94,18 +67,8 @@
 
 <script>
 import AssignmentFormCard from "../components/AssignmentFormCard";
-import { useField, useForm } from "vee-validate";
-import { number, object, string } from "yup";
-import { useStore } from "vuex";
-import { useRouter } from "vue-router";
 
 export default {
-  props: {
-    subjectId: {
-      type: Number,
-      required: true,
-    },
-  },
   components: {
     AssignmentFormCard,
   },
@@ -116,7 +79,7 @@ export default {
         building: "",
         room: "",
         table: "",
-        assignments: null,
+        assignment: null,
         type: 1,
       },
       typeOptions: [
@@ -134,6 +97,7 @@ export default {
       Tables: ["1", "2", "3"],
     };
   },
+  /*
 
   setup() {
     const store = useStore();
@@ -200,7 +164,9 @@ export default {
       errors,
       assignment,
     };
+
   },
+  */
   computed: {
     isError() {
       if (
@@ -219,12 +185,40 @@ export default {
     },
   },
   methods: {
-    updateAssignmentNumber(assignmentNumber){
+    updateAssignmentNumber(assignmentNumber) {
       this.subjectQueue.assignment = assignmentNumber;
       console.log(this.subjectQueue.assignment);
       console.log(assignmentNumber);
-    }
-  }
+    },
+    submit() {
+      const subjectQueueRequest = {
+        userId: this.$store.state.userInfo.userID,
+        subjectId: this.$store.state.currentSubjectId,
+        campus: this.subjectQueue.campus,
+        building: this.subjectQueue.building,
+        room: this.subjectQueue.room,
+        table: this.subjectQueue.table,
+        assignment: this.subjectQueue.assignment,
+        type: this.subjectQueue.type,
+      };
+
+      console.log("Dette er køobjektet: " + this.subjectQueue.assignment);
+      this.$store
+        .dispatch("createSubjectQueue", subjectQueueRequest)
+        .then(() => {
+          this.$store.dispatch(
+            "getSubjectQueueUser",
+            subjectQueueRequest.subjectId
+          );
+          this.$store.dispatch("getAllSubjectQueues");
+        })
+        .then(() => {
+          this.$router.push({
+            name: "QueueList",
+          });
+        });
+    },
+  },
 };
 </script>
 <style scoped>
@@ -238,10 +232,9 @@ legend {
   font-weight: 700;
   margin-top: 20px;
 }
-.assignments{
+.assignments {
   display: flex;
   flex-direction: row;
-  padding: 0;
 }
 .mybtn,
 label,
