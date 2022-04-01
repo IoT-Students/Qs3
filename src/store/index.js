@@ -77,6 +77,7 @@ export default createStore({
           console.log(error);
         });
     },
+
     getSubjectQueueUser({ commit }, subjectId) {
       getSubjectQueueUser(subjectId, this.state.userInfo.userID)
         .then((response) => {
@@ -92,6 +93,7 @@ export default createStore({
       commit("ADD_USER", userInfo);
       console.log(this.state.userInfo.userID);
     },
+
     getSubjects({ commit }) {
       console.log(this.state.userInfo.userID);
       getSubjects(this.state.userInfo.userID)

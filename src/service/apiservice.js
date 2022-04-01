@@ -27,6 +27,7 @@ export function getSubjects(userId) {
       return response.data;
     });
 }
+
 export function getSubjectQueues(subjectId) {
   return axios
     .get("http://localhost:8085/subjectQueue/" + subjectId)

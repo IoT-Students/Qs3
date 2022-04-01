@@ -8,7 +8,6 @@
           :options="Campus"
           v-model="subjectQueue.campus"
           label="Select a campus"
-
         />
         <p></p>
         <BaseSelect
@@ -73,6 +72,7 @@ export default {
     AssignmentFormCard,
   },
   data() {
+
     return {
       subjectQueue: {
         campus: "",
