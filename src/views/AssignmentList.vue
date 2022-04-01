@@ -1,5 +1,6 @@
 <template>
   <div class="assignments">
+    <h2>Øvinger</h2>
     <AssignmentCard
       v-for="assignment in assignments"
       :key="assignment.assignmentId"
