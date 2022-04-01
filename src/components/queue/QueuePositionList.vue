@@ -6,8 +6,6 @@
       :queueUser="queueUser"
     />
   </div>
-  <div><router-link to="/SubjectQueueForm">Edit info</router-link></div>
-  <button @click="removeFromQueue()">Delete</button>
 </template>
 
 <script>
@@ -20,11 +18,6 @@ export default {
   computed: {
     subjectQueue() {
       return this.$store.state.subjectQueue;
-    },
-  },
-  methods: {
-    removeFromQueue() {
-      alert("You are now removed from the queue");
     },
   },
 };

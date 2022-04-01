@@ -1,6 +1,6 @@
 <template>
-  <h1>Du er nå i kø!</h1>
   <div id="container">
+    <h1>Du er nå i kø!</h1>
     <div class="queueInfoContainer">
       <div>Bygning: {{ queueUser.building }}</div>
       <div>Rom: {{ queueUser.room }}</div>
@@ -9,11 +9,11 @@
     </div>
     <div class="position">
       <h3>Your position</h3>
-      <h1>LEGG INN POSISJON HER</h1>
+      <h1>{{ queueUser.position }}</h1>
     </div>
     <div class="assignments">
-      <h3>Assignments</h3>
-      <div>{{ queueUser.assignment }}</div>
+      <h3>Øving</h3>
+      <h3>{{ queueUser.assignment }}</h3>
     </div>
   </div>
 </template>
@@ -32,6 +32,8 @@ export default {
 <style scoped>
 #container {
   border: solid #1c658c;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .queueInfoContainer {
