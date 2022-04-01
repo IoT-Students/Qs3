@@ -20,7 +20,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
 [data-status="true"] {
   color: green;
@@ -31,9 +30,7 @@ export default {
 .assignmentCard{
   padding: 0px;
   width: 3rem;
-  margin: 0 auto;
   align-items: center;
-  cursor: pointer;
   border: 1px solid #1c658c;
   border-radius: 5px;
 }
@@ -41,7 +38,5 @@ export default {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
 }
-
-
 
 </style>

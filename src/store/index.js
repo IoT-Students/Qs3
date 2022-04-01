@@ -16,7 +16,6 @@ export default createStore({
     subjects: [],
     subjectQueues: [],
     subjectStudents: [],
-    assignments: [],
   },
   mutations: {
     SET_SUBJECT_QUEUE_JOIN(state, subjectQueueJoin) {
@@ -71,7 +70,8 @@ export default createStore({
       getSubjectQueues(this.state.currentSubjectId)
         .then((response) => {
           commit("SET_SUBJECT_QUEUES", response);
-          console.log(response);
+          console.log("DETTE ER RESPONSEN FRA QUEUES")
+          console.log( response);
         })
         .catch((error) => {
           console.log(error);
@@ -81,6 +81,7 @@ export default createStore({
       getSubjectQueueUser(subjectId, this.state.userInfo.userID)
         .then((response) => {
           commit("SET_SUBJECT_QUEUE_USER", response);
+          console.log("DETTE ER RESPONSEN FRA QUEUE")
           console.log(response);
         })
         .catch((error) => {
