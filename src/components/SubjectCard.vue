@@ -11,18 +11,8 @@
             <div class="queue-info">
               <div id="imageContainer">
                 <p>
-                  <img
-                    src="../assets/images/outline_people_black_24dp.png"
-                    alt="Hourglass"
-                  />
-                  {{ subject.queueAmount }}
-                </p>
-                <p v-if="!studass">
-                  <img
-                    src="../assets/images/outline_hourglass_bottom_black_24dp.png"
-                    alt="Hourglass"
-                  />
-                  {{ subject.eta }}
+                  Antall i kø:
+                  {{ subject.queueSize }}
                 </p>
               </div>
             </div>
