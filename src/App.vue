@@ -24,7 +24,7 @@
           >
         </div>
         <div v-if="isAdmin">
-          <router-link @click="loadSubjects" :to="{ name: 'HomeAdmin' }"
+          <router-link @click="loadSubjects" :to="{ name: 'AdminSubjectView' }"
             >Home</router-link
           >
           <router-link :to="{ name: 'Login' }" @click="clearState"
