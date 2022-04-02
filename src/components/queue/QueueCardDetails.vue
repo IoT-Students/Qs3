@@ -37,12 +37,12 @@
         </div>
         <div v-if="isType" class="approveButtons">
           <div class="approve" @click="approve">Godkjenn</div>
-          <div class="wait">Vent</div>
-          <div class="disapprove">Underkjenn</div>
+          <div class="wait" @click="wait">Vent</div>
+          <div class="disapprove" @click="removeFromQueue">Underkjenn</div>
         </div>
         <div v-else class="helpButtons">
-          <div class="approve">Ferdig</div>
-          <div class="wait">Vent</div>
+          <div class="approve" @click="removeFromQueue">Ferdig</div>
+          <div class="wait" @click="wait">Vent</div>
         </div>
       </section>
     </div>
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { approveAssignment } from "@/service/apiservice";
+import {approveAssignment, leaveQueue} from "@/service/apiservice";
 
 export default {
   name: "QueueCardDetails",
@@ -87,6 +87,13 @@ export default {
       console.log(response);
       await this.$router.push({ name: "QueueList" });
     },
+    wait() {
+      this.$router.push({ name: "QueueList" });
+    },
+    async removeFromQueue() {
+      await leaveQueue(this.user);
+      this.$router.push({ name: "QueueList" });
+    }
   },
 };
 </script>

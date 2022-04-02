@@ -2,9 +2,9 @@
   <div class="loginContainer border">
     <div class="titleInfo">
       <div class="header">
-        <div class="logo">QS<span>3</span></div>
+        <div class="logo"><span id="titleSpan">QS</span><span>3</span></div>
       </div>
-      <h1 id="loginTitle">Login to QS3</h1>
+      <h1 id="loginTitle">Velkommen!</h1>
     </div>
     <div class="loginFunction">
       <form class="login" @submit.prevent="SignIn">
@@ -12,10 +12,10 @@
           <fieldset>
             <div class="passwordContainer">
               <div class="password">
-                <p id="username">Username</p>
+                <p id="username">Brukernavn</p>
               </div>
               <BaseInput
-                id="username"
+                id="usernameInput"
                 class="baseInput"
                 v-model="userInfo.username"
                 type="text"
@@ -25,10 +25,10 @@
           <fieldset>
             <div class="passwordContainer">
               <div class="password">
-                <p id="password">Password</p>
+                <p id="password">Passord</p>
               </div>
               <BaseInput
-                id="password"
+                id="passwordInput"
                 class="baseInput"
                 v-model="userInfo.password"
                 type="text"
@@ -114,9 +114,11 @@ export default {
   margin-top: 15%;
   width: 300px;
 }
-.logo{
+.logo {
   color: black;
-
+}
+#titleSpan {
+  color: black;
 }
 
 #loginTitle {
@@ -158,7 +160,7 @@ export default {
 }
 
 .header div span {
-  color: #5379fa !important;
+  color: #5379fa;
 }
 .passwordContainer {
   max-width: 180px;
@@ -172,6 +174,10 @@ fieldset {
   border: 0;
   margin: 20px;
   padding: 0;
+}
+
+#loginButton {
+  margin-bottom: 10px;
 }
 mybtn,
 label,

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { leaveQueue } from "@/service/apiservice";
+import {isUserInQueue, leaveQueue} from "@/service/apiservice";
 
 export default {
   props: {
@@ -34,6 +34,8 @@ export default {
   methods: {
     async leaveQueue() {
       await leaveQueue(this.queueUser);
+      let response = await isUserInQueue(this.$store.state.userInfo.userID);
+      this.$store.dispatch("setUserInQueue", response);
       this.$router.push({ name: "StudentView" });
     },
   },

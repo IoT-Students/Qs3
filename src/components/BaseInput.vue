@@ -1,5 +1,5 @@
 <template>
-  <label :for="uuid" v-if="label">{{ label }}</label>
+  <label id="inputLabel" :for="uuid" v-if="label">{{ label }}</label>
   <input
     v-bind="$attrs"
     :placeholder="label"
@@ -49,5 +49,9 @@ button {
   margin: 0;
   border-radius: 7px;
   background-color: rgba(23, 28, 37, 0.4);
+}
+.field {
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.11);
 }
 </style>

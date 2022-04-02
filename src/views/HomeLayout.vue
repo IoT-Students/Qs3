@@ -1,6 +1,6 @@
 <template>
   <div v-if="!($store.state.subjects.length === 0)" class="homeViewContainer">
-    <div v-if="inQueue" class="inQueue">
+    <div @click="goToPosition" v-if="inQueue" class="inQueue">
       <h2>I kø</h2>
     </div>
     <h4>Dine emner:</h4>
@@ -18,6 +18,11 @@ export default {
     },
     inQueue() {
       return this.$store.state.userInQueue;
+    },
+  },
+  methods: {
+    goToPosition() {
+      this.$router.push({ name: "QueuePositionList" });
     },
   },
 };
@@ -56,10 +61,15 @@ export default {
   border-radius: 10px;
   height: 25px;
   font-weight: bold;
-  transition: 2s ease;
+  transition: 0.15s ease;
+}
+.inQueue:hover {
+  cursor: pointer;
+  background: green;
+  color: white;
 }
 h2 {
-  margin: 0
+  margin: 0;
 }
 .homeViewContainer {
   border-radius: 10px;
