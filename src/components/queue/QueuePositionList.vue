@@ -6,6 +6,9 @@
       :queueUser="queueUser"
     />
   </div>
+  <div v-show="isEmpty" class="notInQueue">
+    Du er ikke i kø. Gå til hjemmmesiden for å stille deg i kø
+  </div>
 </template>
 
 <script>
@@ -19,6 +22,9 @@ export default {
     subjectQueue() {
       return this.$store.state.subjectQueue;
     },
+    isEmpty() {
+      return this.$store.state.subjectQueues.length === 0;
+    },
   },
 };
 </script>
@@ -28,5 +34,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.notInQueue {
+  margin: 20px;
 }
 </style>

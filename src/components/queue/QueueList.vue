@@ -59,4 +59,7 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+#emptyQueue {
+  margin: 20px;
+}
 </style>

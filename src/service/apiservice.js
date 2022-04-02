@@ -85,3 +85,11 @@ export function isUserInQueue(userId) {
       return response.data;
     });
 }
+
+export function leaveQueue(subjectQueue) {
+  return axios
+    .post("http://localhost:8085/subjectQueue/leave-queue", subjectQueue)
+    .then((response) => {
+      return response.data;
+    });
+}
