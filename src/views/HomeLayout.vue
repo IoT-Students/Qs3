@@ -1,5 +1,8 @@
 <template>
   <div v-if="!($store.state.subjects.length === 0)" class="homeViewContainer">
+    <div v-if="inQueue" class="inQueue">
+      <h2>I kø</h2>
+    </div>
     <h4>Dine emner:</h4>
     <router-view></router-view>
   </div>
@@ -12,6 +15,9 @@ export default {
   computed: {
     isEmpty() {
       return this.$store.state.subjects.length === 0;
+    },
+    inQueue() {
+      return this.$store.state.userInQueue;
     },
   },
 };
@@ -32,11 +38,35 @@ export default {
   display: flex;
   justify-content: center;
 }
+
+.default {
+  max-width: 0;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  height: 20px;
+  font-weight: bold;
+  transition: 2s ease;
+}
+.inQueue {
+  max-width: 300px;
+  margin: 0 auto;
+  border: solid green;
+  padding: 20px;
+  border-radius: 10px;
+  height: 25px;
+  font-weight: bold;
+  transition: 2s ease;
+}
+h2 {
+  margin: 0
+}
 .homeViewContainer {
   border-radius: 10px;
   padding: 1rem;
   margin: 0 auto;
   width: 65%;
+  transition: 0.7s ease;
 }
 
 .headerButtons a {
