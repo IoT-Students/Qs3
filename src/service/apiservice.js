@@ -77,3 +77,11 @@ export function getAssignments(userId, subjectId) {
       return response.data;
     });
 }
+
+export function isUserInQueue(userId) {
+  return axios
+    .get("http://localhost:8085/subjectQueue/in-queue/" + userId)
+    .then((response) => {
+      return response.data;
+    });
+}

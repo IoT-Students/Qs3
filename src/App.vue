@@ -37,6 +37,8 @@
   <router-view />
 </template>
 <script>
+import { isUserInQueue } from "@/service/apiservice";
+
 export default {
   computed: {
     isStudent() {
@@ -55,6 +57,11 @@ export default {
     },
     loadSubjects() {
       this.$store.dispatch("getSubjects");
+      this.userInQueue();
+    },
+    async userInQueue() {
+      let response = await isUserInQueue(this.$store.state.userInfo.userID);
+      this.$store.dispatch("setUserInQueue", response);
     },
   },
 };

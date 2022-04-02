@@ -7,6 +7,7 @@
     @click="goToForm(subject.subjectId)"
     @go-to-queue="goToQueue"
     @go-to-assignments="goToAssignments(subject.subjectId)"
+    :inQueue="inQueue"
   >
   </SubjectCard>
 </template>
@@ -22,6 +23,10 @@ export default {
     subjects() {
       return this.$store.state.subjects;
     },
+    inQueue() {
+      console.log();
+      return this.$store.state.userInQueue;
+    },
   },
   methods: {
     goToQueue(subjectId) {
@@ -31,10 +36,12 @@ export default {
       this.$router.push({ name: "QueueList" });
     },
     goToForm(subjectId) {
-      console.log("Er nå i form med subjectId: " + subjectId);
-      this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
-      this.$store.dispatch("getAssignments", subjectId);
-      this.$router.push({ name: "SubjectQueueForm" });
+      if (!this.inQueue) {
+        console.log("Er nå i form med subjectId: " + subjectId);
+        this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
+        this.$store.dispatch("getAssignments", subjectId);
+        this.$router.push({ name: "SubjectQueueForm" });
+      }
     },
     goToAssignments(subjectId) {
       this.$store.dispatch("addCurrentSubjectQueueId", subjectId);

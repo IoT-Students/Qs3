@@ -1,4 +1,4 @@
-import {createStore} from "vuex";
+import { createStore } from "vuex";
 import {
   addSubjectQueue,
   getAssignments,
@@ -17,6 +17,7 @@ const getDefaultState = () => {
     subjects: [],
     subjectQueues: [],
     subjectStudents: [],
+    userInQueue: false,
   };
 };
 const state = getDefaultState();
@@ -26,6 +27,9 @@ export default createStore({
   mutations: {
     RESET_STATE(state) {
       Object.assign(state, getDefaultState());
+    },
+    SET_USER_IN_QUEUE(state, inQueue) {
+      state.userInQueue = inQueue;
     },
     SET_SUBJECT_QUEUE_JOIN(state, subjectQueueJoin) {
       state.subjectQueueJoin = subjectQueueJoin;
@@ -62,6 +66,9 @@ export default createStore({
     resetState({ commit }) {
       console.log("Reset state!");
       commit("RESET_STATE");
+    },
+    setUserInQueue({ commit }, inQueue) {
+      commit("SET_USER_IN_QUEUE", inQueue);
     },
     addSubjectQueueJoin({ commit }, subjectQueueJoin) {
       commit("SET_SUBJECT_QUEUE_JOIN", subjectQueueJoin);

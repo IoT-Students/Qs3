@@ -46,7 +46,7 @@
 
 <script>
 import BaseInput from "@/components/BaseInput";
-import { doLogin } from "@/service/apiservice";
+import { doLogin, isUserInQueue } from "@/service/apiservice";
 
 export default {
   name: "LoginComponent",
@@ -81,7 +81,13 @@ export default {
 
           case "Student":
             this.$store.dispatch("getSubjects");
-            this.$router.push({ name: "StudentView" });
+            // eslint-disable-next-line no-case-declarations
+            let userInQueue = await isUserInQueue(loginResponse.userID);
+            console.log(userInQueue);
+            this.$store.dispatch("setUserInQueue", userInQueue);
+            this.$router.push({
+              name: "StudentView",
+            });
             break;
 
           case "Studass":

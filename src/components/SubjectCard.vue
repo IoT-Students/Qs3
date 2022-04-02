@@ -24,8 +24,16 @@
           </div>
         </div>
         <div v-if="!studass" class="queue-buttons">
-          <button @click="dummyClick" id="exercise-button">
+          <button v-if="!inQueue" @click="dummyClick" id="exercise-button">
             Still deg i kø
+          </button>
+          <button
+            :disabled="inQueue"
+            v-else
+            @click="dummyClick"
+            class="disabled-button"
+          >
+            Du er allerede i en kø
           </button>
           <button @click.stop="goToQueue" id="queue-button">Se kø</button>
           <button @click.stop="goToAssignments" id="chat-button">
@@ -33,9 +41,7 @@
           </button>
         </div>
         <div v-if="studass" class="queue-button">
-          <button id="queue-button-studass">
-            Se kø
-          </button>
+          <button id="queue-button-studass">Se kø</button>
         </div>
       </section>
     </div>
@@ -54,6 +60,10 @@ export default {
       type: Boolean,
       required: true,
     },
+    inQueue: {
+      type: Boolean,
+      required: true,
+    },
   },
   data() {
     return {};
@@ -64,6 +74,9 @@ export default {
     },
     goToAssignments() {
       this.$emit("go-to-assignments", this.subject.subjectId);
+    },
+    goToQueue() {
+      this.$emit("go-to-queue", this.subject.subjectId);
     },
   },
 };
@@ -150,6 +163,10 @@ img {
 #chat-button:hover {
   color: floralwhite;
   background: #2e74f3;
+}
+.disabled-button {
+  border: solid #2e74f3;
+  background: floralwhite;
 }
 
 #title {
