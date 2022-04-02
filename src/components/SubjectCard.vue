@@ -32,8 +32,8 @@
             Se dine øvinger
           </button>
         </div>
-        <div v-if="studass">
-          <button @click.stop="goToQueue" id="queue-button-studass">
+        <div v-if="studass" class="queue-button">
+          <button id="queue-button-studass">
             Se kø
           </button>
         </div>
@@ -61,9 +61,6 @@ export default {
   methods: {
     dummyClick() {
       console.log("Button is clicked");
-    },
-    goToQueue() {
-      this.$emit("go-to-queue", this.subject.subjectId);
     },
     goToAssignments() {
       this.$emit("go-to-assignments", this.subject.subjectId);
@@ -109,6 +106,23 @@ button {
 img {
   display: inline-block;
   margin: 0 auto;
+}
+.queue-button {
+  display: grid;
+  margin: auto;
+  margin-bottom: 1rem;
+  grid-template-columns: 1fr;
+  place-content: center;
+  gap: 1rem;
+}
+#queue-button-studass {
+  border: solid #2e74f3;
+  color: #2e74f3;
+  background: floralwhite;
+}
+#queue-button-studass:hover {
+  color: floralwhite;
+  background: #2e74f3;
 }
 #exercise-button {
   border: solid #2e74f3;
