@@ -31,7 +31,7 @@
           <section class="assignments-section">
             <div class="assignments">
               <p>Øvinger:</p>
-              <h4>{{user.assignment}}</h4>
+              <h4>{{ user.assignment }}</h4>
             </div>
           </section>
         </div>

@@ -5,7 +5,10 @@
       <div></div>
       <div id="routerButtons">
         <div v-if="isStudent">
-          <router-link @click="loadSubjects" v-if="isStudent" :to="{ name: 'StudentView' }"
+          <router-link
+            @click="loadSubjects"
+            v-if="isStudent"
+            :to="{ name: 'StudentView' }"
             >Home</router-link
           >
           <router-link :to="{ name: 'Login' }" @click="clearState"
@@ -14,22 +17,20 @@
         </div>
         <div v-if="isStudass">
           <router-link @click="loadSubjects" :to="{ name: 'StudAssView' }"
-          >Home</router-link
+            >Home</router-link
           >
           <router-link :to="{ name: 'Login' }" @click="clearState"
-          >Logout</router-link
+            >Logout</router-link
           >
         </div>
         <div v-if="isAdmin">
           <router-link @click="loadSubjects" :to="{ name: 'HomeAdmin' }"
-          >Home</router-link
+            >Home</router-link
           >
           <router-link :to="{ name: 'Login' }" @click="clearState"
-          >Logout</router-link
+            >Logout</router-link
           >
         </div>
-
-
       </div>
     </div>
   </div>
@@ -49,13 +50,13 @@ export default {
     },
   },
   methods: {
-    clearState(){
+    clearState() {
       this.$store.dispatch("resetState");
     },
     loadSubjects() {
       this.$store.dispatch("getSubjects");
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

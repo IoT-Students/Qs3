@@ -47,6 +47,7 @@ export default {
     },
   },
   mounted() {
+    console.log("Mounted getAllSubjectQueues");
     this.$store.dispatch("getAllSubjectQueues");
   },
 };

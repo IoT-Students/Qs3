@@ -6,36 +6,35 @@
         <legend id="title">Lokasjon</legend>
         <div class="location">
           <BaseSelect
-              :options="Campus"
-              v-model="subjectQueue.campus"
-              label="Select a campus"
-
+            :options="Campus"
+            v-model="subjectQueue.campus"
+            label="Select a campus"
           />
         </div>
         <p></p>
         <div class="location">
           <BaseSelect
-              :options="Buildings"
-              v-model="subjectQueue.building"
-              label="Select a building"
+            :options="Buildings"
+            v-model="subjectQueue.building"
+            label="Select a building"
           />
         </div>
         <p></p>
         <div class="location">
           <BaseSelect
-              :options="Rooms"
-              v-model="subjectQueue.room"
-              label="Select a room"
-              class="location"
+            :options="Rooms"
+            v-model="subjectQueue.room"
+            label="Select a room"
+            class="location"
           />
         </div>
         <p></p>
         <div class="location">
           <BaseSelect
-              :options="Tables"
-              v-model="subjectQueue.table"
-              label="Select a table"
-              class="location"
+            :options="Tables"
+            v-model="subjectQueue.table"
+            label="Select a table"
+            class="location"
           />
         </div>
       </fieldset>
@@ -84,7 +83,6 @@ export default {
     AssignmentFormCard,
   },
   data() {
-
     return {
       subjectQueue: {
         campus: "",
@@ -121,7 +119,7 @@ export default {
       console.log(this.subjectQueue.assignment);
       console.log(assignmentNumber);
     },
-    submit() {
+    async submit() {
       const subjectQueueRequest = {
         userId: this.$store.state.userInfo.userID,
         subjectId: this.$store.state.currentSubjectId,
@@ -134,20 +132,12 @@ export default {
       };
 
       console.log("Dette er køobjektet: " + this.subjectQueue.assignment);
-      this.$store
-        .dispatch("createSubjectQueue", subjectQueueRequest)
-        .then(() => {
-          this.$store.dispatch(
-            "getSubjectQueueUser",
-            subjectQueueRequest.subjectId
-          );
-          this.$store.dispatch("getAllSubjectQueues");
-        })
-        .then(() => {
-          this.$router.push({
-            name: "QueueList",
-          });
-        });
+      await this.$store.dispatch("createSubjectQueue", subjectQueueRequest);
+      this.$store.dispatch(
+        "getSubjectQueueUser",
+        subjectQueueRequest.subjectId
+      );
+      await this.$router.push({ name: "QueueList" });
     },
   },
 };

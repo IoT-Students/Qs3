@@ -24,8 +24,12 @@
           </div>
         </div>
         <div class="queue-buttons">
-          <button @click.stop="addStudents()" id="addStudentsButton">Add students</button>
-          <button @click.stop="addStudass()" id="addStudassButton">Add stud.ass</button>
+          <button @click.stop="addStudents()" id="addStudentsButton">
+            Add students
+          </button>
+          <button @click.stop="addStudass()" id="addStudassButton">
+            Add stud.ass
+          </button>
         </div>
       </section>
     </div>

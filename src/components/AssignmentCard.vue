@@ -1,13 +1,16 @@
 <template>
-  <div>
-  </div>
+  <div></div>
   <div class="assignmentCardContainer">
     <section class="card-grid">
       <div class="assignment-number">
         Øving: {{ assignment.assignmentNumber }}
       </div>
-      <div class="statusGodkjent" v-if="assignment.status === true">Status: <span id="godkjentSpan">Godkjent</span></div>
-      <div class="statusUnderkjent" v-else>Status: <span id="underkjentSpan"> Underkjent</span> </div>
+      <div class="statusGodkjent" v-if="assignment.status === true">
+        Status: <span id="godkjentSpan">Godkjent</span>
+      </div>
+      <div class="statusUnderkjent" v-else>
+        Status: <span id="underkjentSpan"> Underkjent</span>
+      </div>
     </section>
   </div>
 </template>
@@ -40,7 +43,6 @@ export default {
   border-radius: 5px;
   margin: 20px auto;
   background-color: darkgrey;
-
 }
 .assignmentCardContainer:hover {
   transform: scale(1.01);
@@ -52,12 +54,11 @@ export default {
   font-weight: bold;
 }
 
-#godkjentSpan{
+#godkjentSpan {
   color: green;
 }
 
-#underkjentSpan{
+#underkjentSpan {
   color: red;
 }
-
 </style>

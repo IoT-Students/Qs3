@@ -15,14 +15,12 @@
                 <p id="username">Username</p>
               </div>
               <BaseInput
-                  id="username"
-                  class="baseInput"
-                  v-model="userInfo.username"
-                  type="text"
+                id="username"
+                class="baseInput"
+                v-model="userInfo.username"
+                type="text"
               />
-
             </div>
-
           </fieldset>
           <fieldset>
             <div class="passwordContainer">
@@ -30,15 +28,16 @@
                 <p id="password">Password</p>
               </div>
               <BaseInput
-                  id="password"
-                  class="baseInput"
-                  v-model="userInfo.password"
-                  type="text"
+                id="password"
+                class="baseInput"
+                v-model="userInfo.password"
+                type="text"
               />
             </div>
-
           </fieldset>
-          <button type="submit" class="mybtn" id="loginButton" something="else">Sign in</button>
+          <button type="submit" class="mybtn" id="loginButton" something="else">
+            Sign in
+          </button>
         </div>
       </form>
     </div>
@@ -110,13 +109,14 @@ export default {
   width: 300px;
 }
 
-#loginTitle{
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+#loginTitle {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-weight: 100;
   font-size: 28px;
   color: rgba(255, 255, 255, 0.95);
 }
-.header{
+.header {
   width: 100px;
   margin: 0 auto;
   margin-top: 20px;
@@ -124,35 +124,37 @@ export default {
 
 .header div {
   color: #fff;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 40px;
   font-weight: 500;
 }
-#username{
-  color: #C9D1D9;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+#username {
+  color: #c9d1d9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   margin: 0 auto;
 }
-#password{
-  color: #C9D1D9;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+#password {
+  color: #c9d1d9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   margin: 0 auto;
-
 }
-.infoContainer{
+.infoContainer {
   border: 1px solid rgba(0, 0, 0, 0.96);
   border-radius: 10px;
-  background-color: #161B22;
+  background-color: #161b22;
 }
 
 .header div span {
   color: #5379fa !important;
 }
-.passwordContainer{
+.passwordContainer {
   max-width: 180px;
   margin: 0 auto;
 }
-.password{
+.password {
   text-align: left;
 }
 
@@ -187,11 +189,12 @@ input,
 
 .mybtn {
   align-items: center;
- padding: 10px;
+  padding: 10px;
   width: 180px;
   color: white;
   background-color: #5379fa;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   border-radius: 6px;
   font-weight: 700;
 }

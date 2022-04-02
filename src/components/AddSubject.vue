@@ -5,20 +5,13 @@
       <h3>Please register a subject!</h3>
       <div>
         <p>Subject code</p>
-        <BaseInput v-model="subject.code"  type="text" />
+        <BaseInput v-model="subject.code" type="text" />
         <p>Subject name</p>
-        <BaseInput v-model="subject.name"  type="text" />
+        <BaseInput v-model="subject.name" type="text" />
         <p>Assignment amount</p>
-        <BaseInput
-          v-model="subject.assignmentAmount"
-          type="text"
-        />
+        <BaseInput v-model="subject.assignmentAmount" type="text" />
         <p>Required assignment</p>
-        <BaseInput
-            v-model="subject.requiredAssignmentAmount"
-            type="text"
-        />
-
+        <BaseInput v-model="subject.requiredAssignmentAmount" type="text" />
       </div>
       <button class="mybtn" type="submit">Sign up</button>
     </form>
@@ -36,7 +29,7 @@ export default {
         code: "",
         name: "",
         assignmentAmount: "",
-        requiredAssignmentAmount: ""
+        requiredAssignmentAmount: "",
       },
     };
   },
@@ -46,27 +39,27 @@ export default {
         parseInt(this.requiredAssignmentAmount) >
         parseInt(this.assignmentAmount)
       ) {
-        alert("You can not have more required assignments, than assignments")
-      }else{
+        alert("You can not have more required assignments, than assignments");
+      } else {
         const subject = {
           subjectCode: this.subject.code,
           subjectName: this.subject.name,
           assignmentAmount: this.subject.assignmentAmount,
-          requiredAssignments: this.subject.requiredAssignmentAmount
+          requiredAssignments: this.subject.requiredAssignmentAmount,
         };
-        console.log(subject.requiredAssignments)
+        console.log(subject.requiredAssignments);
         const response = axios.post("http://localhost:8085/subject", subject);
         response.then((resolvedResult) => {
           console.log(
-              this.$store.state.userInfo.name + ", " + resolvedResult.data
+            this.$store.state.userInfo.name + ", " + resolvedResult.data
           );
           const subjectUser = {
             name: this.$store.state.userInfo.name,
             subjectId: resolvedResult.data,
           };
           axios.post(
-              "http://localhost:8085/subject/students/saveTeacherSubject",
-              subjectUser
+            "http://localhost:8085/subject/students/saveTeacherSubject",
+            subjectUser
           );
           this.$router.push({
             name: "HomeAdmin",

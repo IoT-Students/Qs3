@@ -31,8 +31,7 @@ export default {
 </script>
 
 <style scoped>
-
-.assignmentListHeader{
+.assignmentListHeader {
   text-decoration: underline;
 }
 </style>

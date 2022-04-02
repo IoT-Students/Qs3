@@ -4,7 +4,7 @@
     <form @submit.prevent="submit">
       <h3>Please register student for subject with id!</h3>
       <div>
-        <textarea class="inputStudents" v-model="names"/>
+        <textarea class="inputStudents" v-model="names" />
       </div>
       <div>
         <button class="mybtn" type="submit">Sign up</button>
@@ -14,8 +14,6 @@
 </template>
 
 <script>
-
-
 import axios from "axios";
 
 export default {
@@ -34,18 +32,18 @@ export default {
   methods: {
     submit() {
       console.log(this.names);
-      const myArray = this.names.split(",").map(function(item){
+      const myArray = this.names.split(",").map(function (item) {
         return item.trim();
       });
       console.log(myArray);
 
       let subjectUserArray = [];
-      for(let i=0; i < myArray.length; i++){
+      for (let i = 0; i < myArray.length; i++) {
         const subjectUser = {
           subjectId: this.subjectId,
           name: myArray[i],
         };
-        subjectUserArray.push(subjectUser)
+        subjectUserArray.push(subjectUser);
       }
       console.log(subjectUserArray);
 
@@ -65,7 +63,7 @@ export default {
 </script>
 
 <style scoped>
-.inputStudents{
+.inputStudents {
   height: 100px;
   width: 400px;
   overflow: auto;

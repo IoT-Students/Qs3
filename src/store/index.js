@@ -1,11 +1,12 @@
-import { createStore } from "vuex";
+import {createStore} from "vuex";
 import {
+  addSubjectQueue,
   getAssignments,
+  getStudentsInSubject,
   getSubjectQueues,
   getSubjectQueueUser,
   getSubjects,
 } from "../service/apiservice";
-import { addSubjectQueue, getStudentsInSubject } from "../service/apiservice";
 
 const getDefaultState = () => {
   return {
@@ -16,15 +17,15 @@ const getDefaultState = () => {
     subjects: [],
     subjectQueues: [],
     subjectStudents: [],
-  }
-}
-const state = getDefaultState()
+  };
+};
+const state = getDefaultState();
 
 export default createStore({
   state,
   mutations: {
     RESET_STATE(state) {
-      Object.assign(state, getDefaultState())
+      Object.assign(state, getDefaultState());
     },
     SET_SUBJECT_QUEUE_JOIN(state, subjectQueueJoin) {
       state.subjectQueueJoin = subjectQueueJoin;
@@ -59,8 +60,8 @@ export default createStore({
   },
   actions: {
     resetState({ commit }) {
-      console.log("Reset state!")
-      commit('RESET_STATE')
+      console.log("Reset state!");
+      commit("RESET_STATE");
     },
     addSubjectQueueJoin({ commit }, subjectQueueJoin) {
       commit("SET_SUBJECT_QUEUE_JOIN", subjectQueueJoin);
@@ -72,18 +73,17 @@ export default createStore({
     addCurrentSubjectQueueId({ commit }, subjectId) {
       commit("SET_SUBJECT_QUEUE_ID", subjectId);
     },
-    createSubjectQueue({ commit }, subjectQueue) {
+    async createSubjectQueue({ commit }, subjectQueue) {
+      console.log(subjectQueue);
       commit("ADD_SUBJECT_QUEUE", subjectQueue);
-      addSubjectQueue(subjectQueue).then((response) => {
-        return response;
-      });
+      return await addSubjectQueue(subjectQueue);
     },
     getAllSubjectQueues({ commit }) {
       getSubjectQueues(this.state.currentSubjectId)
         .then((response) => {
           commit("SET_SUBJECT_QUEUES", response);
-          console.log("DETTE ER RESPONSEN FRA QUEUES")
-          console.log( response);
+          console.log("DETTE ER RESPONSEN FRA QUEUES");
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
@@ -94,7 +94,7 @@ export default createStore({
       getSubjectQueueUser(subjectId, this.state.userInfo.userID)
         .then((response) => {
           commit("SET_SUBJECT_QUEUE_USER", response);
-          console.log("DETTE ER RESPONSEN FRA QUEUE")
+          console.log("DETTE ER RESPONSEN FRA QUEUE");
           console.log(response);
         })
         .catch((error) => {
