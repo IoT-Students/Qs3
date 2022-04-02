@@ -268,7 +268,7 @@ textarea {
   height: 20px;
   padding: 20px;
   margin: 10px;
-  background-color: lightgreen;
+  background-color: rgba(30, 144, 255, 0.89);
   border-radius: 6px;
   text-align: center;
   font-weight: 600;

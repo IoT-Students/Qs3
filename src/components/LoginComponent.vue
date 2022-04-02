@@ -2,7 +2,7 @@
   <div class="loginContainer border">
     <div class="titleInfo">
       <div class="header">
-        <div>QS<span>3</span></div>
+        <div class="logo">QS<span>3</span></div>
       </div>
       <h1 id="loginTitle">Login to QS3</h1>
     </div>
@@ -114,13 +114,17 @@ export default {
   margin-top: 15%;
   width: 300px;
 }
+.logo{
+  color: black;
+
+}
 
 #loginTitle {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-weight: 100;
   font-size: 28px;
-  color: rgba(255, 255, 255, 0.95);
+  color: black;
 }
 .header {
   width: 100px;
