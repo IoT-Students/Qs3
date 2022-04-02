@@ -6,12 +6,13 @@ import {
   getSubjectQueues,
   getSubjectQueueUser,
   getSubjects,
+  getUserInQueue,
 } from "../service/apiservice";
 
 const getDefaultState = () => {
   return {
     subjectQueueJoin: {},
-    subjectQueue: {},
+    subjectQueue: null,
     currentSubjectId: null,
     userInfo: {},
     subjects: [],
@@ -97,6 +98,14 @@ export default createStore({
         });
     },
 
+    async getUserInQueue({ commit, dispatch }) {
+      let response = await getUserInQueue(this.state.userInfo.userID);
+      commit("SET_SUBJECT_QUEUE_USER", response);
+      console.log(response[0].subjectId);
+      commit("SET_SUBJECT_QUEUE_ID", response[0].subjectId);
+      dispatch("getAllSubjectQueues");
+    },
+
     getSubjectQueueUser({ commit }, subjectId) {
       getSubjectQueueUser(subjectId, this.state.userInfo.userID)
         .then((response) => {
@@ -133,6 +142,9 @@ export default createStore({
         .catch((error) => {
           console.log(error);
         });
+    },
+    resetSubjectQueue({ commit }) {
+      commit("ADD_SUBJECT_QUEUE", []);
     },
   },
 

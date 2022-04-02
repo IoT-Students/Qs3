@@ -23,7 +23,7 @@ export default {
       return this.$store.state.subjectQueue;
     },
     isEmpty() {
-      return this.$store.state.subjectQueues.length === 0;
+      return this.$store.state.subjectQueue.length < 1 || this.$store.state.subjectQueue === null;
     },
   },
 };

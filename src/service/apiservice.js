@@ -45,6 +45,15 @@ export function getSubjectQueueUser(subjectId, userId) {
     });
 }
 
+export function getUserInQueue(userId) {
+  return axios
+    .get("http://localhost:8085/subjectQueue/queue/" + userId)
+    .then((response) => {
+      // console.log(response.data);
+      return response.data;
+    });
+}
+
 export function getStudentsInSubject(subjectId) {
   return axios
     .get("http://localhost:8085/subject/students/" + subjectId)

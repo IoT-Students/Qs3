@@ -21,7 +21,8 @@ export default {
     },
   },
   methods: {
-    goToPosition() {
+    async goToPosition() {
+      await this.$store.dispatch("getUserInQueue");
       this.$router.push({ name: "QueuePositionList" });
     },
   },

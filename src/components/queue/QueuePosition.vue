@@ -35,8 +35,9 @@ export default {
     async leaveQueue() {
       await leaveQueue(this.queueUser);
       let response = await isUserInQueue(this.$store.state.userInfo.userID);
-      this.$store.dispatch("setUserInQueue", response);
-      this.$router.push({ name: "StudentView" });
+      await this.$store.dispatch("setUserInQueue", response);
+      await this.$store.dispatch("resetSubjectQueue");
+      this.$router.push({ name: "QueuePositionList" });
     },
   },
 };
