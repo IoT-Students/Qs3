@@ -62,6 +62,22 @@ export default {
           });
         });
       }
+        subjectUserArray.push(subjectUser);
+      }
+      console.log(subjectUserArray);
+
+      console.log(this.subjectId + ", " + this.name);
+      const response = axios.post(
+          "http://localhost:8085/subject/students/saveStudass",
+          subjectUserArray,
+          this.$store.state.userInfo.JWToken
+      );
+      response.then((resolvedResult) => {
+        console.log(resolvedResult.data);
+        this.$router.push({
+          name: "HomeAdmin",
+        });
+      });
     },
   },
 };
