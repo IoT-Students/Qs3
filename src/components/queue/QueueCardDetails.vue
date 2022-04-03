@@ -89,12 +89,19 @@ export default {
         subjectId: this.user.subjectId,
         assignmentNumber: this.user.assignment,
       };
-      let response = await approveAssignment(assignmentApprove, this.$store.state.userInfo.JWToken);
+      let response = await approveAssignment(
+        assignmentApprove,
+        this.$store.state.userInfo.jwtoken
+      );
       console.log(response);
       await this.$router.push({ name: "QueueList" });
     },
     async assign() {
-      await updateQueue(this.user.userId, this.user.subjectId,this.$store.state.userInfo.JWToken);
+      await updateQueue(
+        this.user.userId,
+        this.user.subjectId,
+        this.$store.state.userInfo.jwtoken
+      );
     },
     wait() {
       this.$router.push({ name: "QueueList" });
@@ -108,7 +115,7 @@ export default {
       };
       await leaveQueue(
         assignmentDisapprove,
-        this.$store.state.userInfo.JWToken
+        this.$store.state.userInfo.jwtoken
       );
       this.$router.push({ name: "QueueList" });
     },

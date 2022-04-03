@@ -25,10 +25,10 @@
         </div>
         <div class="queue-buttons">
           <button @click.stop="addStudents()" id="addStudentsButton">
-            Add students
+            Legg til studenter
           </button>
           <button @click.stop="addStudass()" id="addStudassButton">
-            Add stud.ass
+            Legg til studass
           </button>
         </div>
       </section>

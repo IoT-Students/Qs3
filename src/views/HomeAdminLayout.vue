@@ -2,9 +2,9 @@
   <div class="homeViewContainer">
     <div class="headerButtonsContainer">
       <div class="headerButtons">
-        <router-link :to="{ name: 'AddSubject' }">Add subject</router-link>
+        <router-link :to="{ name: 'AddSubject' }">Opprett fag</router-link>
         <router-link :to="{ name: 'AdminSubjectView' }"
-          >View my subjects</router-link
+          >Se fag</router-link
         >
       </div>
     </div>

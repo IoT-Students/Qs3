@@ -4,29 +4,28 @@
     <form @submit.prevent="submit">
       <h3>Please register a subject!</h3>
       <div>
-        <p>Subject code</p>
+        <p>Fagkode</p>
         <BaseInput v-model="subject.code" type="text" />
         <BaseErrorMessage v-if="v$.subject.code.$error">{{
           v$.$errors[0].$message
         }}</BaseErrorMessage>
-        <BaseInput class="baseInput" v-model="subject.code" type="text" />
-        <p>Subject name</p>
+        <p>Navn</p>
         <BaseInput v-model="subject.name" type="text" />
         <BaseErrorMessage v-if="v$.subject.name.$error">{{
           v$.$errors[0].$message
         }}</BaseErrorMessage>
-        <p>Assignment amount</p>
+        <p>Totalt antall øvinger</p>
         <BaseInput v-model="subject.assignmentAmount" type="text" />
         <BaseErrorMessage v-if="v$.subject.assignmentAmount.$error">{{
           v$.$errors[0].$message
         }}</BaseErrorMessage>
-        <p>Required assignment</p>
+        <p>Antall øvinger for godkjent</p>
         <BaseInput v-model="subject.requiredAssignmentAmount" type="text" />
         <BaseErrorMessage v-if="v$.subject.requiredAssignmentAmount.$error">{{
           v$.$errors[0].$message
         }}</BaseErrorMessage>
       </div>
-      <button class="mybtn" type="submit">Add subject</button>
+      <button class="mybtn" type="submit">Legg til</button>
     </form>
   </div>
 </template>
@@ -83,7 +82,15 @@ export default {
             requiredAssignments: this.subject.requiredAssignmentAmount,
           };
           console.log(subject.requiredAssignments);
-          const response = axios.post("http://localhost:8085/subject", subject);
+          const response = axios.post(
+            "http://localhost:8085/subject",
+            subject,
+            {
+              headers: {
+                Authorization: "Bearer " + this.$store.state.userInfo.jwtoken,
+              },
+            }
+          );
           response.then((resolvedResult) => {
             console.log(
               this.$store.state.userInfo.name + ", " + resolvedResult.data
@@ -94,7 +101,12 @@ export default {
             };
             axios.post(
               "http://localhost:8085/subject/students/saveTeacherSubject",
-              subjectUser
+              subjectUser,
+              {
+                headers: {
+                  Authorization: "Bearer " + this.$store.state.userInfo.jwtoken,
+                },
+              }
             );
             this.$router.push({
               name: "HomeAdmin",

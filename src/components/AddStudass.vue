@@ -2,14 +2,14 @@
   <h1>Her kan du legge til studass</h1>
   <div class="form-container">
     <form @submit.prevent="submit">
-      <h3>Please register student for subject with id!</h3>
+      <h3>Legg til med navn på studass som eksisterer i systemet fra før</h3>
       <div>
-        <BaseInput v-model="name" label="Name" type="text" id="input" />
+        <BaseInput v-model="name" label="Navn" type="text" id="input" />
       </div>
       <BaseErrorMessage v-if="v$.name.$error">{{
         v$.$errors[0].$message
       }}</BaseErrorMessage>
-      <button class="mybtn" type="submit">Add Stud.ass</button>
+      <button class="mybtn" type="submit">Legg til</button>
     </form>
   </div>
 </template>
@@ -53,7 +53,12 @@ export default {
         console.log(this.subjectId + ", " + this.name);
         const response = axios.post(
           "http://localhost:8085/subject/students/saveTeacherSubject",
-          subjectUser
+          subjectUser,
+          {
+            headers: {
+              Authorization: "Bearer " + this.$store.state.userInfo.jwtoken,
+            },
+          }
         );
         response.then((resolvedResult) => {
           console.log(resolvedResult.data);
