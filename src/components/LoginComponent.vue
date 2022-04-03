@@ -14,7 +14,7 @@
               <div class="password">
                 <p id="username">Brukernavn</p>
               </div>
-              <BaseInput
+              <input
                 id="usernameInput"
                 class="baseInput"
                 v-model="userInfo.username"
@@ -27,7 +27,7 @@
               <div class="password">
                 <p id="password">Passord</p>
               </div>
-              <BaseInput
+              <input
                 id="passwordInput"
                 class="baseInput"
                 v-model="userInfo.password"
@@ -45,13 +45,11 @@
 </template>
 
 <script>
-import BaseInput from "@/components/BaseInput";
 import { doLogin, isUserInQueue } from "@/service/apiservice";
 
 export default {
   name: "LoginComponent",
   components: {
-    BaseInput,
   },
   data() {
     return {
@@ -116,6 +114,41 @@ export default {
 }
 .logo {
   color: black;
+}
+.baseInput {
+  display: inline-flex;
+  font-family: "Open sans", sans-serif;
+  font-size: 100%;
+  color: black;
+  line-height: 1.5;
+  height: 20px;
+  margin: 0;
+  border-radius: 7px;
+  background-color: rgba(23, 28, 37, 0.4);
+}
+#usernameInput {
+  display: inline-flex;
+  font-family: "Open sans", sans-serif;
+  font-size: 100%;
+  color: white;
+  line-height: 1.5;
+  height: 30px;
+  width: 170px;
+  margin: 0;
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 0.11);
+}
+#passwordInput {
+  display: inline-flex;
+  font-family: "Open sans", sans-serif;
+  font-size: 100%;
+  color: white;
+  line-height: 1.5;
+  height: 30px;
+  width: 170px;
+  margin: 0;
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 0.11);
 }
 #titleSpan {
   color: black;
@@ -185,7 +218,6 @@ label,
 input,
 optgroup,
 select,
-input,
 [type="text"] {
   height: 100px;
   width: 25%;

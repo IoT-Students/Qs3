@@ -4,7 +4,7 @@
     <form @submit.prevent="submit">
       <h3>Please register student for subject with id!</h3>
       <div>
-        <BaseInput v-model="name" label="Name" type="text" />
+        <BaseInput v-model="name" label="Name" type="text" id="input"/>
       </div>
       <BaseErrorMessage v-if="v$.name.$error">{{
         v$.$errors[0].$message
@@ -99,5 +99,8 @@ export default {
   -webkit-transform: scale(1);
   transform: scale(1);
   box-shadow: none;
+}
+#input {
+  color: black;
 }
 </style>

@@ -44,7 +44,7 @@ button {
   display: inline-flex;
   font-family: "Open sans", sans-serif;
   font-size: 100%;
-  color: white;
+  color: black;
   line-height: 1.5;
   margin: 0;
   border-radius: 7px;
