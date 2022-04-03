@@ -46,6 +46,8 @@
 
 <script>
 import { doLogin, isUserInQueue } from "@/service/apiservice";
+import BaseInput from "@/components/BaseInput";
+import {doLoginWithToken, isUserInQueue} from "@/service/apiservice";
 
 export default {
   name: "LoginComponent",
@@ -66,7 +68,7 @@ export default {
   },
   methods: {
     async SignIn() {
-      let loginResponse = await doLogin(this.userInfo);
+      let loginResponse = await doLoginWithToken(this.userInfo);
 
       if (loginResponse.loginStatus === "Success") {
         this.$store.dispatch("storeUser", loginResponse);
