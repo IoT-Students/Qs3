@@ -8,6 +8,7 @@
         <div class="content">
           <h2 :class="{ altTitle: !isType }">{{ userType }}</h2>
           <h3>{{ user.name }}</h3>
+          <div class="approve" @click="assign">Start {{ userType }}</div>
           <section class="campus-building">
             <div class="location" id="campus">
               <p>Campus:</p>
@@ -54,7 +55,7 @@
 </template>
 
 <script>
-import {approveAssignment, leaveQueue} from "@/service/apiservice";
+import {approveAssignment, leaveQueue, updateQueue} from "@/service/apiservice";
 
 export default {
   name: "QueueCardDetails",
@@ -86,6 +87,9 @@ export default {
       let response = await approveAssignment(assignmentApprove);
       console.log(response);
       await this.$router.push({ name: "QueueList" });
+    },
+    async assign() {
+        await updateQueue(this.user.userId, this.user.subjectId);
     },
     wait() {
       this.$router.push({ name: "QueueList" });

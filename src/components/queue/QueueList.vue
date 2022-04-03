@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       userRole: this.$store.state.userInfo.role,
+      isActive: false,
     };
   },
   components: {
@@ -58,6 +59,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.active {
+  background-color: lightgreen;
 }
 #emptyQueue {
   margin: 20px;
