@@ -55,7 +55,11 @@
 </template>
 
 <script>
-import {approveAssignment, leaveQueue, updateQueue} from "@/service/apiservice";
+import {
+  approveAssignment,
+  leaveQueue,
+  updateQueue,
+} from "@/service/apiservice";
 
 export default {
   name: "QueueCardDetails",
@@ -80,7 +84,8 @@ export default {
     async approve() {
       console.log(this.user.name);
       const assignmentApprove = {
-        name: this.user.name,
+        subjectQueueId: this.user.subjectQueueId,
+        userId: this.user.userId,
         subjectId: this.user.subjectId,
         assignmentNumber: this.user.assignment,
       };
@@ -89,15 +94,21 @@ export default {
       await this.$router.push({ name: "QueueList" });
     },
     async assign() {
-        await updateQueue(this.user.userId, this.user.subjectId);
+      await updateQueue(this.user.userId, this.user.subjectId);
     },
     wait() {
       this.$router.push({ name: "QueueList" });
     },
     async removeFromQueue() {
-      await leaveQueue(this.user);
+      const assignmentDisapprove = {
+        subjectQueueId: this.user.subjectQueueId,
+        userId: this.user.userId,
+        subjectId: this.user.subjectId,
+        assignmentNumber: this.user.assignment,
+      };
+      await leaveQueue(assignmentDisapprove);
       this.$router.push({ name: "QueueList" });
-    }
+    },
   },
 };
 </script>
