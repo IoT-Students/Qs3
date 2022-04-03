@@ -6,6 +6,9 @@
       <div>
         <textarea class="inputStudents" v-model="names" />
       </div>
+      <BaseErrorMessage v-if="v$.names.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
       <div>
         <button class="mybtn" type="submit">Add student</button>
       </div>
@@ -15,8 +18,15 @@
 
 <script>
 import axios from "axios";
+import { required } from "@vuelidate/validators";
+import useVuelidate from "@vuelidate/core";
 
 export default {
+  setup() {
+    return {
+      v$: useVuelidate(),
+    };
+  },
   name: "AddStudent",
   props: {
     subjectId: {
@@ -29,34 +39,42 @@ export default {
       names: "",
     };
   },
+  validations() {
+    return {
+      names: { required },
+    };
+  },
   methods: {
     submit() {
-      console.log(this.names);
-      const myArray = this.names.split(",").map(function (item) {
-        return item.trim();
-      });
-      console.log(myArray);
-
-      let subjectUserArray = [];
-      for (let i = 0; i < myArray.length; i++) {
-        const subjectUser = {
-          subjectId: this.subjectId,
-          name: myArray[i],
-        };
-        subjectUserArray.push(subjectUser);
-      }
-      console.log(subjectUserArray);
-
-      const response = axios.post(
-        "http://localhost:8085/subject/students/saveStudents",
-        subjectUserArray
-      );
-      response.then((resolvedResult) => {
-        console.log(resolvedResult.data);
-        this.$router.push({
-          name: "HomeAdmin",
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        console.log(this.names);
+        const myArray = this.names.split(",").map(function (item) {
+          return item.trim();
         });
-      });
+        console.log(myArray);
+
+        let subjectUserArray = [];
+        for (let i = 0; i < myArray.length; i++) {
+          const subjectUser = {
+            subjectId: this.subjectId,
+            name: myArray[i],
+          };
+          subjectUserArray.push(subjectUser);
+        }
+        console.log(subjectUserArray);
+
+        const response = axios.post(
+          "http://localhost:8085/subject/students/saveStudents",
+          subjectUserArray
+        );
+        response.then((resolvedResult) => {
+          console.log(resolvedResult.data);
+          this.$router.push({
+            name: "HomeAdmin",
+          });
+        });
+      }
     },
   },
 };

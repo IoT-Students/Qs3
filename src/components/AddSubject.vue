@@ -6,12 +6,24 @@
       <div>
         <p>Subject code</p>
         <BaseInput v-model="subject.code" type="text" />
+        <BaseErrorMessage v-if="v$.subject.code.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
         <p>Subject name</p>
         <BaseInput v-model="subject.name" type="text" />
+        <BaseErrorMessage v-if="v$.subject.name.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
         <p>Assignment amount</p>
         <BaseInput v-model="subject.assignmentAmount" type="text" />
+        <BaseErrorMessage v-if="v$.subject.assignmentAmount.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
         <p>Required assignment</p>
         <BaseInput v-model="subject.requiredAssignmentAmount" type="text" />
+        <BaseErrorMessage v-if="v$.subject.requiredAssignmentAmount.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
       </div>
       <button class="mybtn" type="submit">Add subject</button>
     </form>
@@ -19,10 +31,20 @@
 </template>
 
 <script>
+import BaseErrorMessage from "@/components/BaseErrorMessage";
 import axios from "axios";
-
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 export default {
   name: "AddSubject",
+  components: {
+    BaseErrorMessage,
+  },
+  setup() {
+    return {
+      v$: useVuelidate(),
+    };
+  },
   data() {
     return {
       subject: {
@@ -30,6 +52,16 @@ export default {
         name: "",
         assignmentAmount: "",
         requiredAssignmentAmount: "",
+      },
+    };
+  },
+  validations() {
+    return {
+      subject: {
+        code: { required },
+        name: { required },
+        assignmentAmount: { required },
+        requiredAssignmentAmount: { required },
       },
     };
   },
@@ -41,30 +73,33 @@ export default {
       ) {
         alert("You can not have more required assignments, than assignments");
       } else {
-        const subject = {
-          subjectCode: this.subject.code,
-          subjectName: this.subject.name,
-          assignmentAmount: this.subject.assignmentAmount,
-          requiredAssignments: this.subject.requiredAssignmentAmount,
-        };
-        console.log(subject.requiredAssignments);
-        const response = axios.post("http://localhost:8085/subject", subject);
-        response.then((resolvedResult) => {
-          console.log(
-            this.$store.state.userInfo.name + ", " + resolvedResult.data
-          );
-          const subjectUser = {
-            name: this.$store.state.userInfo.name,
-            subjectId: resolvedResult.data,
+        this.v$.$validate();
+        if (!this.v$.$error) {
+          const subject = {
+            subjectCode: this.subject.code,
+            subjectName: this.subject.name,
+            assignmentAmount: this.subject.assignmentAmount,
+            requiredAssignments: this.subject.requiredAssignmentAmount,
           };
-          axios.post(
-            "http://localhost:8085/subject/students/saveTeacherSubject",
-            subjectUser
-          );
-          this.$router.push({
-            name: "HomeAdmin",
+          console.log(subject.requiredAssignments);
+          const response = axios.post("http://localhost:8085/subject", subject);
+          response.then((resolvedResult) => {
+            console.log(
+              this.$store.state.userInfo.name + ", " + resolvedResult.data
+            );
+            const subjectUser = {
+              name: this.$store.state.userInfo.name,
+              subjectId: resolvedResult.data,
+            };
+            axios.post(
+              "http://localhost:8085/subject/students/saveTeacherSubject",
+              subjectUser
+            );
+            this.$router.push({
+              name: "HomeAdmin",
+            });
           });
-        });
+        }
       }
     },
   },

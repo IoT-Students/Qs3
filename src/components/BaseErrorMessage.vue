@@ -17,5 +17,7 @@ export default {
 <style scoped>
 .errorMessage {
   color: tomato;
+  margin-top: 5px;
+  text-align: center;
 }
 </style>

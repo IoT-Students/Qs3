@@ -6,6 +6,9 @@
       <div>
         <BaseInput v-model="name" label="Name" type="text" />
       </div>
+      <BaseErrorMessage v-if="v$.name.$error">{{
+        v$.$errors[0].$message
+      }}</BaseErrorMessage>
       <button class="mybtn" type="submit">Add Stud.ass</button>
     </form>
   </div>
@@ -13,8 +16,15 @@
 
 <script>
 import axios from "axios";
+import { required } from "@vuelidate/validators";
+import useVuelidate from "@vuelidate/core";
 
 export default {
+  setup() {
+    return {
+      v$: useVuelidate(),
+    };
+  },
   name: "AddStudent",
   props: {
     subjectId: {
@@ -27,23 +37,31 @@ export default {
       name: "",
     };
   },
+  validations() {
+    return {
+      name: { required },
+    };
+  },
   methods: {
     submit() {
-      const subjectUser = {
-        subjectId: this.subjectId,
-        name: this.name,
-      };
-      console.log(this.subjectId + ", " + this.name);
-      const response = axios.post(
-        "http://localhost:8085/subject/students/saveTeacherSubject",
-        subjectUser
-      );
-      response.then((resolvedResult) => {
-        console.log(resolvedResult.data);
-        this.$router.push({
-          name: "HomeAdmin",
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        const subjectUser = {
+          subjectId: this.subjectId,
+          name: this.name,
+        };
+        console.log(this.subjectId + ", " + this.name);
+        const response = axios.post(
+          "http://localhost:8085/subject/students/saveTeacherSubject",
+          subjectUser
+        );
+        response.then((resolvedResult) => {
+          console.log(resolvedResult.data);
+          this.$router.push({
+            name: "HomeAdmin",
+          });
         });
-      });
+      }
     },
   },
 };

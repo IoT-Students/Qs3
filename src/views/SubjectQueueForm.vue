@@ -11,14 +11,17 @@
             label="Select a campus"
           />
         </div>
+        <BaseErrorMessage v-if="v$.subjectQueue.campus.$error">{{ v$.$errors[0].$message }}</BaseErrorMessage>
         <p></p>
         <div class="location">
           <BaseSelect
             :options="Buildings"
             v-model="subjectQueue.building"
             label="Select a building"
+            :errorMessage="v$.$errors[1]"
           />
         </div>
+        <BaseErrorMessage v-if="v$.subjectQueue.building.$error">{{ v$.$errors[0].$message }}</BaseErrorMessage>
         <p></p>
         <div class="location">
           <BaseSelect
@@ -26,8 +29,10 @@
             v-model="subjectQueue.room"
             label="Select a room"
             class="location"
+            :errorMessage="v$.$errors[2]"
           />
         </div>
+        <BaseErrorMessage v-if="v$.subjectQueue.room.$error">{{ v$.$errors[0].$message }}</BaseErrorMessage>
         <p></p>
         <div class="location">
           <BaseSelect
@@ -35,8 +40,10 @@
             v-model="subjectQueue.table"
             label="Select a table"
             class="location"
+            :errorMessage="v$.$errors[3]"
           />
         </div>
+        <BaseErrorMessage v-if="v$.subjectQueue.table.$error">{{ v$.$errors[0].$message }}</BaseErrorMessage>
       </fieldset>
       <fieldset>
         <legend class="title">Øvinger</legend>
@@ -49,6 +56,7 @@
             type="button"
           />
         </div>
+        <BaseErrorMessage v-if="v$.subjectQueue.assignment.$error">{{ v$.$errors[0].$message }}</BaseErrorMessage>
       </fieldset>
 
       <fieldset>
@@ -77,10 +85,17 @@
 
 <script>
 import AssignmentFormCard from "../components/AssignmentFormCard";
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   components: {
     AssignmentFormCard,
+  },
+  setup() {
+    return {
+      v$: useVuelidate(),
+    };
   },
   data() {
     return {
@@ -107,7 +122,17 @@ export default {
       Tables: ["1", "2", "3"],
     };
   },
-
+  validations() {
+    return {
+      subjectQueue: {
+        campus: { required },
+        building: { required },
+        room: { required },
+        table: { required },
+        assignment: { required },
+      },
+    };
+  },
   computed: {
     assignments() {
       return this.$store.state.assignments;
@@ -120,24 +145,30 @@ export default {
       console.log(assignmentNumber);
     },
     async submit() {
-      const subjectQueueRequest = {
-        userId: this.$store.state.userInfo.userID,
-        subjectId: this.$store.state.currentSubjectId,
-        campus: this.subjectQueue.campus,
-        building: this.subjectQueue.building,
-        room: this.subjectQueue.room,
-        table: this.subjectQueue.table,
-        assignment: this.subjectQueue.assignment,
-        type: this.subjectQueue.type,
-      };
+      this.v$.$validate();
+      console.log(this.v$);
+      if (!this.v$.$error) {
+        const subjectQueueRequest = {
+          userId: this.$store.state.userInfo.userID,
+          subjectId: this.$store.state.currentSubjectId,
+          campus: this.subjectQueue.campus,
+          building: this.subjectQueue.building,
+          room: this.subjectQueue.room,
+          table: this.subjectQueue.table,
+          assignment: this.subjectQueue.assignment,
+          type: this.subjectQueue.type,
+        };
 
-      console.log("Dette er køobjektet: " + this.subjectQueue.assignment);
-      await this.$store.dispatch("createSubjectQueue", subjectQueueRequest);
-      this.$store.dispatch(
-        "getSubjectQueueUser",
-        subjectQueueRequest.subjectId
-      );
-      await this.$router.push({ name: "QueueList" });
+        console.log("Dette er køobjektet: " + this.subjectQueue.assignment);
+        await this.$store.dispatch("createSubjectQueue", subjectQueueRequest);
+        this.$store.dispatch(
+          "getSubjectQueueUser",
+          subjectQueueRequest.subjectId
+        );
+        await this.$router.push({ name: "QueueList" });
+      } else {
+        alert("Alle felter må være fylt ut");
+      }
     },
   },
 };
