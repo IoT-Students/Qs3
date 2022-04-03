@@ -5,7 +5,7 @@
       <h3>Please register a subject!</h3>
       <div>
         <p>Subject code</p>
-        <BaseInput v-model="subject.code" type="text" />
+        <BaseInput class="baseInput" v-model="subject.code" type="text" />
         <p>Subject name</p>
         <BaseInput v-model="subject.name" type="text" />
         <p>Assignment amount</p>
@@ -72,6 +72,13 @@ export default {
 </script>
 
 <style scoped>
+.baseInput{
+  color: black;
+}
+input
+button {
+  color: black;
+}
 .mybtn {
   display: inline-flex;
   align-items: center;
