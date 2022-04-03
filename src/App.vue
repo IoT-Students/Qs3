@@ -60,7 +60,7 @@ export default {
       this.userInQueue();
     },
     async userInQueue() {
-      let response = await isUserInQueue(this.$store.state.userInfo.userID);
+      let response = await isUserInQueue(this.$store.state.userInfo.userID, this.state.userInfo.jwtoken);
       this.$store.dispatch("setUserInQueue", response);
     },
   },

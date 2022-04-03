@@ -34,7 +34,7 @@ export default {
   methods: {
     async leaveQueue() {
       await leaveQueue(this.queueUser);
-      let response = await isUserInQueue(this.$store.state.userInfo.userID);
+      let response = await isUserInQueue(this.$store.state.userInfo.userID, this.state.userInfo.jwtoken);
       await this.$store.dispatch("setUserInQueue", response);
       await this.$store.dispatch("resetSubjectQueue");
       this.$router.push({ name: "QueuePositionList" });

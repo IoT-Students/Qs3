@@ -75,7 +75,10 @@ export default createStore({
       commit("SET_SUBJECT_QUEUE_JOIN", subjectQueueJoin);
     },
     async addSubjectStudents({ commit }, subjectId) {
-      let students = await getStudentsInSubject(subjectId, this.state.userInfo.JWToken);
+      let students = await getStudentsInSubject(
+        subjectId,
+        this.state.userInfo.jwtoken
+      );
       commit("SET_STUDENTS", students);
     },
     addCurrentSubjectQueueId({ commit }, subjectId) {
@@ -84,10 +87,10 @@ export default createStore({
     async createSubjectQueue({ commit }, subjectQueue) {
       console.log(subjectQueue);
       commit("ADD_SUBJECT_QUEUE", subjectQueue);
-      return await addSubjectQueue(subjectQueue, this.state.userInfo.JWToken);
+      return await addSubjectQueue(subjectQueue, this.state.userInfo.jwtoken);
     },
     getAllSubjectQueues({ commit }) {
-      getSubjectQueues(this.state.currentSubjectId, this.state.userInfo.JWToken)
+      getSubjectQueues(this.state.currentSubjectId, this.state.userInfo.jwtoken)
         .then((response) => {
           commit("SET_SUBJECT_QUEUES", response);
           console.log("DETTE ER RESPONSEN FRA QUEUES");
@@ -99,7 +102,7 @@ export default createStore({
     },
 
     async getUserInQueue({ commit, dispatch }) {
-      let response = await getUserInQueue(this.state.userInfo.userID, this.state.userInfo.JWToken);
+      let response = await getUserInQueue(this.state.userInfo.userID, this.state.userInfo.jwtoken);
       commit("SET_SUBJECT_QUEUE_USER", response);
       console.log(response[0].subjectId);
       commit("SET_SUBJECT_QUEUE_ID", response[0].subjectId);
@@ -107,7 +110,7 @@ export default createStore({
     },
 
     getSubjectQueueUser({ commit }, subjectId) {
-      getSubjectQueueUser(subjectId, this.state.userInfo.userID, this.state.userInfo.JWToken)
+      getSubjectQueueUser(subjectId, this.state.userInfo.userID, this.state.userInfo.jwtoken)
         .then((response) => {
           commit("SET_SUBJECT_QUEUE_USER", response);
           console.log("DETTE ER RESPONSEN FRA QUEUE");
@@ -124,7 +127,7 @@ export default createStore({
 
     getSubjects({ commit }) {
       console.log(this.state.userInfo.userID);
-      getSubjects(this.state.userInfo.userID, this.state.userInfo.JWToken)
+      getSubjects(this.state.userInfo.userID, this.state.userInfo.jwtoken)
         .then((response) => {
           commit("SET_SUBJECTS", response);
           console.log(response);
@@ -134,7 +137,7 @@ export default createStore({
         });
     },
     getAssignments({ commit }) {
-      getAssignments(this.state.userInfo.userID, this.state.currentSubjectId, this.state.userInfo.JWToken)
+      getAssignments(this.state.userInfo.userID, this.state.currentSubjectId, this.state.userInfo.jwtoken)
         .then((response) => {
           commit("SET_ASSIGNMENTS", response);
           console.log(response);

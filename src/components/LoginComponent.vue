@@ -79,7 +79,7 @@ export default {
           case "Student":
             this.$store.dispatch("getSubjects");
             // eslint-disable-next-line no-case-declarations
-            let userInQueue = await isUserInQueue(loginResponse.userID);
+            let userInQueue = await isUserInQueue(loginResponse.userID, this.state.userInfo.jwtoken);
             console.log(userInQueue);
             this.$store.dispatch("setUserInQueue", userInQueue);
             this.$router.push({
