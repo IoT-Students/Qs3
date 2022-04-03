@@ -102,3 +102,11 @@ export function leaveQueue(subjectQueue) {
       return response.data;
     });
 }
+
+export function updateQueue(userId, subjectId) {
+    return axios
+        .get("http://localhost:8085/subjectQueue/update/" + subjectId + "/" + userId)
+        .then((response) => {
+            return response.data;
+        });
+}
