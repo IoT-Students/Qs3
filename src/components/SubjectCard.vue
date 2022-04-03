@@ -73,7 +73,7 @@ export default {
       console.log("Button is clicked");
     },
     goToAssignments() {
-      this.$emit("go-to-assignments", this.subject.subjectId);
+      this.$emit("go-to-assignments");
     },
     goToQueue() {
       this.$emit("go-to-queue", this.subject.subjectId);
