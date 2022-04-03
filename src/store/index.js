@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 import {
   addSubjectQueue,
   getAssignments,
@@ -152,4 +153,7 @@ export default createStore({
   },
 
   modules: {},
+  plugins: [createPersistedState({
+    storage: window.sessionStorage,
+  })],
 });
