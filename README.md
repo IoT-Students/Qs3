@@ -1,6 +1,36 @@
 # Qs3 💻
 Dette er et repo som representerer et Qs3 grensesnitt 
 
+
+
+## Instruksjoner
+
+### Steg 1 -  Project setup
+```
+npm install
+```
+
+### Steg 2 - Compile for development
+```
+npm run serve
+```
+
+### Steg 3 - Compiles and minifies for production
+```
+npm run build
+```
+
+## Tester
+
+### Run your unit tests
+```
+npm run test:unit
+```
+
+### Webpage
+See [Qs3](http://qs3.no) to see our web page!
+
+
 Under ligger en kort skissert plan over hvordan de ulike funksjonalitetene skal implementeres. Bare en rask brain storm!
 
 ## Plan
@@ -11,32 +41,3 @@ Under ligger en kort skissert plan over hvordan de ulike funksjonalitetene skal 
 
 ![Notat 11  jan  20221024_3](https://user-images.githubusercontent.com/91839835/160284674-f49144e3-dffc-433b-83bf-f67ae8add389.jpg)
 
-
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
