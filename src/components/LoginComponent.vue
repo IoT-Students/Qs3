@@ -45,14 +45,11 @@
 </template>
 
 <script>
-import { doLogin, isUserInQueue } from "@/service/apiservice";
-import BaseInput from "@/components/BaseInput";
-import {doLoginWithToken, isUserInQueue} from "@/service/apiservice";
+import { doLoginWithToken, isUserInQueue } from "@/service/apiservice";
 
 export default {
   name: "LoginComponent",
-  components: {
-  },
+  components: {},
   data() {
     return {
       userInfo: {

@@ -1,84 +1,91 @@
 import axios from "axios";
 import qs from "qs";
 
-export function getToken (username, password) {
-    const data = qs.stringify({
-        username: username,
-        password: password
-    });
-
-    return axios.post(
-        `http://localhost:8085/token`,
-        data,
-    ).then((response) => {
-        return response.data;
-    }).catch( err => {
-        console.log(err);
-    });
-
-}
 export async function doLoginWithToken(userInfo) {
+  const data = qs.stringify({
+    username: userInfo.username,
+    password: userInfo.password,
+  });
 
-    const data = qs.stringify({
-        username: userInfo.username,
-        password: userInfo.password
-    });
-
-    return axios.post(
-        `http://localhost:8085/token`,
-        data,
-    ).then((response) => {
-        return response.data;
-    }).catch( err => {
-        console.log(err);
+  return axios
+    .post(`http://localhost:8085/token`, data)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
     });
 }
 
-export function addSubjectQueue(subjectQueue) {
+export function addSubjectQueue(subjectQueue, token) {
   return axios
-    .post("http://localhost:8085/subjectQueue", subjectQueue)
+    .post("http://localhost:8085/subjectQueue", subjectQueue, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
     .then((response) => {
       console.log(typeof subjectQueue.assignment);
       return response.data;
     });
 }
-export function getSubjects(userId) {
+export function getSubjects(userId, token) {
   return axios
-    .get("http://localhost:8085/subject/" + userId)
+    .get("http://localhost:8085/subject/" + userId, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
     .then((response) => {
       return response.data;
     });
 }
 
-export function getSubjectQueues(subjectId) {
+export function getSubjectQueues(subjectId, token) {
   return axios
-    .get("http://localhost:8085/subjectQueue/" + subjectId)
+    .get("http://localhost:8085/subjectQueue/" + subjectId, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
     .then((response) => {
       return response.data;
     });
 }
 
-export function getSubjectQueueUser(subjectId, userId) {
+export function getSubjectQueueUser(subjectId, userId, token) {
   return axios
-    .get("http://localhost:8085/subjectQueue/" + subjectId + "/" + userId)
+    .get("http://localhost:8085/subjectQueue/" + subjectId + "/" + userId, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
     .then((response) => {
       // console.log(response.data);
       return response.data;
     });
 }
 
-export function getUserInQueue(userId) {
+export function getUserInQueue(userId, token) {
   return axios
-    .get("http://localhost:8085/subjectQueue/queue/" + userId)
+    .get("http://localhost:8085/subjectQueue/queue/" + userId, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
     .then((response) => {
       // console.log(response.data);
       return response.data;
     });
 }
 
-export function getStudentsInSubject(subjectId) {
+export function getStudentsInSubject(subjectId, token) {
   return axios
-    .get("http://localhost:8085/subject/students/" + subjectId)
+    .get("http://localhost:8085/subject/students/" + subjectId, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
     .then((response) => {
       console.log(
         "Alle studenter fra subjectId " + subjectId + " er " + response.data
@@ -87,17 +94,25 @@ export function getStudentsInSubject(subjectId) {
     });
 }
 
-export function approveAssignment(approvedAssignment) {
+export function approveAssignment(approvedAssignment, token) {
   return axios
-    .post("http://localhost:8085/assignment", approvedAssignment)
+    .post("http://localhost:8085/assignment", approvedAssignment, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
     .then((response) => {
       return response.data;
     });
 }
 
-export function getAssignments(userId, subjectId) {
+export function getAssignments(userId, subjectId, token) {
   return axios
-    .get("http://localhost:8085/assignment/" + userId + "/" + subjectId)
+    .get("http://localhost:8085/assignment/" + userId + "/" + subjectId, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
     .then((response) => {
       console.log(
         "Alle øvinger til en student i et gitt fag er " +
@@ -109,26 +124,43 @@ export function getAssignments(userId, subjectId) {
     });
 }
 
-export function isUserInQueue(userId) {
+export function isUserInQueue(userId, token) {
   return axios
-    .get("http://localhost:8085/subjectQueue/in-queue/" + userId)
+    .get("http://localhost:8085/subjectQueue/in-queue/" + userId, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
     .then((response) => {
       return response.data;
     });
 }
 
-export function leaveQueue(disapproveAssignment) {
+export function leaveQueue(disapproveAssignment, token) {
   return axios
-    .post("http://localhost:8085/assignment/leave-queue", disapproveAssignment)
+    .post(
+      "http://localhost:8085/assignment/leave-queue",
+      disapproveAssignment,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    )
     .then((response) => {
       return response.data;
     });
 }
 
-export function updateQueue(userId, subjectId) {
+export function updateQueue(userId, subjectId, token) {
   return axios
     .get(
-      "http://localhost:8085/subjectQueue/update/" + subjectId + "/" + userId
+      "http://localhost:8085/subjectQueue/update/" + subjectId + "/" + userId,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
     )
     .then((response) => {
       return response.data;
