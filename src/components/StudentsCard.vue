@@ -1,5 +1,5 @@
 <template>
-  <div class="student-card">
+  <div class="student-card" v-bind:class="{ active: isStudass }">
     <section class="card-grid">
       <div class="student-name">i</div>
       <div class="name">{{ student.name }}</div>
@@ -12,12 +12,23 @@
 <script>
 export default {
   name: "StudentsCard",
+  data() {
+    return {
+      isStudAss: false,
+    };
+  },
   props: {
     student: {
       type: Object,
       required: true,
     },
   },
+  computed: {
+    isStudass() {
+      return (this.student.role === "Studass");
+    },
+  },
+
 };
 </script>
 
@@ -30,6 +41,9 @@ export default {
   margin: 0 auto;
   margin-bottom: 18px;
   border-radius: 5px;
+}
+.active{
+  border: 1px solid red;
 }
 .student-card:hover {
   transform: scale(1.01);

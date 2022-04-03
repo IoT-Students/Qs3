@@ -9,6 +9,7 @@
         <BaseErrorMessage v-if="v$.subject.code.$error">{{
           v$.$errors[0].$message
         }}</BaseErrorMessage>
+        <BaseInput class="baseInput" v-model="subject.code" type="text" />
         <p>Subject name</p>
         <BaseInput v-model="subject.name" type="text" />
         <BaseErrorMessage v-if="v$.subject.name.$error">{{
@@ -107,6 +108,13 @@ export default {
 </script>
 
 <style scoped>
+.baseInput{
+  color: black;
+}
+input
+button {
+  color: black;
+}
 .mybtn {
   display: inline-flex;
   align-items: center;
