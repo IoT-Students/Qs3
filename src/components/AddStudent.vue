@@ -49,7 +49,7 @@ export default {
 
       const response = axios.post(
         "http://localhost:8085/subject/students/saveStudents",
-        subjectUserArray
+        subjectUserArray, this.$store.state.userInfo.JWToken
       );
       response.then((resolvedResult) => {
         console.log(resolvedResult.data);

@@ -48,7 +48,11 @@ export default {
           requiredAssignments: this.subject.requiredAssignmentAmount,
         };
         console.log(subject.requiredAssignments);
-        const response = axios.post("http://localhost:8085/subject", subject);
+        const response = axios.post(
+          "http://localhost:8085/subject",
+          subject,
+          this.$store.state.userInfo.JWToken
+        );
         response.then((resolvedResult) => {
           console.log(
             this.$store.state.userInfo.name + ", " + resolvedResult.data
@@ -59,7 +63,7 @@ export default {
           };
           axios.post(
             "http://localhost:8085/subject/students/saveTeacherSubject",
-            subjectUser
+            subjectUser, this.$store.state.userInfo.JWToken
           );
           this.$router.push({
             name: "HomeAdmin",
