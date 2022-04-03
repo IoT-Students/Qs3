@@ -53,5 +53,6 @@ button {
 .field {
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.11);
+  width: 173px;
 }
 </style>

@@ -6,7 +6,7 @@
     :studass="false"
     @click="goToForm(subject.subjectId)"
     @go-to-queue="goToQueue"
-    @go-to-assignments="goToAssignments(subject.subjectId)"
+    @go-to-assignments="goToAssignments(subject)"
     :inQueue="inQueue"
   >
   </SubjectCard>
@@ -43,10 +43,10 @@ export default {
         this.$router.push({ name: "SubjectQueueForm" });
       }
     },
-    goToAssignments(subjectId) {
-      this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
-      this.$store.dispatch("getAssignments", subjectId);
-      this.$router.push({ name: "AssignmentList" });
+    goToAssignments(subject) {
+      this.$store.dispatch("addCurrentSubjectQueueId", subject.subjectId);
+      this.$store.dispatch("getAssignments", subject.subjectId);
+      this.$router.push({ name: "AssignmentList", params: { subjectName: subject.subjectName, requiredAssignments: String(subject.requiredAssignments)} });
     },
   },
 };

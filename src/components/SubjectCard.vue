@@ -73,7 +73,7 @@ export default {
       console.log("Button is clicked");
     },
     goToAssignments() {
-      this.$emit("go-to-assignments", this.subject.subjectId);
+      this.$emit("go-to-assignments");
     },
     goToQueue() {
       this.$emit("go-to-queue", this.subject.subjectId);
@@ -197,7 +197,6 @@ img {
     rgb(2 8 20 / 10%) 0px 0.075rem 0.175rem;
   cursor: pointer;
   transition: 0.3s ease;
-  background-color: darkgrey;
 }
 .subjectCardContainer:hover {
   box-shadow: 0 0.05rem 0.3rem 0.05rem;

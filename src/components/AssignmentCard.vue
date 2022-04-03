@@ -42,7 +42,6 @@ export default {
   margin-bottom: 20px;
   border-radius: 5px;
   margin: 20px auto;
-  background-color: darkgrey;
 }
 .assignmentCardContainer:hover {
   transform: scale(1.01);

@@ -95,18 +95,20 @@ export function isUserInQueue(userId) {
     });
 }
 
-export function leaveQueue(subjectQueue) {
+export function leaveQueue(disapproveAssignment) {
   return axios
-    .post("http://localhost:8085/subjectQueue/leave-queue", subjectQueue)
+    .post("http://localhost:8085/assignment/leave-queue", disapproveAssignment)
     .then((response) => {
       return response.data;
     });
 }
 
 export function updateQueue(userId, subjectId) {
-    return axios
-        .get("http://localhost:8085/subjectQueue/update/" + subjectId + "/" + userId)
-        .then((response) => {
-            return response.data;
-        });
+  return axios
+    .get(
+      "http://localhost:8085/subjectQueue/update/" + subjectId + "/" + userId
+    )
+    .then((response) => {
+      return response.data;
+    });
 }

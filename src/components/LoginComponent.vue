@@ -110,7 +110,7 @@ export default {
   flex-direction: column;
   row-gap: 2px;
   justify-content: center;
-  margin: 0 auto;
+  margin: 50px auto;
   margin-top: 15%;
   width: 300px;
 }
@@ -178,6 +178,7 @@ fieldset {
 
 #loginButton {
   margin-bottom: 10px;
+  width: 100px;
 }
 mybtn,
 label,
