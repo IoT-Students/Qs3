@@ -1,7 +1,5 @@
 import axios from "axios";
-import { doLogin } from "../../src/service/apiservice";
-import { shallow } from "enzyme";
-import Button from "./Button";
+import { doLoginWithToken } from "../../src/service/apiservice";
 
 //Initializing jest to mock api calls
 jest.mock("axios");
@@ -16,7 +14,7 @@ describe("testing mocking of apiutil.vue", () => {
 
     // do the call
     const loginRequest = { username: "user1", password: "pass1" };
-    const loginResponse = await doLogin(loginRequest);
+    const loginResponse = await doLoginWithToken(loginRequest);
 
     //  check response
     //  note that even if wrong username and password are used, mock is configured to return Success

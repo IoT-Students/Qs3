@@ -7,6 +7,7 @@
     @click="showStudents(subject.subjectId)"
     @add-students="goToAddStudent"
     @add-studass="goToAddStudass"
+    data-testid="adminSubjectCard"
   >
   </AdminSubjectCard>
 </template>
