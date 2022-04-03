@@ -108,11 +108,10 @@ export default {
 </script>
 
 <style scoped>
-.baseInput{
+.baseInput {
   color: black;
 }
-input
-button {
+input button {
   color: black;
 }
 .mybtn {

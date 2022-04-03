@@ -4,7 +4,7 @@
     <form @submit.prevent="submit">
       <h3>Please register student for subject with id!</h3>
       <div>
-        <BaseInput v-model="name" label="Name" type="text" id="input"/>
+        <BaseInput v-model="name" label="Name" type="text" id="input" />
       </div>
       <BaseErrorMessage v-if="v$.name.$error">{{
         v$.$errors[0].$message
@@ -62,22 +62,6 @@ export default {
           });
         });
       }
-        subjectUserArray.push(subjectUser);
-      }
-      console.log(subjectUserArray);
-
-      console.log(this.subjectId + ", " + this.name);
-      const response = axios.post(
-          "http://localhost:8085/subject/students/saveStudass",
-          subjectUserArray,
-          this.$store.state.userInfo.JWToken
-      );
-      response.then((resolvedResult) => {
-        console.log(resolvedResult.data);
-        this.$router.push({
-          name: "HomeAdmin",
-        });
-      });
     },
   },
 };

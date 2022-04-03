@@ -7,8 +7,8 @@
         <textarea class="inputStudents" v-model="names" />
       </div>
       <BaseErrorMessage v-if="v$.names.$error">{{
-          v$.$errors[0].$message
-        }}</BaseErrorMessage>
+        v$.$errors[0].$message
+      }}</BaseErrorMessage>
       <div>
         <button class="mybtn" type="submit">Add student</button>
       </div>
@@ -64,16 +64,18 @@ export default {
         }
         console.log(subjectUserArray);
 
-      const response = axios.post(
-        "http://localhost:8085/subject/students/saveStudents",
-        subjectUserArray, this.$store.state.userInfo.JWToken
-      );
-      response.then((resolvedResult) => {
-        console.log(resolvedResult.data);
-        this.$router.push({
-          name: "HomeAdmin",
+        const response = axios.post(
+          "http://localhost:8085/subject/students/saveStudents",
+          subjectUserArray,
+          this.$store.state.userInfo.JWToken
+        );
+        response.then((resolvedResult) => {
+          console.log(resolvedResult.data);
+          this.$router.push({
+            name: "HomeAdmin",
+          });
         });
-      });
+      }
     },
   },
 };
