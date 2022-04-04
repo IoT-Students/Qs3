@@ -6,6 +6,13 @@
       </div>
       <h1 id="loginTitle">Velkommen!</h1>
     </div>
+
+    <div>
+      <h5 id="LoginError" v-if="this.$store.state.userInfo.loginStatus === 'Fail'">
+        Wrong password or username!
+      </h5>
+    </div>
+
     <div class="loginFunction">
       <form class="login" @submit.prevent="SignIn">
         <div class="infoContainer">
@@ -95,6 +102,8 @@ export default {
           default:
             alert("Something went wrong with the authentication!");
         }
+      }else{
+        this.$store.dispatch("storeUser", loginResponse);
       }
     },
   },
@@ -151,6 +160,17 @@ export default {
 }
 #titleSpan {
   color: black;
+}
+#LoginError{
+  color: black;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 8px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: solid 1px red;
+  background-color: rgba(255, 0, 0, 0.27);
 }
 
 #loginTitle {
