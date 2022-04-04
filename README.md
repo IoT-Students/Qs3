@@ -50,14 +50,6 @@ Videre utvikling vil bestå av:
 * Legge til valgmulighet "sitte hjemme" i skjemaet for å stille seg i kø
 
 ## Eksterne avhengigheter 
-### Maven
-- Maven er brukt som rammeverk i både klient og server side av dette prosjektet.
-
-### Spring-Boot
-- I Qs3-server er Spring-Boot blitt benyttet. Dette er en server med endepunkter for å motta og sende informasjon fra og til klient.
-
-### JUnit
-- JUnit er blitt brukt for å teste kritisk funksjonalitet i backend 
 
 ### JEST
 - JEST har blitt brukt for å teste kritisk funksjonalitet i frontend
