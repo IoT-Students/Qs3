@@ -31,6 +31,10 @@ Fuksjonaliteter som alle rollene har tilgang på er:
  
 ## Databaseløsning
 
+Vi har laget en databaseløsning som tar hensyn til databasearkitekturprinsipper. Alle databasene oppfyller 3NF, slik at det er enkelt å gjøre endringer i databasene uten at for store komplikasjoner oppstår. Under er bilde av ER-diagram for databaseløsningen vår:
+
+LEGG INN BILDE HER
+
 
  
    
@@ -43,9 +47,26 @@ Videre utvikling vil bestå av:
 * Få applikasjonen til å virke på mobil
 * Kunne arkivere fag
 * Legge til at studenten vises på et kart hos studass
+* legge til studenter i en batch, for eksempel ved bruk av csv fil.
+* Mailvarsel ved registrering av en student som ikke allerede finnes i databasen 
+
+## Eksterne avhengigheter 
+### Maven
+- Maven er brukt som rammeverk i både klient og server side av dette prosjektet.
+
+### Spring-Boot
+- I Qs3-server er Spring-Boot blitt benyttet. Dette er en server med endepunkter for å motta og sende informasjon fra og til klient.
+
+### JUnit
+- JUnit er blitt brukt for å teste kritisk funksjonalitet i backend 
+
+### JEST
+- JEST har blitt brukt for å teste kritisk funksjonalitet i frontend
 
 
 ## Instruksjoner 🗺️
+Under viser stegene som er nyttige for å kjøre klientløsningen vår. 
+NB: Husk at server må kjøres først!
 
 ### Steg 1 -  Project setup
 ```
@@ -63,6 +84,7 @@ npm run build
 ```
 
 ## Testing
+
 
 ### Run your unit tests
 ```
