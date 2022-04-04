@@ -4,12 +4,15 @@
     <form @submit.prevent="submit">
       <h3>Legg til med navn på studass som eksisterer i systemet fra før</h3>
       <div>
-        <BaseInput v-model="name" label="Navn" type="text" id="input" />
+        <textarea class="inputStudents" v-model="names" />
       </div>
-      <BaseErrorMessage v-if="v$.name.$error">{{
-        v$.$errors[0].$message
-      }}</BaseErrorMessage>
+
+      <BaseErrorMessage v-if="v$.names.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
+      <div>
       <button class="mybtn" type="submit">Legg til</button>
+      </div>
     </form>
   </div>
 </template>
@@ -34,36 +37,47 @@ export default {
   },
   data() {
     return {
-      name: "",
+      names: "",
     };
   },
   validations() {
     return {
-      name: { required },
+      names: { required },
     };
   },
   methods: {
     submit() {
       this.v$.$validate();
       if (!this.v$.$error) {
-        const subjectUser = {
-          subjectId: this.subjectId,
-          name: this.name,
-        };
-        console.log(this.subjectId + ", " + this.name);
+
+        const myArray = this.names.split("\n").map(function (item) {
+          return item.trim();
+        });
+        console.log(myArray);
+
+        let subjectUserArray = [];
+        for (let i = 0; i < myArray.length; i++) {
+          const subjectUser = {
+            subjectId: this.subjectId,
+            userDetails: myArray[i],
+          };
+          subjectUserArray.push(subjectUser);
+        }
+        console.log(subjectUserArray);
+
         const response = axios.post(
-          "http://localhost:8085/subject/students/saveTeacherSubject",
-          subjectUser,
-          {
-            headers: {
-              Authorization: "Bearer " + this.$store.state.userInfo.jwtoken,
-            },
-          }
+            "http://localhost:8085/subject/students/saveStudassSubject",
+            subjectUserArray,
+            {
+              headers: {
+                Authorization: "Bearer " + this.$store.state.userInfo.jwtoken,
+              },
+            }
         );
         response.then((resolvedResult) => {
           console.log(resolvedResult.data);
           this.$router.push({
-            name: "HomeAdmin",
+            name: "AdminSubjectView",
           });
         });
       }
