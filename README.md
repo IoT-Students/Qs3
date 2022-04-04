@@ -34,7 +34,8 @@ Applikasjonen er delt opp i tre autoriasjonsroller. Dette legger føringer for h
 
 Vi har laget en databaseløsning som tar hensyn til databasearkitekturprinsipper. Alle databasene oppfyller 3NF, slik at det er enkelt å gjøre endringer i databasene uten at for store komplikasjoner oppstår. Under er bilde av ER-diagram for databaseløsningen vår:
 
-LEGG INN BILDE HER
+![Bilde 04 04 2022 klokken 23 06](https://user-images.githubusercontent.com/91839835/161632312-7047729b-bed8-4495-bd67-c724fe20ae90.jpg)
+
 
 ## Videre utvikling 🏗️
 
