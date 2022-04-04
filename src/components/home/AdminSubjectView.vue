@@ -29,11 +29,9 @@ export default {
   },
   methods: {
     goToAddStudent(subjectId) {
-      console.log(subjectId);
       this.$router.push({ name: "AddStudent", params: { subjectId } });
     },
     goToAddStudass(subjectId) {
-      console.log(subjectId);
       this.$router.push({ name: "AddStudass", params: { subjectId } });
     },
     showStudents(subjectId) {

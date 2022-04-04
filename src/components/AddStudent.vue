@@ -53,7 +53,6 @@ export default {
         const myArray = this.names.split("\n").map(function (item) {
           return item.trim();
         });
-        console.log(myArray);
 
         let subjectUserArray = [];
         for (let i = 0; i < myArray.length; i++) {
@@ -63,7 +62,6 @@ export default {
           };
           subjectUserArray.push(subjectUser);
         }
-        console.log(subjectUserArray);
 
         const response = axios.post(
             "http://localhost:8085/subject/students/saveStudents",
@@ -74,8 +72,8 @@ export default {
               },
             }
         );
-        response.then((resolvedResult) => {
-          console.log(resolvedResult.data);
+        response.then(() => {
+
           this.$router.push({
             name: "AdminSubjectView",
           });

@@ -167,7 +167,6 @@ export default {
   methods: {
     updateAssignmentNumber(assignmentNumber) {
       this.subjectQueue.assignment = assignmentNumber;
-      console.log(this.subjectQueue.assignment);
     },
     async submit() {
       this.v$.$validate();
@@ -184,7 +183,6 @@ export default {
           type: this.subjectQueue.type,
         };
 
-        console.log("Dette er køobjektet: " + this.subjectQueue.assignment);
         await this.$store.dispatch("createSubjectQueue", subjectQueueRequest);
         this.$store.dispatch(
           "getSubjectQueueUser",

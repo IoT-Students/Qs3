@@ -68,7 +68,6 @@ export default createStore({
   },
   actions: {
     resetState({ commit }) {
-      console.log("Reset state!");
       commit("RESET_STATE");
     },
     setUserInQueue({ commit }, inQueue) {
@@ -89,7 +88,6 @@ export default createStore({
       commit("SET_SUBJECT_QUEUE_ID", subjectId);
     },
     async createSubjectQueue({ commit }, subjectQueue) {
-      console.log(subjectQueue);
       commit("ADD_SUBJECT_QUEUE", subjectQueue);
       return await addSubjectQueue(subjectQueue, this.state.userInfo.jwtoken);
     },
@@ -97,8 +95,6 @@ export default createStore({
       getSubjectQueues(this.state.currentSubjectId, this.state.userInfo.jwtoken)
         .then((response) => {
           commit("SET_SUBJECT_QUEUES", response);
-          console.log("DETTE ER RESPONSEN FRA QUEUES");
-          console.log(response);
         })
         .catch((error) => {
           console.log(error);
@@ -111,7 +107,6 @@ export default createStore({
         this.state.userInfo.jwtoken
       );
       commit("SET_SUBJECT_QUEUE_USER", response);
-      console.log(response[0].subjectId);
       commit("SET_SUBJECT_QUEUE_ID", response[0].subjectId);
       dispatch("getAllSubjectQueues");
     },
@@ -124,8 +119,6 @@ export default createStore({
       )
         .then((response) => {
           commit("SET_SUBJECT_QUEUE_USER", response);
-          console.log("DETTE ER RESPONSEN FRA QUEUE");
-          console.log(response);
         })
         .catch((error) => {
           console.log(error);
@@ -133,15 +126,12 @@ export default createStore({
     },
     storeUser({ commit }, userInfo) {
       commit("ADD_USER", userInfo);
-      console.log(this.state.userInfo.userID);
     },
 
     getSubjects({ commit }) {
-      console.log(this.state.userInfo.userID);
       getSubjects(this.state.userInfo.userID, this.state.userInfo.jwtoken)
         .then((response) => {
           commit("SET_SUBJECTS", response);
-          console.log(response);
         })
         .catch((error) => {
           console.log(error);
@@ -155,14 +145,12 @@ export default createStore({
       )
         .then((response) => {
           commit("SET_ASSIGNMENTS", response);
-          console.log(response);
         })
         .catch((error) => {
           console.log(error);
         });
     },
     getAssignmentsStudent({ commit }, userId) {
-      console.log(userId);
       getAssignments(
           userId,
           this.state.currentSubjectId,
@@ -170,7 +158,6 @@ export default createStore({
       )
           .then((response) => {
             commit("SET_ASSIGNMENTS", response);
-            console.log(response);
           })
           .catch((error) => {
             console.log(error);

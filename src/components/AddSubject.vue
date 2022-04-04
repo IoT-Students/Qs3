@@ -81,7 +81,7 @@ export default {
             assignmentAmount: this.subject.assignmentAmount,
             requiredAssignments: this.subject.requiredAssignmentAmount,
           };
-          console.log(subject.requiredAssignments);
+
           const response = axios.post(
             "http://localhost:8085/subject",
             subject,
@@ -92,9 +92,6 @@ export default {
             }
           );
           response.then((resolvedResult) => {
-            console.log(
-              this.$store.state.userInfo.name + ", " + resolvedResult.data
-            );
             const subjectUser = {
               userDetails: this.$store.state.userInfo.lastName + "," + this.$store.state.userInfo.name + "," + this.$store.state.userInfo.email,
               subjectId: resolvedResult.data,

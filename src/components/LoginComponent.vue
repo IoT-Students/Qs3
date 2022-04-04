@@ -87,7 +87,6 @@ export default {
             this.$store.dispatch("getSubjects");
             // eslint-disable-next-line no-case-declarations
             let userInQueue = await isUserInQueue(loginResponse.userID, this.$store.state.userInfo.jwtoken);
-            console.log(userInQueue);
             this.$store.dispatch("setUserInQueue", userInQueue);
             this.$router.push({
               name: "StudentView",

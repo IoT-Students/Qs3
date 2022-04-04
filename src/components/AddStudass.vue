@@ -2,7 +2,8 @@
   <h1>Her kan du legge til studass</h1>
   <div class="form-container">
     <form @submit.prevent="submit">
-      <h3>Legg til med navn på studass som eksisterer i systemet fra før</h3>
+      <h3>Registrer en eller flere studasser, med linjeskift mellom hver</h3>
+      <p>Eksempel: Etternavn,Fornavn,email@mail.com</p>
       <div>
         <textarea class="inputStudents" v-model="names" />
       </div>
@@ -53,7 +54,6 @@ export default {
         const myArray = this.names.split("\n").map(function (item) {
           return item.trim();
         });
-        console.log(myArray);
 
         let subjectUserArray = [];
         for (let i = 0; i < myArray.length; i++) {
@@ -63,7 +63,7 @@ export default {
           };
           subjectUserArray.push(subjectUser);
         }
-        console.log(subjectUserArray);
+
 
         const response = axios.post(
             "http://localhost:8085/subject/students/saveStudassSubject",
@@ -74,8 +74,7 @@ export default {
               },
             }
         );
-        response.then((resolvedResult) => {
-          console.log(resolvedResult.data);
+        response.then(() => {
           this.$router.push({
             name: "AdminSubjectView",
           });

@@ -87,12 +87,12 @@ export default {
         assignmentNumber: this.user.assignment,
         position: this.user.position,
       };
-      let response = await approveAssignment(
+        await approveAssignment(
         assignmentApprove,
         this.$store.state.userInfo.jwtoken
       );
       await this.$store.dispatch("getAllSubjectQueues");
-      console.log(response);
+
       await this.$router.push({ name: "QueueList" });
     },
     async wait() {
