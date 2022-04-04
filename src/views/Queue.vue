@@ -1,11 +1,12 @@
 <template>
   <div class="queuePosition">
-    <router-link @click="loadUser" v-show="isStudent" :to="{ name: 'QueuePositionList' }"
+    <router-link
+      @click="loadUser"
+      v-show="isStudent"
+      :to="{ name: 'QueuePositionList' }"
       >Posisjon</router-link
     >
-    <router-link :to="{ name: 'QueueList' }"
-      >Liste</router-link
-    >
+    <router-link :to="{ name: 'QueueList' }">Liste</router-link>
   </div>
   <router-view></router-view>
 </template>
@@ -24,8 +25,11 @@ export default {
   },
   methods: {
     loadUser() {
-      this.$store.dispatch("getSubjectQueueUser", this.$store.state.currentSubjectId);
-    }
+      this.$store.dispatch(
+        "getSubjectQueueUser",
+        this.$store.state.currentSubjectId
+      );
+    },
   },
 };
 </script>
