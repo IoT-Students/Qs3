@@ -1,8 +1,9 @@
 # Qs3 💻
+
+**Generelt:**
 - Dette er et repo som representerer et Qs3 grensesnitt 
 - Bruker Vue.js som rammmeverk 
 
-Ta en titt på [Qs3](http://qs3.no) for å se vår nettside!
 
 ## Løsning 📜
 
@@ -12,27 +13,27 @@ Applikasjonen er delt opp i tre autoriasjonsroller. Dette legger føringer for h
 
    * **Student:**
       * **Å stille seg i kø i det faget han/hun skal ha godkjent/hjelp i:** Brukeren blir da omdirigert til et skjema for å fylle inn detaljert informasjon om hvor man befinner seg, samt om man trenger godkjenning eller hjelp. Etter korrekt utfylt skjema blir bruker omdirigert til en køoversikt.
-      * **Se en oversikt over hvilke øvinger i det spesifikke faget som er underkjent og godkjent:** Bruker blir omdirigert til en oversikt...
+      * **Se en oversikt over hvilke øvinger i det spesifikke faget som er underkjent og godkjent** 
       * **Se køen direkte uten å stille seg i kø først:** Bruker blir omdirigert til en køside hvor han/hun kan se andre studenter i køen, samt detaljert informasjon om deg i køen. 
    
    * **StudAss:** 
-      * **Å se køen i det faget han/hun er studAss i**
-      * **Se detaljert informasjon om bruker ved å trykke på personen i listen:** Her har studAss muligheten til å godkjenne, underkjenne eller sette studenten på vent avhengig av kvaliteten på øvingen.
+      * **Å se hvem som er i køen i det faget han/hun er studAss i**
+      * **Se detaljert informasjon om studenter i kø ved å trykke på personen i listen:** Her har studAss muligheten til å godkjenne, underkjenne eller sette studenten på vent avhengig av kvaliteten på øvingen.
    
    * **Admin/Lærer:**
       * **Opprette fag**: Admin/Lærer blir omdirigert til et skjema for å fylle inn informasjon om faget på format: **fagkode, fagnavn, øvingsmengde, øvingskriterier** 
       *  **Legge til studenter i de fagene han/hun underviser i:** Registerer studenter på faget som allerede er registrert som student i systemet. kan også legge til studenter som ikke finnes. Må legges inn på format: **Etternavn, Fornavn, email**
-      *  **Legge til studasser i de fagene han/hun underviser i:**  Registerer en allerede registrert studass på det faget som de skal være studass i. Det betyr at en studass har en egen profil som er registrert av selve universitetet.  
+      *  **Legge til studasser i de fagene han/hun underviser i:**  Legger en allerede registrert studass på det faget som de skal være studass i. Det betyr at en studass har en egen profil som allerede er registrert i systemet. 
 
 * **Generelt:**
- alle rollene har tilgang på:
-  * å logge inn på applikasjonen med hashet og kryptert passord. Autentiserer bruker ved å bruke jwt tokens. Sjekker om bruker finnes i databasen før tokens blir utlevert. 
-  * Logge ut. 
+ Alle rollene har tilgang på:
+  * **Å logge inn på applikasjonen:** Autentiserer bruker ved å bruke jwt tokens. Sjekker om bruker finnes i databasen før tokens blir utlevert. 
+  * **Logge ut**. 
 
    
  ### Database
 
-Vi har laget en databaseløsning som tar hensyn til databasearkitekturprinsipper. Alle databasene oppfyller 3NF, slik at det er enkelt å gjøre endringer i databasene uten at for store komplikasjoner oppstår. Under er bilde av ER-diagram for databaseløsningen vår:
+Vi har laget en databaseløsning som tar hensyn til databasearkitekturprinsipper. Alle databasene oppfyller 3NF, slik at det er enkelt å gjøre endringer i databasene uten at for store komplikasjoner oppstår. Under er bildet av databasens ER-diagram:
 
 ![Bilde 04 04 2022 klokken 23 06](https://user-images.githubusercontent.com/91839835/161632312-7047729b-bed8-4495-bd67-c724fe20ae90.jpg)
 
@@ -42,10 +43,8 @@ Vi har laget en databaseløsning som tar hensyn til databasearkitekturprinsipper
 Videre utvikling vil bestå av:
 * At man kan registere flere lærere for et fag
 * Hashe og salte passord for å øke brukerens sikkerhet 
-* At en lærer kan registrere en studAss til et fag
-* Få applikasjonen til å virke på mobil
 * Kunne arkivere fag
-* Legge til at studenten vises på et kart hos studass
+* Legge til at studenten vises på et kart hos studAss
 * legge til studenter i en batch, for eksempel ved bruk av csv fil.
 * Mailvarsel ved registrering av en student som ikke allerede finnes i databasen 
 * Legge til valgmulighet "sitte hjemme" i skjemaet for å stille seg i kø
@@ -53,8 +52,8 @@ Videre utvikling vil bestå av:
 
 ## Eksterne avhengigheter 
 
-### JEST
-- JEST har blitt brukt for å teste kritisk funksjonalitet i frontend
+### JEST:
+Jest har blitt brukt for å teste kritisk funksjonalitet
 
 
 ## Instruksjoner 🗺️
