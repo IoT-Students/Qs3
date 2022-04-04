@@ -49,7 +49,7 @@ export default {
   },
   async created() {
     //console.log("Mounted getAllSubjectQueues");
-    //await this.$store.dispatch("getAllSubjectQueues");
+    await this.$store.dispatch("getAllSubjectQueues");
   },
 };
 </script>
