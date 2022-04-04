@@ -1,6 +1,6 @@
 <template>
   <div class="queuePosition">
-    <router-link v-show="isStudent" :to="{ name: 'QueuePositionList' }"
+    <router-link @click="loadUser" v-show="isStudent" :to="{ name: 'QueuePositionList' }"
       >Posisjon</router-link
     >
     <router-link @click="loadQueueList" :to="{ name: 'QueueList' }"
@@ -26,6 +26,9 @@ export default {
     loadQueueList() {
       this.$store.dispatch("getAllSubjectQueues");
     },
+    loadUser() {
+      this.$store.dispatch("getSubjectQueueUser", this.$store.state.currentSubjectId);
+    }
   },
 };
 </script>
