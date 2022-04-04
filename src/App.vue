@@ -12,7 +12,7 @@
             data-testid="studentHome"
             >Hjem</router-link
           >
-          <router-link :to="{ name: 'Login' }" @click="clearState"
+          <router-link data-testid="studentLogout" :to="{ name: 'Login' }" @click="clearState"
             >Logout</router-link
           >
         </div>

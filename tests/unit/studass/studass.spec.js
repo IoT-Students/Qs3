@@ -1,21 +1,31 @@
-import { mount, shallowMount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import QueueList from "@/components/queue/QueueList";
+import { createStore } from "vuex";
 
 describe("QueueList renders correctly", () => {
   test("Empty queue renders message", () => {
-    const $store = {
-      state: {
-        userInfo: {
-          role: "Studass",
-        },
-        subjectQueues: [],
+    const store = createStore({
+      state() {
+        return {
+          userInfo: {
+            role: "Studass",
+          },
+          subjectQueues: [],
+        };
       },
-    };
+    });
+
     const wrapper = shallowMount(QueueList, {
-      global: {
-        mocks: {
-          $store,
+      props: {
+        user: {
+          position: 1,
+          assignment: 5,
+          name: "Hans",
+          status: false,
         },
+      },
+      global: {
+        plugins: [store],
       },
     });
 
@@ -27,25 +37,32 @@ describe("QueueList renders correctly", () => {
   });
 
   test("Empty message does not render", () => {
-    const $store = {
-      state: {
-        userInfo: {
-          role: "Studass",
-        },
-        subjectQueues: [1, 2],
+    const store = createStore({
+      state() {
+        return {
+          userInfo: {
+            role: "Studass",
+          },
+          subjectQueues: [1, 2],
+        };
       },
-    };
-    const wrapper = mount(QueueList, {
-      global: {
-        mocks: {
-          $store,
+    });
+    const wrapper = shallowMount(QueueList, {
+      props: {
+        user: {
+          position: 1,
+          assignment: 5,
+          name: "Hans",
+          status: false,
         },
+      },
+      global: {
+        plugins: [store],
       },
     });
 
     const emptyQueueMessage = wrapper.find("#emptyQueue");
 
-    console.log(wrapper.vm.isEmpty);
     expect(emptyQueueMessage.exists()).toBe(false);
   });
 });
