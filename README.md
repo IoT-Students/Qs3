@@ -2,11 +2,13 @@
 - Dette er et repo som representerer et Qs3 grensesnitt 
 - Bruker Vue.js som rammmeverk 
 
+Ta en titt på [Qs3](http://qs3.no) for å se vår nettside!
+
 ## Løsning 📜
 
 ### Funksjonalitet
 
-Applikasjonen er delt opp i tre autoriasjonsroller. Dette legger føringer for hvilke rettigheter brukerne har når de tar de tar i bruk applikasjonen:
+Applikasjonen er delt opp i tre autoriasjonsroller. Dette legger føringer for hvilke rettigheter brukerne har når de tar i bruk applikasjonen. Under er det beskrevet funksjonaliteten til de ulike rollene:
 
    * **Student:**
       * **Å stille seg i kø i det faget han/hun skal ha godkjent/hjelp i:** Brukeren blir da omdirigert til et skjema for å fylle inn detaljert informasjon om hvor man befinner seg, samt om man trenger godkjenning eller hjelp. Etter korrekt utfylt skjema blir bruker omdirigert til en køoversikt.
@@ -34,14 +36,11 @@ Vi har laget en databaseløsning som tar hensyn til databasearkitekturprinsipper
 
 LEGG INN BILDE HER
 
-
- 
-   
 ## Videre utvikling 🏗️
 
 Videre utvikling vil bestå av:
 * At man kan registere flere lærere for et fag
-* Hashe og salte passord for å øke sikkerhet 
+* Hashe og salte passord for å øke brukerens sikkerhet 
 * At en lærer kan registrere en studAss til et fag
 * Få applikasjonen til å virke på mobil
 * Kunne arkivere fag
@@ -66,7 +65,7 @@ Videre utvikling vil bestå av:
 
 ## Instruksjoner 🗺️
 Under viser stegene som er nyttige for å kjøre klientløsningen vår. 
-NB: Husk at server må kjøres først!
+NB: Husk at server må kjøres først! Se ReadMe fil for Qs3-Rest-Server...
 
 ### Steg 1 -  Project setup
 ```
@@ -84,15 +83,11 @@ npm run build
 ```
 
 ## Testing
-
-
-### Run your unit tests
+For å kjøre tester kan denne kommandoen brukes:
 ```
 npm run test:unit
 ```
 
-### Nettside 
-See [Qs3](http://qs3.no) to see our web page!
 
 
 

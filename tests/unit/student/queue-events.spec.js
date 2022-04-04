@@ -3,6 +3,9 @@ import HomeLayout from "@/views/HomeLayout";
 import { mount, shallowMount } from "@vue/test-utils";
 import router from "@/router";
 import SubjectCard from "@/components/SubjectCard";
+import QueueList from "../../../src/components/queue/QueueList";
+import QueuePositionList from "../../../src/components/queue/QueuePositionList";
+import QueuePosition from "../../../src/components/queue/QueuePosition";
 
 describe("Testing subjectqueueform", () => {
   test("Form is rendered", () => {
@@ -110,3 +113,51 @@ describe("Emitting events", () => {
     expect(wrapper.emitted("go-to-queue")[0][0]).toStrictEqual(payload);
   });
 });
+
+describe("QueuePositionList", () => {
+  test("Empty position queue renders message correctly", () => {
+    const $store = {
+      state: {
+        userInfo: {
+          role: "Student",
+        },
+        subjectQueue: [],
+      },
+    };
+    const wrapper = shallowMount(QueuePositionList, {
+      global: {
+        mocks: {
+          $store,
+        },
+      },
+    });
+
+    const expectedMessage = "Du er ikke i kø. Gå til hjemmmesiden for å stille deg i kø";
+    const emptyQueueMessage = wrapper.find("#notInQueuePosition");
+
+    expect(emptyQueueMessage.exists()).toBe(true);
+    expect(emptyQueueMessage.text()).toEqual(expectedMessage);
+  });
+  test("position queue renders message correctly when in queue", () => {
+    const $store = {
+      state: {
+        userInfo: {
+          role: "Student",
+        },
+        subjectQueue: [2, "Gløshaugen", "Realfagsbygget", "A4", "1", 5, 1, 1, 2, 1, true],
+      },
+    };
+    const wrapper = shallowMount(QueuePositionList, {
+      global: {
+        mocks: {
+          $store,
+        },
+      },
+    });
+
+    const responseMessage = wrapper.find("#notInQueuePosition");
+
+    expect(wrapper.exists()).toBe(true);
+    expect(responseMessage.exists()).toBe(false);
+  });
+})
