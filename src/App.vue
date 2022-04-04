@@ -87,56 +87,119 @@ html {
   text-align: center;
   color: #2c3e50;
 }
+@media (max-width: 480px){
+  #nav {
+    padding: 30px;
+  }
 
-#nav {
-  padding: 30px;
+  #nav a {
+    font-weight: bold;
+    color: #1c658c;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 5px;
+    height: 5px;
+  }
+
+  #nav a.router-link-exact-active {
+    color: white;
+    background: #1c658c;
+    font-weight: bolder;
+    width: 5px;
+    height: 5px;
+  }
+
+  #footer {
+    position: relative;
+    bottom: 0;
+  }
+  #routerButtons {
+    top: 5px;
+    width: 1px;
+    padding: 10px;
+    align-items: center;
+    text-align: right;
+    justify-content: right;
+    font-size: 0.5rem;
+
+  }
+
+  #navContent {
+    width: 22rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 15% 66% 19%;
+    border-bottom: solid #333232;
+  }
+
+  .logOutButton {
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    background: crimson;
+    border-radius: 5px;
+  }
+
+
 }
-#routerButtons {
-  top: -10px;
-  width: 50rem;
+@media(min-width: 481px) {
+  #nav {
+    padding: 30px;
+  }
+  #routerButtons {
+    top: -10px;
+    width: 50rem;
+  }
+
+  #nav a {
+    font-weight: bold;
+    color: #1c658c;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  #nav a.router-link-exact-active {
+    color: white;
+    background: #1c658c;
+    font-weight: bolder;
+  }
+
+  #footer {
+    position: relative;
+    bottom: 0;
+  }
+  #routerButtons {
+    padding: 15px;
+    width: min-content;
+    align-items: center;
+    text-align: right;
+    justify-content: right;
+  }
+
+  #navContent {
+    width: 50rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 15% 66% 19%;
+    border-bottom: solid #333232;
+  }
+
+  .logOutButton {
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    background: crimson;
+    border-radius: 5px;
+  }
+
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
-}
 
-#nav a.router-link-exact-active {
-  color: white;
-  background: #1c658c;
-  font-weight: bolder;
-}
 
-#footer {
-  position: relative;
-  bottom: 0;
-}
-#routerButtons {
-  padding: 15px;
-  width: min-content;
-  align-items: center;
-  text-align: right;
-  justify-content: right;
-}
-
-#navContent {
-  width: 50rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 15% 66% 19%;
-  border-bottom: solid #333232;
-}
-
-.logOutButton {
-  color: white;
-  font-weight: bold;
-  padding: 5px;
-  margin-left: 10px;
-  cursor: pointer;
-  background: crimson;
-  border-radius: 5px;
-}
 </style>
