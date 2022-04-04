@@ -6,7 +6,7 @@
       :queueUser="queueUser"
     />
   </div>
-  <div v-show="isEmpty" class="notInQueue">
+  <div v-if="isEmpty" class="notInQueue" id="notInQueuePosition">
     Du er ikke i kø. Gå til hjemmmesiden for å stille deg i kø
   </div>
 </template>
