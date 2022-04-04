@@ -6,7 +6,7 @@
 
 ### Funksjonalitet
 
-Applikasjonen er delt opp i tre autoriasjonsroller. Dette legger føringer for hvilke rettigheter de har når de tar de tar i bruk applikasjonen:
+Applikasjonen er delt opp i tre autoriasjonsroller. Dette legger føringer for hvilke rettigheter brukerne har når de tar de tar i bruk applikasjonen:
 
    * **Student:**
       * **Å stille seg i kø i det faget han/hun skal ha godkjent/hjelp i:** Brukeren blir da omdirigert til et skjema for å fylle inn detaljert informasjon om hvor man befinner seg, samt om man trenger godkjenning eller hjelp. Etter korrekt utfylt skjema blir bruker omdirigert til en køoversikt.
