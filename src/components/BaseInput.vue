@@ -15,6 +15,8 @@
 
 <script>
 import BaseErrorMessage from "@/components/BaseErrorMessage";
+import SetupFormComponent from "@/features/SetupFormComponent";
+import UniqueID from "@/features/UniqueID";
 export default {
   name: "BaseInput.vue",
   components: {
@@ -33,6 +35,15 @@ export default {
       type: String,
       default: "",
     },
+  },
+  setup(props, context) {
+    const { updateValue } = SetupFormComponent(props, context);
+    const uuid = UniqueID().getID();
+
+    return {
+      updateValue,
+      uuid,
+    };
   },
 };
 </script>
