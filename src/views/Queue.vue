@@ -3,7 +3,9 @@
     <router-link v-show="isStudent" :to="{ name: 'QueuePositionList' }"
       >Posisjon</router-link
     >
-    <router-link :to="{ name: 'QueueList' }">Liste</router-link>
+    <router-link @click="loadQueueList" :to="{ name: 'QueueList' }"
+      >Liste</router-link
+    >
   </div>
   <router-view></router-view>
 </template>
@@ -18,6 +20,11 @@ export default {
   computed: {
     isStudent() {
       return this.$store.state.userInfo.role === "Student";
+    },
+  },
+  methods: {
+    loadQueueList() {
+      this.$store.dispatch("getAllSubjectQueues");
     },
   },
 };

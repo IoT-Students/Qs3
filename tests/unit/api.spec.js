@@ -1,9 +1,10 @@
 const { doLogin } = require("../../src/service/apiservice");
+const {doLoginWithToken} = require("@/service/apiservice");
 
 describe("testing apiservice.js", () => {
   it("test API call utility function - login Success", async () => {
     const loginRequest = { username: "simen2312", password: "simen2312" };
-    const loginResponse = await doLogin(loginRequest);
+    const loginResponse = await doLoginWithToken(loginRequest);
     const expectedLoginRespone = {
       email: "simenk2312@gmail.com",
       loginStatus: "Success",
@@ -15,7 +16,7 @@ describe("testing apiservice.js", () => {
   }),
     it("test API call utility function - login Fail", async () => {
       const loginRequest = { username: "userx", password: "passx" };
-      const loginResponse = await doLogin(loginRequest);
+      const loginResponse = await doLoginWithToken(loginRequest);
       const expectedLoginRespone = { loginStatus: "Fail", userID: 0 };
       expect(loginResponse).toEqual(expectedLoginRespone);
     });

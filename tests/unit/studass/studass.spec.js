@@ -1,6 +1,5 @@
 import { mount, shallowMount } from "@vue/test-utils";
 import QueueList from "@/components/queue/QueueList";
-import QueueCardDetails from "@/components/queue/QueueCardDetails";
 
 describe("QueueList renders correctly", () => {
   test("Empty queue renders message", () => {

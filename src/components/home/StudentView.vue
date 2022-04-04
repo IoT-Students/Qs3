@@ -29,24 +29,24 @@ export default {
     },
   },
   methods: {
-    goToQueue(subjectId) {
-      this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
-      this.$store.dispatch("getAllSubjectQueues");
-      this.$store.dispatch("getSubjectQueueUser", subjectId);
-      this.$router.push({ name: "QueueList" });
+    async goToQueue(subjectId) {
+      await this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
+      await this.$store.dispatch("getAllSubjectQueues");
+      await this.$store.dispatch("getSubjectQueueUser", subjectId);
+      await this.$router.push({ name: "QueueList" });
     },
-    goToForm(subjectId) {
+    async goToForm(subjectId) {
       if (!this.inQueue) {
         console.log("Er nå i form med subjectId: " + subjectId);
-        this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
-        this.$store.dispatch("getAssignments", subjectId);
-        this.$router.push({ name: "SubjectQueueForm" });
+        await this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
+        await this.$store.dispatch("getAssignments", subjectId);
+        await this.$router.push({ name: "SubjectQueueForm" });
       }
     },
-    goToAssignments(subject) {
-      this.$store.dispatch("addCurrentSubjectQueueId", subject.subjectId);
-      this.$store.dispatch("getAssignments", subject.subjectId);
-      this.$router.push({ name: "AssignmentList", params: { subjectName: subject.subjectName, requiredAssignments: String(subject.requiredAssignments)} });
+    async goToAssignments(subject) {
+      await this.$store.dispatch("addCurrentSubjectQueueId", subject.subjectId);
+      await this.$store.dispatch("getAssignments", subject.subjectId);
+      await this.$router.push({ name: "AssignmentList", params: { subjectName: subject.subjectName, requiredAssignments: String(subject.requiredAssignments)} });
     },
   },
 };

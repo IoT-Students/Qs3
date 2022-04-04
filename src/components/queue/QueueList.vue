@@ -47,9 +47,9 @@ export default {
       return this.$store.state.subjectQueues.length === 0;
     },
   },
-  mounted() {
+  async created() {
     //console.log("Mounted getAllSubjectQueues");
-    //this.$store.dispatch("getAllSubjectQueues");
+    await this.$store.dispatch("getAllSubjectQueues");
   },
 };
 </script>
@@ -59,9 +59,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.active {
-  background-color: lightgreen;
 }
 #emptyQueue {
   margin: 20px;

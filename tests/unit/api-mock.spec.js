@@ -19,12 +19,5 @@ describe("testing mocking of apiutil.vue", () => {
     //  check response
     //  note that even if wrong username and password are used, mock is configured to return Success
     expect(loginResponse).toEqual(expectedLoginRespone);
-  }),
-    it("Check if button can be clicked properly", async () => {
-      const mockCallBack = jest.fn();
-
-      const button = shallow(<Button onClick={mockCallBack}>Ok!</Button>);
-      button.find("loginButton").simulate("click");
-      expect(mockCallBack.mock.calls.length).toEqual(1);
-    });
+  });
 });

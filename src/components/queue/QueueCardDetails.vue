@@ -124,8 +124,9 @@ export default {
       await updateQueue(
         this.user.userId,
         this.user.subjectId,
-        this.$store.state.userInfo.jwtoken
+        this.$store.state.userInfo.jwtoken,
       );
+      this.$store.dispatch("getAllSubjectQueues");
     }
   },
 };

@@ -1,5 +1,5 @@
 <template>
-  <div class="student-card" v-bind:class="{ active: isActive }">
+  <div class="student-card" :class="{ active: isActive }">
     <section class="card-grid">
       <p class="queue-number">Nr. {{ user.position }}</p>
       <div class="student-name">{{ user.name }}</div>
@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       userRole: this.$store.state.userInfo.role,
-      isActive: this.user.status,
+      //isActive: this.user.status,
     };
   },
   props: {
@@ -23,13 +23,13 @@ export default {
       type: Object,
       required: true,
     },
-    computed: {
-      isStudent() {
-        return this.$store.state.userInfo.role;
-      },
-      isActive() {
-        this.isActive = this.user.status;
-      },
+  },
+  computed: {
+    isStudent() {
+      return this.$store.state.userInfo.role;
+    },
+    isActive() {
+      return this.user.status;
     },
   },
 };
@@ -45,6 +45,7 @@ export default {
   border-radius: 5px;
 }
 .active {
+  background-color: lightgreen;
 }
 
 .student-card:hover {
