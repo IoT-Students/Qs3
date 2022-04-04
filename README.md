@@ -25,8 +25,8 @@ Applikasjonen er delt opp i tre autoriasjonsroller. Dette legger føringer for h
       *  **Legge til studasser i de fagene han/hun underviser i:**  Registerer en allerede registrert studass på det faget som de skal være studass i. Det betyr at en studass har en egen profil som er registrert av selve universitetet.  
 
 * **Generelt:**
-Fuksjonaliteter som alle rollene har tilgang på er:
-  * Bruker kan logge inn på applikasjonen med hashet og kryptert passord. Autentiserer bruker ved å bruke jwt tokens. Sjekker om bruker finnes i databasen før tokens blir utlevert. 
+ alle rollene har tilgang på:
+  * å logge inn på applikasjonen med hashet og kryptert passord. Autentiserer bruker ved å bruke jwt tokens. Sjekker om bruker finnes i databasen før tokens blir utlevert. 
   * Logge ut. 
 
    
@@ -65,19 +65,20 @@ Videre utvikling vil bestå av:
 
 ## Instruksjoner 🗺️
 Under viser stegene som er nyttige for å kjøre klientløsningen vår. 
-NB: Husk at server må kjøres først! Se ReadMe fil for Qs3-Rest-Server...
 
-### Steg 1 -  Project setup
+(NB: Husk at server må kjøres først! Se ReadMe fil for Qs3-RestServer...)
+
+### Steg 1 -  Installer alle avhengigheter 
 ```
 npm install
 ```
 
-### Steg 2 - Compile for development
+### Steg 2 - kompiler programmet
 ```
 npm run serve
 ```
 
-### Steg 3 - Compiles and minifies for production
+### Steg 3 - Kompilerer og minifiserer for produksjon
 ```
 npm run build
 ```
