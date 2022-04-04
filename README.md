@@ -28,8 +28,7 @@ Fuksjonaliteter som alle rollene har tilgang på er:
   * Logge ut. 
 
    
- 
-## Databaseløsning
+ ### Database
 
 Vi har laget en databaseløsning som tar hensyn til databasearkitekturprinsipper. Alle databasene oppfyller 3NF, slik at det er enkelt å gjøre endringer i databasene uten at for store komplikasjoner oppstår. Under er bilde av ER-diagram for databaseløsningen vår:
 
