@@ -48,6 +48,7 @@ Videre utvikling vil bestå av:
 * Legge til at studenten vises på et kart hos studass
 * legge til studenter i en batch, for eksempel ved bruk av csv fil.
 * Mailvarsel ved registrering av en student som ikke allerede finnes i databasen 
+* Legge til valgmulighet "sitte hjemme" i skjemaet for å stille seg i kø
 
 ## Eksterne avhengigheter 
 ### Maven
