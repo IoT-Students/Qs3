@@ -47,73 +47,40 @@ export default {
   },
   methods: {
     submit() {
-      console.log(this.names);
+      this.v$.$validate();
+      if (!this.v$.$error) {
 
-      const myArray = this.names.split("\n").map(function (item) {
-        return item.trim();
-      });
-      console.log(myArray);
-
-      let subjectUserArray = [];
-      for (let i = 0; i < myArray.length; i++) {
-        const subjectUser = {
-          subjectId: this.subjectId,
-          userDetails: myArray[i],
-        };
-        subjectUserArray.push(subjectUser);
-      }
-      console.log(subjectUserArray);
-
-      const response = axios.post(
-        "http://localhost:8085/subject/students/saveStudents",
-        subjectUserArray,
-        {
-          headers: {
-            Authorization: "Bearer " + this.$store.state.userInfo.jwtoken,
-          },
-        }
-      );
-      response.then((resolvedResult) => {
-        console.log(resolvedResult.data);
-        this.$router.push({
-          name: "AdminSubjectView",
+        const myArray = this.names.split("\n").map(function (item) {
+          return item.trim();
         });
-      });
+        console.log(myArray);
 
-      // this.v$.$validate();
-      // if (!this.v$.$error) {
-      //   console.log(this.names);
-      //   const myArray = this.names.split(",").map(function (item) {
-      //     return item.trim();
-      //   });
-      //   console.log(myArray);
-      //
-      //   let subjectUserArray = [];
-      //   for (let i = 0; i < myArray.length; i++) {
-      //     const subjectUser = {
-      //       subjectId: this.subjectId,
-      //       name: myArray[i],
-      //     };
-      //     subjectUserArray.push(subjectUser);
-      //   }
-      //   console.log(subjectUserArray);
-      //
-      //   const response = axios.post(
-      //     "http://localhost:8085/subject/students/saveStudents",
-      //     subjectUserArray,
-      //     {
-      //       headers: {
-      //         Authorization: "Bearer " + this.$store.state.userInfo.jwtoken,
-      //       },
-      //     }
-      //   );
-      //   response.then((resolvedResult) => {
-      //     console.log(resolvedResult.data);
-      //     this.$router.push({
-      //       name: "HomeAdmin",
-      //     });
-      //   });
-      // }
+        let subjectUserArray = [];
+        for (let i = 0; i < myArray.length; i++) {
+          const subjectUser = {
+            subjectId: this.subjectId,
+            userDetails: myArray[i],
+          };
+          subjectUserArray.push(subjectUser);
+        }
+        console.log(subjectUserArray);
+
+        const response = axios.post(
+            "http://localhost:8085/subject/students/saveStudents",
+            subjectUserArray,
+            {
+              headers: {
+                Authorization: "Bearer " + this.$store.state.userInfo.jwtoken,
+              },
+            }
+        );
+        response.then((resolvedResult) => {
+          console.log(resolvedResult.data);
+          this.$router.push({
+            name: "AdminSubjectView",
+          });
+        });
+      }
     },
   },
 };

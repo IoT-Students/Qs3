@@ -96,7 +96,7 @@ export default {
               this.$store.state.userInfo.name + ", " + resolvedResult.data
             );
             const subjectUser = {
-              name: this.$store.state.userInfo.name,
+              userDetails: this.$store.state.userInfo.lastName + "," + this.$store.state.userInfo.name + "," + this.$store.state.userInfo.email,
               subjectId: resolvedResult.data,
             };
             axios.post(

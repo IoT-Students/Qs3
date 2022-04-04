@@ -1,14 +1,15 @@
 import axios from "axios";
-import qs from "qs";
+
 
 export async function doLoginWithToken(userInfo) {
-  const data = qs.stringify({
-    username: userInfo.username,
-    password: userInfo.password,
-  });
+
+    const loginRequest = {
+        username: userInfo.username,
+        password: userInfo.password,
+    };
 
   return axios
-    .post(`http://localhost:8085/token`, data)
+    .post(`http://localhost:8085/token`, loginRequest)
     .then((response) => {
       return response.data;
     })

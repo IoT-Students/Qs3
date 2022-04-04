@@ -155,6 +155,15 @@ export default {
     assignments() {
       return this.$store.state.assignments;
     },
+
+    isError(){
+      if(this.v$.$error){
+        return true
+      }
+      else {
+        return false
+      }
+    }
   },
   methods: {
     updateAssignmentNumber(assignmentNumber) {
