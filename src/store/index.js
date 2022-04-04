@@ -62,6 +62,9 @@ export default createStore({
     SET_ASSIGNMENTS(state, assignments) {
       state.assignments = assignments;
     },
+    SET_CURRENT_SUBJECTID(state,subjectId){
+      state.currentSubjectId = subjectId;
+    }
   },
   actions: {
     resetState({ commit }) {
@@ -80,6 +83,7 @@ export default createStore({
         this.state.userInfo.jwtoken
       );
       commit("SET_STUDENTS", students);
+      commit("SET_CURRENT_SUBJECTID", subjectId)
     },
     addCurrentSubjectQueueId({ commit }, subjectId) {
       commit("SET_SUBJECT_QUEUE_ID", subjectId);
@@ -156,6 +160,21 @@ export default createStore({
         .catch((error) => {
           console.log(error);
         });
+    },
+    getAssignmentsStudent({ commit }, userId) {
+      console.log(userId);
+      getAssignments(
+          userId,
+          this.state.currentSubjectId,
+          this.state.userInfo.jwtoken
+      )
+          .then((response) => {
+            commit("SET_ASSIGNMENTS", response);
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     },
     resetSubjectQueue({ commit }) {
       commit("ADD_SUBJECT_QUEUE", []);

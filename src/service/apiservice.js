@@ -108,6 +108,7 @@ export function approveAssignment(approvedAssignment, token) {
 }
 
 export function getAssignments(userId, subjectId, token) {
+    console.log(userId);
   return axios
     .get("http://localhost:8085/assignment/" + userId + "/" + subjectId, {
       headers: {

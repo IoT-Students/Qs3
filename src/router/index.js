@@ -17,6 +17,7 @@ import StudentsView from "@/components/StudentsView";
 import AddStudass from "@/components/AddStudass";
 import NotFoundPage from "@/views/NotFoundPage";
 import AssignmentList from "../views/AssignmentList";
+import AssignmentStudent from "@/components/AssignmentStudent";
 
 const routes = [
   {
@@ -119,6 +120,11 @@ const routes = [
         path: "/home/admin/students",
         name: "StudentsView",
         component: StudentsView,
+      },
+      {
+        path: "/home/admin/student/assignment",
+        name: "AssignmentStudent",
+        component: AssignmentStudent,
       },
     ],
   },
