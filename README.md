@@ -49,6 +49,7 @@ Videre utvikling vil bestå av:
 * legge til studenter i en batch, for eksempel ved bruk av csv fil.
 * Mailvarsel ved registrering av en student som ikke allerede finnes i databasen 
 * Legge til valgmulighet "sitte hjemme" i skjemaet for å stille seg i kø
+* Utvide databasen til å inneholde egne tabeller for lokasjon som kan hentes inn når man stiller seg i kø
 
 ## Eksterne avhengigheter 
 
