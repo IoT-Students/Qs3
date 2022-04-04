@@ -67,6 +67,7 @@
         <BaseErrorMessage v-if="v$.subjectQueue.assignment.$error">{{
           v$.$errors[0].$message
         }}</BaseErrorMessage>
+        <div class="assignmentNumber">{{this.subjectQueue.assignment}}</div>
       </fieldset>
 
       <fieldset>
@@ -88,8 +89,6 @@
         Still deg i kø
       </BaseButton>
     </form>
-    <pre>{{ subjectQueue }}</pre>
-    <pre> {{ $store.state.currentSubjectId }} </pre>
   </div>
 </template>
 
@@ -169,7 +168,6 @@ export default {
     updateAssignmentNumber(assignmentNumber) {
       this.subjectQueue.assignment = assignmentNumber;
       console.log(this.subjectQueue.assignment);
-      console.log(assignmentNumber);
     },
     async submit() {
       this.v$.$validate();
@@ -351,6 +349,10 @@ textarea {
   -webkit-transform: scale(1);
   transform: scale(1);
   box-shadow: none;
+}
+.assignmentNumber{
+  font-size: 30px;
+  font-weight: 600;
 }
 
 #header {

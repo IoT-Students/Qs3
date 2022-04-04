@@ -1,7 +1,7 @@
 <template>
   <button
     class="assignmentCard"
-    :class="{ disabled: isApproved, isClicked: isClicked }"
+    :class="{ disabled: isApproved }"
     :disabled="isApproved"
     @click="this.isClicked = !this.isClicked"
   >
@@ -14,11 +14,6 @@
 <script>
 export default {
   name: "AssignmentFormCard",
-  data() {
-    return {
-      isClicked: false,
-    };
-  },
   props: {
     assignment: {
       type: Object,
@@ -34,12 +29,6 @@ export default {
 </script>
 
 <style scoped>
-[data-status="true"] {
-  color: green;
-}
-[data-status="false"] {
-  color: red;
-}
 .assignmentCard {
   padding: 0px;
   width: 3rem;
@@ -61,9 +50,5 @@ export default {
   cursor: default;
   box-shadow: 0 0 0 0;
   transform: scale(1);
-}
-.isClicked {
-  background: #1c658c;
-  color: white;
 }
 </style>

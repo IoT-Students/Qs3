@@ -101,6 +101,7 @@ export default {
         this.user.userId,
         this.user.subjectId,
         this.$store.state.userInfo.jwtoken
+
       );
       this.$router.push({ name: "QueueList" });
     },
