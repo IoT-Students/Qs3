@@ -1,4 +1,6 @@
 # Qs3 💻
+
+**Generelt:**
 - Dette er et repo som representerer et Qs3 grensesnitt 
 - Bruker Vue.js som rammmeverk 
 
@@ -49,8 +51,8 @@ Videre utvikling vil bestå av:
 
 ## Eksterne avhengigheter 
 
-### JEST
-- JEST har blitt brukt for å teste kritisk funksjonalitet
+### JEST:
+Jest har blitt brukt for å teste kritisk funksjonalitet
 
 
 ## Instruksjoner 🗺️
