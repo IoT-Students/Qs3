@@ -15,7 +15,6 @@ export default {
   data() {
     return {
       userRole: this.$store.state.userInfo.role,
-      //isActive: this.user.status,
     };
   },
   props: {

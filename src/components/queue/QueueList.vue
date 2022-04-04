@@ -32,10 +32,7 @@ export default {
   },
   methods: {
     goToDetails(user) {
-      console.log(this.userRole);
-      console.log("Navn er " + user.name);
       this.$store.dispatch("addSubjectQueueJoin", user);
-      //console.log(this.$store.state.subjectQueueJoin.name);
       this.$router.push({ name: "QueueCardDetails" });
     },
   },
@@ -48,7 +45,6 @@ export default {
     },
   },
   async created() {
-    //console.log("Mounted getAllSubjectQueues");
     await this.$store.dispatch("getAllSubjectQueues");
   },
 };

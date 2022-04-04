@@ -3,7 +3,7 @@
     v-for="student in students"
     :key="student.userID"
     :student="student"
-    @click="seeAssignmentStudent(student.userID)"
+    @click="seeAssignmentStudent(student.userID, student.role)"
   ></StudentsCard>
 </template>
 
@@ -18,10 +18,11 @@ export default {
     },
   },
   methods:{
-    async seeAssignmentStudent(userId){
-      console.log(this.$store.state.currentSubjectId);
+    async seeAssignmentStudent(userId,role){
       await this.$store.dispatch("getAssignmentsStudent", userId);
-      this.$router.push({ name: "AssignmentStudent" });
+      if(role === "Student"){
+        this.$router.push({ name: "AssignmentStudent" });
+      }
     }
   }
 };

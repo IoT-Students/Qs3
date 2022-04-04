@@ -26,7 +26,6 @@ export function addSubjectQueue(subjectQueue, token) {
       },
     })
     .then((response) => {
-      console.log(typeof subjectQueue.assignment);
       return response.data;
     });
 }
@@ -62,7 +61,6 @@ export function getSubjectQueueUser(subjectId, userId, token) {
       },
     })
     .then((response) => {
-      // console.log(response.data);
       return response.data;
     });
 }
@@ -75,7 +73,6 @@ export function getUserInQueue(userId, token) {
       },
     })
     .then((response) => {
-      // console.log(response.data);
       return response.data;
     });
 }
@@ -88,9 +85,6 @@ export function getStudentsInSubject(subjectId, token) {
       },
     })
     .then((response) => {
-      console.log(
-        "Alle studenter fra subjectId " + subjectId + " er " + response.data
-      );
       return response.data;
     });
 }
@@ -108,7 +102,6 @@ export function approveAssignment(approvedAssignment, token) {
 }
 
 export function getAssignments(userId, subjectId, token) {
-    console.log(userId);
   return axios
     .get("http://localhost:8085/assignment/" + userId + "/" + subjectId, {
       headers: {
@@ -116,12 +109,6 @@ export function getAssignments(userId, subjectId, token) {
       },
     })
     .then((response) => {
-      console.log(
-        "Alle øvinger til en student i et gitt fag er " +
-          subjectId +
-          " er " +
-          response.data
-      );
       return response.data;
     });
 }

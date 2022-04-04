@@ -24,7 +24,6 @@ export default {
       return this.$store.state.subjects;
     },
     inQueue() {
-      console.log();
       return this.$store.state.userInQueue;
     },
   },
@@ -37,7 +36,6 @@ export default {
     },
     async goToForm(subjectId) {
       if (!this.inQueue) {
-        console.log("Er nå i form med subjectId: " + subjectId);
         await this.$store.dispatch("addCurrentSubjectQueueId", subjectId);
         await this.$store.dispatch("getAssignments", subjectId);
         await this.$router.push({ name: "SubjectQueueForm" });

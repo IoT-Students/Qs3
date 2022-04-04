@@ -24,7 +24,7 @@
           </div>
         </div>
         <div v-if="!studass" class="queue-buttons">
-          <button v-if="!inQueue" @click="dummyClick" id="exercise-button">
+          <button v-if="!inQueue" id="exercise-button">
             Still deg i kø
           </button>
           <button
@@ -69,9 +69,6 @@ export default {
     return {};
   },
   methods: {
-    dummyClick() {
-      console.log("Button is clicked");
-    },
     goToAssignments() {
       this.$emit("go-to-assignments");
     },
