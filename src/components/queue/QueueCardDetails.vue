@@ -8,7 +8,6 @@
         <div class="content">
           <h2 :class="{ altTitle: !isType }">{{ userType }}</h2>
           <h3>{{ user.name }}</h3>
-          <div class="approve" @click="assign">Start {{ userType }}</div>
           <section class="campus-building">
             <div class="location" id="campus">
               <p>Campus:</p>
@@ -37,7 +36,7 @@
           </section>
         </div>
         <div v-if="isType" class="approveButtons">
-          <div class="approve" @click="approve">Godkjenn</div>
+          <div data-testid="approveButton" class="approve" @click="approve">Godkjenn</div>
           <div class="wait" @click="wait">Vent</div>
           <div class="disapprove" @click="removeFromQueue">Underkjenn</div>
         </div>
@@ -93,17 +92,16 @@ export default {
         assignmentApprove,
         this.$store.state.userInfo.jwtoken
       );
+      await this.$store.dispatch("getAllSubjectQueues");
       console.log(response);
       await this.$router.push({ name: "QueueList" });
     },
-    async assign() {
+    async wait() {
       await updateQueue(
         this.user.userId,
         this.user.subjectId,
         this.$store.state.userInfo.jwtoken
       );
-    },
-    wait() {
       this.$router.push({ name: "QueueList" });
     },
     async removeFromQueue() {
@@ -113,12 +111,22 @@ export default {
         subjectId: this.user.subjectId,
         assignmentNumber: this.user.assignment,
       };
+      await this.$store.dispatch("getAllSubjectQueues");
       await leaveQueue(
         assignmentDisapprove,
         this.$store.state.userInfo.jwtoken
       );
       this.$router.push({ name: "QueueList" });
     },
+  },
+  async created() {
+    if (this.user.status === false) {
+      await updateQueue(
+        this.user.userId,
+        this.user.subjectId,
+        this.$store.state.userInfo.jwtoken
+      );
+    }
   },
 };
 </script>

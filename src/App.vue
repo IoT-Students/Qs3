@@ -9,6 +9,7 @@
             @click="loadSubjects"
             v-if="isStudent"
             :to="{ name: 'StudentView' }"
+            data-testid="studentHome"
             >Hjem</router-link
           >
           <router-link :to="{ name: 'Login' }" @click="clearState"
@@ -16,7 +17,10 @@
           >
         </div>
         <div v-if="isStudass">
-          <router-link @click="loadSubjects" :to="{ name: 'StudAssView' }"
+          <router-link
+            @click="loadSubjects"
+            :to="{ name: 'StudAssView' }"
+            data-testid="studassHome"
             >Hjem</router-link
           >
           <router-link :to="{ name: 'Login' }" @click="clearState"
@@ -24,7 +28,10 @@
           >
         </div>
         <div v-if="isAdmin">
-          <router-link @click="loadSubjects" :to="{ name: 'AdminSubjectView' }"
+          <router-link
+            @click="loadSubjects"
+            :to="{ name: 'AdminSubjectView' }"
+            data-testid="adminHome"
             >Hjem</router-link
           >
           <router-link :to="{ name: 'Login' }" @click="clearState"
@@ -60,7 +67,10 @@ export default {
       this.userInQueue();
     },
     async userInQueue() {
-      let response = await isUserInQueue(this.$store.state.userInfo.userID, this.$store.state.userInfo.jwtoken);
+      let response = await isUserInQueue(
+        this.$store.state.userInfo.userID,
+        this.$store.state.userInfo.jwtoken
+      );
       this.$store.dispatch("setUserInQueue", response);
     },
   },

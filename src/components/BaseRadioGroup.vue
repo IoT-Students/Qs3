@@ -18,7 +18,11 @@
 </template>
 
 <script>
+import BaseRadio from "@/components/BaseRadio";
 export default {
+  components: {
+    BaseRadio,
+  },
   props: {
     options: {
       type: Array,

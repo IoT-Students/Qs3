@@ -14,7 +14,7 @@
       @click="goToDetails(user)"
     />
   </div>
-  <div v-show="isEmpty" id="emptyQueue">Køen er tom!</div>
+  <div v-if="isEmpty" id="emptyQueue">Køen er tom!</div>
 </template>
 
 <script>
@@ -48,8 +48,8 @@ export default {
     },
   },
   mounted() {
-    console.log("Mounted getAllSubjectQueues");
-    this.$store.dispatch("getAllSubjectQueues");
+    //console.log("Mounted getAllSubjectQueues");
+    //this.$store.dispatch("getAllSubjectQueues");
   },
 };
 </script>

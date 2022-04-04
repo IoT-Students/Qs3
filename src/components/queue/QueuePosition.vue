@@ -40,6 +40,7 @@ export default {
       );
       await this.$store.dispatch("setUserInQueue", response);
       await this.$store.dispatch("resetSubjectQueue");
+      await this.$store.dispatch("getAllSubjectQueues");
       this.$router.push({ name: "QueuePositionList" });
     },
   },

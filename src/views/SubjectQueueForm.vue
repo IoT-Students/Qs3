@@ -11,7 +11,9 @@
             label="Select a campus"
           />
         </div>
-        <BaseErrorMessage v-if="v$.subjectQueue.campus.$error">{{ v$.$errors[0].$message }}</BaseErrorMessage>
+        <BaseErrorMessage v-if="v$.subjectQueue.campus.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
         <p></p>
         <div class="location">
           <BaseSelect
@@ -21,7 +23,9 @@
             :errorMessage="v$.$errors[1]"
           />
         </div>
-        <BaseErrorMessage v-if="v$.subjectQueue.building.$error">{{ v$.$errors[0].$message }}</BaseErrorMessage>
+        <BaseErrorMessage v-if="v$.subjectQueue.building.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
         <p></p>
         <div class="location">
           <BaseSelect
@@ -32,7 +36,9 @@
             :errorMessage="v$.$errors[2]"
           />
         </div>
-        <BaseErrorMessage v-if="v$.subjectQueue.room.$error">{{ v$.$errors[0].$message }}</BaseErrorMessage>
+        <BaseErrorMessage v-if="v$.subjectQueue.room.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
         <p></p>
         <div class="location">
           <BaseSelect
@@ -43,7 +49,9 @@
             :errorMessage="v$.$errors[3]"
           />
         </div>
-        <BaseErrorMessage v-if="v$.subjectQueue.table.$error">{{ v$.$errors[0].$message }}</BaseErrorMessage>
+        <BaseErrorMessage v-if="v$.subjectQueue.table.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
       </fieldset>
       <fieldset>
         <legend class="title">Øvinger</legend>
@@ -56,7 +64,9 @@
             type="button"
           />
         </div>
-        <BaseErrorMessage v-if="v$.subjectQueue.assignment.$error">{{ v$.$errors[0].$message }}</BaseErrorMessage>
+        <BaseErrorMessage v-if="v$.subjectQueue.assignment.$error">{{
+          v$.$errors[0].$message
+        }}</BaseErrorMessage>
       </fieldset>
 
       <fieldset>
@@ -85,12 +95,20 @@
 
 <script>
 import AssignmentFormCard from "../components/AssignmentFormCard";
+import BaseSelect from "@/components/BaseSelect";
+import BaseErrorMessage from "@/components/BaseErrorMessage";
+import BaseRadioGroup from "@/components/BaseRadioGroup";
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import BaseButton from "@/components/BaseButton";
 
 export default {
   components: {
+    BaseButton,
     AssignmentFormCard,
+    BaseSelect,
+    BaseErrorMessage,
+    BaseRadioGroup,
   },
   setup() {
     return {
@@ -165,6 +183,7 @@ export default {
           "getSubjectQueueUser",
           subjectQueueRequest.subjectId
         );
+        await this.$store.dispatch("getAllSubjectQueues");
         await this.$router.push({ name: "QueueList" });
       } else {
         alert("Alle felter må være fylt ut");

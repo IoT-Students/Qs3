@@ -103,7 +103,10 @@ export default createStore({
     },
 
     async getUserInQueue({ commit, dispatch }) {
-      let response = await getUserInQueue(this.state.userInfo.userID, this.state.userInfo.jwtoken);
+      let response = await getUserInQueue(
+        this.state.userInfo.userID,
+        this.state.userInfo.jwtoken
+      );
       commit("SET_SUBJECT_QUEUE_USER", response);
       console.log(response[0].subjectId);
       commit("SET_SUBJECT_QUEUE_ID", response[0].subjectId);
@@ -111,7 +114,11 @@ export default createStore({
     },
 
     getSubjectQueueUser({ commit }, subjectId) {
-      getSubjectQueueUser(subjectId, this.state.userInfo.userID, this.state.userInfo.jwtoken)
+      getSubjectQueueUser(
+        subjectId,
+        this.state.userInfo.userID,
+        this.state.userInfo.jwtoken
+      )
         .then((response) => {
           commit("SET_SUBJECT_QUEUE_USER", response);
           console.log("DETTE ER RESPONSEN FRA QUEUE");
@@ -138,7 +145,11 @@ export default createStore({
         });
     },
     getAssignments({ commit }) {
-      getAssignments(this.state.userInfo.userID, this.state.currentSubjectId, this.state.userInfo.jwtoken)
+      getAssignments(
+        this.state.userInfo.userID,
+        this.state.currentSubjectId,
+        this.state.userInfo.jwtoken
+      )
         .then((response) => {
           commit("SET_ASSIGNMENTS", response);
           console.log(response);
@@ -153,7 +164,9 @@ export default createStore({
   },
 
   modules: {},
-  plugins: [createPersistedState({
-    storage: window.sessionStorage,
-  })],
+  plugins: [
+    createPersistedState({
+      storage: window.sessionStorage,
+    }),
+  ],
 });

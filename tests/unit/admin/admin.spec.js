@@ -30,9 +30,8 @@ describe("Test router-links", () => {
   });
 });
 
-describe("Subjectcard renders", () => {
-  test("Subjectcard renders", () => {
-
+describe("Admin Subjectcard renders", () => {
+  test("Admin Subjectcard renders when it should", () => {
     const wrapper = mount(AdminSubjectCard, {
       props: {
         subject: {
