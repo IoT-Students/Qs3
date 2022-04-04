@@ -2,13 +2,14 @@ import { mount } from "@vue/test-utils";
 import HomeAdminLayout from "@/views/HomeAdminLayout";
 import router from "@/router";
 import AdminSubjectCard from "@/components/AdminSubjectCard";
+import store from "@/store";
 
 describe("Test router-links", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = mount(HomeAdminLayout, {
       global: {
-        plugins: [router],
+        plugins: [store, router],
       },
     });
   });

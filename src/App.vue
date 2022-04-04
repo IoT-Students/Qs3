@@ -116,13 +116,13 @@ html {
   }
   #routerButtons {
     top: 5px;
-    width: 1px;
-    padding: 10px;
+    width: min-content;
+    padding: 25px;
+    padding-left: 0;
     align-items: center;
     text-align: right;
     justify-content: right;
     font-size: 0.5rem;
-
   }
 
   #navContent {
