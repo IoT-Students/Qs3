@@ -141,16 +141,19 @@ img {
   border: solid #2e74f3;
   color: #2e74f3;
   background: floralwhite;
+  margin: 5px;
 }
 #queue-button {
   border: solid green;
   color: green;
   background: floralwhite;
+  margin: 5px;
 }
 #chat-button {
   border: solid #2e74f3;
   color: #2e74f3;
   background: floralwhite;
+  margin: 5px;
 }
 #exercise-button:hover {
   color: floralwhite;
@@ -230,5 +233,14 @@ div.content {
   margin-bottom: auto;
 }
 .subject-message {
+}
+
+@media (max-width: 480px) {
+  #title {
+    font-size: 1rem;
+  }
+  #code {
+    font-size: 1rem;
+  }
 }
 </style>

@@ -195,6 +195,7 @@ div.content {
   grid-column: 2;
   padding: 20px;
   margin-bottom: auto;
+  margin-left: 10px;
 }
 .subject-message {
 }
