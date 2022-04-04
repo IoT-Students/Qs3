@@ -1,5 +1,4 @@
 import { createStore } from "vuex";
-
 import {
   addSubjectQueue,
   getAssignments,
